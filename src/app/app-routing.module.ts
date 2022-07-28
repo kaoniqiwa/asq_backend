@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { RoutePath } from './enum/route-path.enum';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login2/login.component';
+import { LoginManageComponent } from './login/login-manage/login-manage.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: RoutePath.login,
-    component: LoginComponent
+    component: LoginManageComponent
   },
   {
     path: RoutePath.neoballoon,
