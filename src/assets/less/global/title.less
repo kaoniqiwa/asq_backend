@@ -1,13 +1,48 @@
-.simple-title {
-  font-size: 24px;
-  margin: 25px 0 20px 0;
+.title() {
   width: 100%;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
+}
+.underline-title {
+  border-bottom: 1px solid #eee;
+}
+.center-title {
   justify-content: center;
 }
-.page-title {
+
+.normal-title {
+  .title();
   font-size: 24px;
-  padding: 10px;
+}
+.large-title {
+  .title();
+  font-size: 30px;
+}
+
+.green-title {
   color: #34bb45;
 }
+.gray-title {
+  color: #d5d7d9;
+}
+// .green-normal-title {
+//   .title();
+//   .green-title();
+//   .normal-title();
+// }
+// .gree-large-title {
+//   .title();
+//   .green-title();
+//   .large-title();
+// }
+
+// .gray-normal-title {
+//   .title();
+//   .gray-title();
+//   .normal-title();
+// }
+// .gray-large-title {
+//   .small-title();
+//   color: #d5d7d9;
+// }
