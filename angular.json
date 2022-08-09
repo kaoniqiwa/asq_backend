@@ -100,7 +100,8 @@
             },
             "development": {
               "browserTarget": "asq_backend:build:development",
-              "port": 9300
+              "port": 9300,
+              "host": "0.0.0.0"
             }
           },
           "defaultConfiguration": "development"

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutePath } from 'src/app/enum/route-path.enum';
 
 @Component({
   selector: 'app-header-nav',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+  }
+  logoOut() {
+    this._router.navigateByUrl(RoutePath.login)
   }
 
 }
