@@ -16,12 +16,21 @@
     .side-nav {
       width: 30%;
       max-width: 200px;
+      flex-shrink: 0;
       // background-color: blue;
     }
 
     .side-nav-main {
       flex-grow: 1;
+      padding: 20px;
+      width: 0;
       // background-color: violet;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .side-nav-main {
+    //
   }
 }

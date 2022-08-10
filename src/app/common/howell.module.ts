@@ -1,6 +1,9 @@
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { MaterialModule } from "../material.module";
 import { CUSTOM_COMPONENTS } from "./components";
 import { CUSTOM_DIRECTIVES } from "./directive";
 
@@ -10,7 +13,14 @@ import { CUSTOM_DIRECTIVES } from "./directive";
     ...CUSTOM_DIRECTIVES
   ],
   imports: [
-    ReactiveFormsModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+    MaterialModule
+
   ],
   exports: [...CUSTOM_COMPONENTS, ...CUSTOM_DIRECTIVES]
 })

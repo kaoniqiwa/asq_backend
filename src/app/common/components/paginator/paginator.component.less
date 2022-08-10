@@ -1,0 +1,128 @@
+.paginator-outer-container {
+  display: flex;
+  color: black;
+  font-size: 14px;
+  .paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    min-width: 56px;
+
+    .paginator-range-actions {
+      display: flex;
+      align-items: center;
+      > .mat-button {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 0;
+        min-width: 30px;
+        height: 30px;
+        color: #333;
+        margin: 0 5px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: #333;
+        }
+        &.paginator-navigation-last,
+        &.paginator-navigation-first {
+          span {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        &.mat-button-disabled {
+          cursor: not-allowed;
+
+          span {
+            color: gray;
+          }
+          svg {
+            fill: gray;
+          }
+        }
+
+        &.pager {
+          padding: 0 5px;
+          &.active,
+          &:hover {
+            background-color: #e6e6e6;
+            border-color: #adadad;
+          }
+        }
+      }
+      .jump-to {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+
+        .jump-to-label {
+          display: flex;
+          align-items: center;
+          height: 30px;
+        }
+
+        .jump-to-div {
+          // align-self: normal;
+          box-sizing: border-box;
+          height: 24px;
+          width: 40px;
+          color: #cfd7ff;
+          border: 1px solid #5e6ebf;
+          font-size: 14px;
+          border-radius: unset;
+          background-color: white;
+          outline: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: Arial;
+          margin: 0 5px;
+          line-height: 24px;
+          text-align: center;
+          overflow: hidden;
+          &:focus-visible {
+            border-color: #3a93ff;
+          }
+        }
+        .jump-to-input {
+          width: 40px;
+          height: 24px;
+          font-size: 14px;
+          text-align: center;
+          padding: 0;
+          box-sizing: border-box;
+          margin: 0 5px;
+          background-color: white;
+          color: black;
+          border: 1px solid #ddd;
+          outline: none;
+        }
+        .jump-to-button {
+          background: white;
+          border: 1px solid #ddd;
+          padding: 0;
+          min-width: 30px;
+          height: 30px;
+          color: #333;
+          margin: 0 5px;
+          padding: 5px;
+          border-radius: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          &:hover {
+            background-color: #e6e6e6;
+            border-color: #adadad;
+          }
+        }
+      }
+    }
+  }
+}

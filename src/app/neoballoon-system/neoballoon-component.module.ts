@@ -8,6 +8,8 @@ import { NeoballoonManageComponent } from './components/neoballoon-manage/neobal
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AccountStatisticComponent } from './components/account-statistic/account-statistic.component';
+import { MemberManageComponent } from './components/member-manage/member-manage.component';
+import { CompanyManageComponent } from './components/company-manage/company-manage.component';
 
 
 
@@ -16,7 +18,9 @@ import { AccountStatisticComponent } from './components/account-statistic/accoun
     NeoballoonManageComponent,
     HeaderNavComponent,
     SideNavComponent,
-    AccountStatisticComponent
+    AccountStatisticComponent,
+    MemberManageComponent,
+    CompanyManageComponent
   ],
   imports: [
     CommonModule,

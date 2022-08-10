@@ -1,0 +1,52 @@
+<div class="company-manage vertical-layout">
+  <div class="vertical-header">
+    <div class="large-title underline-title">企业列表</div>
+    <div class="operate-bar">
+      <div class="left-wrapper">
+        <button class="hw-small-btn gray-btn">导出ASQ数据</button>
+        <button class="hw-small-btn gray-btn">导出ASQSE数据</button>
+        <button class="hw-small-btn gray-btn">导出ASQSE2数据</button>
+      </div>
+      <div class="right-wrapper">
+        <div class="search-wrapper">
+          <app-simple-search></app-simple-search>
+        </div>
+        <button class="hw-small-btn gray-btn">搜索</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vertical-main">
+    <div class="table-container">
+      <common-table
+        [dataSubject]="dataSubject"
+        [columnModel]="columnModel"
+        [displayedColumns]="displayedColumns"
+        [tableOperates]="tableOperates"
+      ></common-table>
+    </div>
+  </div>
+
+  <div class="vertical-footer">
+    <div class="footer-item">
+      <!-- <app-table-select (tableSelect)="tableSelect($event)"> </app-table-select> -->
+    </div>
+    <div class="footer-item">
+      <!-- <div class="footer-info">
+        <div class="info-item">已选择: {{ selectedRows.length }}</div>
+        <div class="info-item">当前数量: {{ page && page.RecordCount }}</div>
+        <div class="info-item">总数量: {{ page && page.TotalRecordCount }}</div>
+      </div> -->
+      <app-paginator
+        *ngIf="page"
+        [showFirstLastButtons]="true"
+        [length]="page.TotalRecordCount"
+        [pageSize]="page.PageSize"
+        [pagerCount]="pagerCount"
+        [pageIndex]="pageIndex - 1"
+        (page)="pageEvent($event)"
+      >
+      </app-paginator>
+    </div>
+  </div>
+</div>
