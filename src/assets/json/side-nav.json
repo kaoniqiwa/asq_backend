@@ -2,24 +2,36 @@
   "$schema": "./nav.schema.json",
   "data": [
     {
-      "title": "添加宝宝",
-      "path": "/aiop/aiop-manage/super-vision"
+      "title": "首页",
+      "id": "account-statistic",
+      "path": "/neoballoon/neoballoon-manage/account-statistic"
     },
     {
-      "title": "宝宝库",
-      "path": "/aiop/aiop-manage/garbage-events"
+      "title": "机构管理",
+      "id": "company-manage",
+      "path": "/neoballoon/neoballoon-manage/company-manage"
     },
     {
-      "title": "游戏活动",
-      "path": "/aiop/aiop-manage/system-setting"
+      "title": "会员管理",
+      "id": "member-manage",
+      "path": "/neoballoon/neoballoon-manage/member-manage",
+      "children": [
+        {
+          "path": "/neoballoon/neoballoon-manage/member-list",
+          "title": "会员列表",
+          "id": "member-list"
+        },
+        {
+          "path": "/neoballoon/neoballoon-manage/order-manage",
+          "title": "订单查询",
+          "id": "order-manage"
+        }
+      ]
     },
     {
-      "title": "系统操作",
-      "path": "/asiop/system-mode"
-    },
-    {
-      "title": "矫正龄计算",
-      "path": "/asiop/system-mode"
+      "title": "前台页面编辑",
+      "id": "send-notify",
+      "path": "/neoballoon/neoballoon-manage/send-notify"
     }
   ]
 }

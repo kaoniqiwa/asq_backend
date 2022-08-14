@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Page } from 'src/app/network/model/page_list.model';
 import { CompanyManageModel } from 'src/app/view-model/company-manage.model';
@@ -17,6 +18,7 @@ import { CompanyManageConf } from './company-manage.config';
 })
 export class CompanyManageComponent implements OnInit {
 
+  dateFormat: string = 'yyyy-MM-dd';
 
 
   // Table
@@ -32,7 +34,7 @@ export class CompanyManageComponent implements OnInit {
   pageIndex = 1;
 
 
-  constructor(private _business: CompanyManageBusiness) { }
+  constructor(private _business: CompanyManageBusiness, private _router: Router, ) { }
 
   ngOnInit(): void {
     let res = this._business.init()
@@ -45,5 +47,8 @@ export class CompanyManageComponent implements OnInit {
     // this.pageIndex = pageInfo.pageIndex + 1;
     // this._init();
     console.log(pageInfo)
+  }
+  register() {
+    this._router.navigateByUrl('neoballoon/neoballoon-manage/register-company')
   }
 }

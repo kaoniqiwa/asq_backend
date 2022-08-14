@@ -1,25 +1,31 @@
 <div class="login">
   <div class="login-content">
-    <div class="normal-title center-title">后台管理登录</div>
+    <div class="normal-title center-title">在线筛查后台管理</div>
 
     <div class="form-wrapper">
-      <form class="hw-form vertical" [formGroup]="myForm">
-        <div class="hw-form-group">
-          <input
-            type="text"
-            placeholder="账号"
-            formControlName="username"
-            autocomplete="new-password"
-          />
+      <form class="form-horizontal" [formGroup]="myForm">
+        <div class="form-group">
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="账号"
+              formControlName="username"
+              autocomplete="new-password"
+            />
+          </div>
         </div>
 
-        <div class="hw-form-group">
-          <input
-            type="password"
-            placeholder="密码"
-            formControlName="password"
-            autocomplete="new-password"
-          />
+        <div class="form-group">
+          <div class="col-sm-9">
+            <input
+              class="form-control"
+              type="password"
+              placeholder="密码"
+              formControlName="password"
+              autocomplete="new-password"
+            />
+          </div>
         </div>
       </form>
     </div>
@@ -27,10 +33,9 @@
     <div class="login-footer">
       <div class="login-footer-item">
         <button
-          class="hw-normal-btn green-btn round-btn"
+          class="btn btn-primary btn-lg col-sm-5"
           type="button"
           (click)="login()"
-          [class.disabled]="myForm.invalid"
           [disabled]="myForm.invalid"
         >
           登录

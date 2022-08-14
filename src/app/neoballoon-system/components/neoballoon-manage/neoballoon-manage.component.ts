@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-neoballoon-manage',
@@ -14,6 +15,7 @@ export class NeoballoonManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

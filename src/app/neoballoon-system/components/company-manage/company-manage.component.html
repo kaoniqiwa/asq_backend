@@ -2,41 +2,232 @@
   <div class="vertical-header">
     <div class="large-title underline-title">企业列表</div>
     <div class="operate-bar">
+      <div class="left-wrapper questDate">
+        <input
+          type="text"
+          placeholder="筛查时间"
+          readonly
+          DateTimePicker
+          [format]="dateFormat"
+        />
+        <span>-</span>
+        <input
+          type="text"
+          placeholder="筛查时间"
+          readonly
+          DateTimePicker
+          [format]="dateFormat"
+        />
+        <button class="btn btn-default" style="margin-left: 10px">
+          导出数据
+        </button>
+        <button class="btn btn-default" (click)="register()">注册企业</button>
+      </div>
+    </div>
+    <div class="operate-bar">
       <div class="left-wrapper">
-        <button class="hw-small-btn gray-btn">导出ASQ数据</button>
-        <button class="hw-small-btn gray-btn">导出ASQSE数据</button>
-        <button class="hw-small-btn gray-btn">导出ASQSE2数据</button>
+        <button class="btn btn-default">导出ASQ数据</button>
+        <button class="btn btn-default">导出ASQSE数据</button>
+        <button class="btn btn-default">导出ASQSE2数据</button>
       </div>
       <div class="right-wrapper">
-        <div class="search-wrapper">
-          <app-simple-search></app-simple-search>
-        </div>
-        <button class="hw-small-btn gray-btn">搜索</button>
+        <input type="search" class="search" />
+        <button class="btn btn-default btnSearch">搜索</button>
       </div>
     </div>
   </div>
 
   <div class="vertical-main">
-    <div class="table-container">
-      <common-table
-        [dataSubject]="dataSubject"
-        [columnModel]="columnModel"
-        [displayedColumns]="displayedColumns"
-        [tableOperates]="tableOperates"
-      ></common-table>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>企业账号</th>
+            <th>企业名称</th>
+            <th>ASQ剩余机会</th>
+            <th>SE剩余机会</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>家庭端</td>
+            <td>0</td>
+            <td>0</td>
+
+            <td>
+              <a
+                routerLink="../hospital-info"
+                [queryParams]="{ id: 1000000053 }"
+                >查看</a
+              >
+              |
+              <a
+                routerLink="../hospital-info"
+                [queryParams]="{ id: 1000000053 }"
+                >编辑</a
+              >
+              |<a
+                routerLink="../doctor-manage"
+                [queryParams]="{ id: 1000000053 }"
+                >医生</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>jtun_test</td>
+            <td>jtun_test</td>
+            <td>9</td>
+            <td>10</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=1000000508">查看</a> |
+              <a
+                href="selectEnterpriseByidEpa.action?id=1000000508&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=1000000508">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>001</td>
+            <td>changhekm</td>
+            <td>昆明长和天城康复医院</td>
+            <td>200</td>
+            <td>0</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=1">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=1&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=1">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>002</td>
+            <td>changhebj</td>
+            <td>北京长和大蕴儿科诊所</td>
+            <td>200</td>
+            <td>0</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=2">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=2&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=2">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>003</td>
+            <td>123</td>
+            <td>Danny-Test</td>
+            <td>53</td>
+            <td>11</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=3">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=3&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=3">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>004</td>
+            <td>12345</td>
+            <td>《ASQ系统中文版》示教账号</td>
+            <td>52</td>
+            <td>50</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=14">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=14&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=14">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>006</td>
+            <td>bjupeds</td>
+            <td>北京和睦家医院</td>
+            <td>495</td>
+            <td>300</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=16">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=16&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=16">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>007</td>
+            <td>yundashegong</td>
+            <td>云大社工</td>
+            <td>30</td>
+            <td>0</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=15">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=15&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=15">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>008</td>
+            <td>bjcpeds</td>
+            <td>北京和睦家诊所</td>
+            <td>697</td>
+            <td>493</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=34">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=34&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=34">医生</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>009</td>
+            <td>20140214</td>
+            <td>妈咪知道儿科诊所</td>
+            <td>0</td>
+            <td>128</td>
+
+            <td>
+              <a href="selectEnterpriseByidEpa.action?id=37">查看</a> |
+              <a href="selectEnterpriseByidEpa.action?id=37&update=update"
+                >编辑</a
+              >
+              |<a href="selBdoctorByidEpa.action?id=37">医生</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="vertical-footer">
+  <div class="vertical-footer" style="justify-content: flex-end">
     <div class="footer-item">
-      <!-- <app-table-select (tableSelect)="tableSelect($event)"> </app-table-select> -->
-    </div>
-    <div class="footer-item">
-      <!-- <div class="footer-info">
-        <div class="info-item">已选择: {{ selectedRows.length }}</div>
-        <div class="info-item">当前数量: {{ page && page.RecordCount }}</div>
-        <div class="info-item">总数量: {{ page && page.TotalRecordCount }}</div>
-      </div> -->
       <app-paginator
         *ngIf="page"
         [showFirstLastButtons]="true"

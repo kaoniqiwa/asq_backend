@@ -1,1 +1,346 @@
-<p>member-manage works!</p>
+<div class="member-manage vertical-layout">
+  <div class="vertical-header">
+    <div class="large-title underline-title">会员列表</div>
+    <div class="operate-bar">
+      <div class="left-wrapper questDate">
+        <span>选择导出时间：</span>
+        <input type="text" placeholder="筛查时间" readonly DateTimePicker />
+        <span>-</span>
+        <input type="text" placeholder="筛查时间" readonly DateTimePicker />
+        <button class="btn btn-default" style="margin-left: 10px">
+          导出数据
+        </button>
+      </div>
+    </div>
+    <div class="operate-bar">
+      <div class="left-wrapper">
+        <button class="btn btn-default">ASQ总数据</button>
+        <button class="btn btn-default">ASQ：SE总数据</button>
+        <button class="btn btn-default">ASQ：SE2总数据</button>
+        <button class="btn btn-default">ASQ答题数据</button>
+        <button class="btn btn-default">导出ASQ二维码数据</button>
+        <button class="btn btn-default">导出ASQ短信答题数据</button>
+        <button class="btn btn-default">导出ASQ：SE答题数据</button>
+        <button class="btn btn-default">导出ASQ：SE二维码数据</button>
+        <button class="btn btn-default">导出ASQ：SE短信答题数据</button>
+        <button class="btn btn-default">二维码用户注册情况</button>
+        <button class="btn btn-default">二维码订单情况</button>
+        <button class="btn btn-default">导出ASQSE2二维码数据</button>
+        <button class="btn btn-default">导出ASQSE2短信数据</button>
+      </div>
+      <div class="right-wrapper">
+        <input type="search" class="search" />
+        <button class="btn btn-default btnSearch">搜索</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vertical-main">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>属性</th>
+            <th>手机</th>
+            <th>注册时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700475</td>
+            <td>陈安宁</td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>18058828717</td>
+
+            <td>2022-08-14 17:43:39</td>
+            <td>
+              <a [routerLink]="['/neoballoon/neoballoon-manage/member-operate']"
+                >编辑</a
+              >
+              | <a onclick="delUsr(18058828717)">删除</a> |
+              <a [routerLink]="['/neoballoon/neoballoon-manage/baby-list']"
+                >宝宝详情</a
+              >
+              |
+              <a [routerLink]="['/neoballoon/neoballoon-manage/quest-list']"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700473</td>
+            <td></td>
+
+            <td>父亲和母亲</td>
+
+            <!-- 					 -->
+            <!-- 					  <td>未知</td> -->
+            <!-- 					 -->
+            <!-- 					 -->
+
+            <td>13986536196</td>
+
+            <td>2022-08-14 17:26:52</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700473">编辑</a> |
+              <a onclick="delUsr(100211920)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=100211920"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=100211920">答题详情</a>
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700472</td>
+            <td></td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>15572325303</td>
+
+            <td>2022-08-14 17:12:27</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700472">编辑</a> |
+              <a onclick="delUsr(100211919)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=100211919"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=100211919">答题详情</a>
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700471</td>
+            <td>卢金妹</td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>15280397322</td>
+
+            <td>2022-08-14 17:12:10</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700471">编辑</a> |
+              <a onclick="delUsr(15280397322)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=15280397322"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=15280397322"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700470</td>
+            <td>李红卫</td>
+
+            <td>父亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>男</td> -->
+            <!-- 					 -->
+
+            <td>17705026491</td>
+
+            <td>2022-08-14 17:07:57</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700470">编辑</a> |
+              <a onclick="delUsr(17705026491)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=17705026491"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=17705026491"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700469</td>
+            <td>郑贵芝</td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>15505901320</td>
+
+            <td>2022-08-14 17:06:19</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700469">编辑</a> |
+              <a onclick="delUsr(15505901320)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=15505901320"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=15505901320"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700467</td>
+            <td></td>
+
+            <td>父亲和母亲</td>
+
+            <!-- 					 -->
+            <!-- 					  <td>未知</td> -->
+            <!-- 					 -->
+            <!-- 					 -->
+
+            <td>13816405775</td>
+
+            <td>2022-08-14 17:03:10</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700467">编辑</a> |
+              <a onclick="delUsr(100211917)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=100211917"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=100211917">答题详情</a>
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700466</td>
+            <td></td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>17705900003</td>
+
+            <td>2022-08-14 17:01:30</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700466">编辑</a> |
+              <a onclick="delUsr(17705900003)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=17705900003"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=17705900003"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700465</td>
+            <td>陈爱美</td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>17850083977</td>
+
+            <td>2022-08-14 17:01:16</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700465">编辑</a> |
+              <a onclick="delUsr(17850083977)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=17850083977"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=17850083977"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <!-- 					<td></td> -->
+            <td>700464</td>
+            <td>苏玉汝</td>
+
+            <td>母亲</td>
+
+            <!-- 					 -->
+            <!-- 					 -->
+            <!-- 					  <td>女</td> -->
+            <!-- 					 -->
+
+            <td>15859023732</td>
+
+            <td>2022-08-14 17:01:04</td>
+            <td>
+              <a href="selectUserByIdUsr.action?usrid=700464">编辑</a> |
+              <a onclick="delUsr(15859023732)">删除</a> |
+              <a href="selectBabyBymphoneUsr.action?mphone=15859023732"
+                >宝宝详情</a
+              >
+              |
+              <a href="selHealthRecordUsr.action?mphone=15859023732"
+                >答题详情</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="vertical-footer" style="justify-content: flex-end">
+    <div class="footer-item">
+      <app-paginator
+        *ngIf="page"
+        [showFirstLastButtons]="true"
+        [length]="page.TotalRecordCount"
+        [pageSize]="page.PageSize"
+        [pagerCount]="pagerCount"
+        [pageIndex]="pageIndex - 1"
+        (page)="pageEvent($event)"
+      >
+      </app-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="quest-list vertical-layout">
+  <div class="vertical-header">
+    <div class="large-title underline-title">宝宝列表</div>
+  </div>
+
+  <div class="vertical-main">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>医院</th>
+            <th>医生</th>
+            <th>宝宝姓名</th>
+            <th>答题时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>826761</td>
+            <td>南京市儿童医院</td>
+            <td>001</td>
+            <td>余烁桉</td>
+            <td>2022-08-14 19:33:21</td>
+            <td>
+              <a onclick="delUsr(826761)">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- <div class="vertical-footer" style="justify-content: flex-end">
+    <div class="footer-item">
+      <app-paginator
+        *ngIf="page"
+        [showFirstLastButtons]="true"
+        [length]="page.TotalRecordCount"
+        [pageSize]="page.PageSize"
+        [pagerCount]="pagerCount"
+        [pageIndex]="pageIndex - 1"
+        (page)="pageEvent($event)"
+      >
+      </app-paginator>
+    </div>
+  </div> -->
+</div>

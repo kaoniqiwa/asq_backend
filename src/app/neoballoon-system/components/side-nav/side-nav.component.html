@@ -1,23 +1,20 @@
-<div class="side-nav">
-  <div class="nav-wrapper">
-    <a
-      class="nav-item"
-      routerLink="/neoballoon/neoballoon-manage/account-statistic"
-    >
-      首页
-    </a>
-    <a
-      class="nav-item"
-      routerLink="/neoballoon/neoballoon-manage/company-manage"
-    >
-      机构管理
-    </a>
-    <a
-      class="nav-item"
-      routerLink="/neoballoon/neoballoon-manage/member-manage"
-    >
-      会员管理
-    </a>
-    <a class="nav-item"> 前台页面编辑 </a>
+<!-- <div class="sidenav">
+  <div class="sidenav-list">
+    <nav></nav>
   </div>
-</div>
+</div> -->
+
+<nav class="side-bar">
+  <ul class="nav nav-sidebar">
+    <li *ngFor="let model of models; let i = index">
+      <a [routerLink]="model.path">
+        {{ model.title }}
+      </a>
+      <ul class="nav nav-nested" *ngFor="let child of model.children">
+        <li>
+          <a [routerLink]="child.path">{{ child.title }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { RoutePath } from '../enum/route-path.enum';
 
 @Component({
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required]
   })
-  constructor(private _title: Title, private _fb: FormBuilder, private _router: Router) {
+  constructor(private _title: Title, private _fb: FormBuilder, private _router: Router,) {
     this._title.setTitle('登录')
   }
 
