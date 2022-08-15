@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { Page } from 'src/app/network/model/page_list.model';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
+import { Page, PagedList } from 'src/app/network/model/page_list.model';
 import { CompanyManageModel } from 'src/app/view-model/company-manage.model';
 import { TableColumnModel, TableOperateModel } from 'src/app/view-model/table.model';
 import { CompanyManageBusiness } from './company-manage.business';
-import { CompanyManageConf } from './company-manage.config';
 
 @Component({
   selector: 'app-company-manage',
@@ -23,8 +22,6 @@ export class CompanyManageComponent implements OnInit {
 
   // Table
   dataSubject = new BehaviorSubject<CompanyManageModel[]>([]);
-  columnModel: TableColumnModel[] = [...CompanyManageConf]; // 表格列配置详情
-  displayedColumns: string[] = this.columnModel.map((model) => model.columnDef); // 表格列 id
   tableOperates: TableOperateModel[] = []
 
 
@@ -34,12 +31,14 @@ export class CompanyManageComponent implements OnInit {
   pageIndex = 1;
 
 
-  constructor(private _business: CompanyManageBusiness, private _router: Router, ) { }
+  constructor(private _business: CompanyManageBusiness, private _router: Router,) { }
 
-  ngOnInit(): void {
-    let res = this._business.init()
-    this.dataSubject.next(res.Data)
-    this.page = res.Page
+  async ngOnInit() {
+    // let res = this._business.init()
+    // this.dataSubject.next(res.Data)
+    // this.page = res.Page
+    // let res =await lastValueFrom<PagedList<CompanyManageModel>, any>(this._business.init())
+    this._business.init();
   }
 
   pageEvent(pageInfo: PageEvent) {

@@ -3,7 +3,7 @@ import { SidenavModel } from 'src/app/view-model/sidenav.model';
 import Conf from 'src/assets/json/side-nav.json'
 
 
-console.log(Conf);
+// console.log(Conf);
 
 @Component({
   selector: 'app-side-nav',
