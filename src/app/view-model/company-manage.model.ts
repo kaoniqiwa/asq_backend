@@ -6,3 +6,7 @@ export class CompanyManageModel {
   SELeft!: string;
   CreateTime!: string;
 }
+export class CompanyManageSearchInfo {
+  Name!: string;
+  AccountName!: string;
+}
