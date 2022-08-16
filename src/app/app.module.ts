@@ -10,6 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
+import { DatePipe } from '@angular/common';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,10 @@ import { HttpClientModule } from '@angular/common/http';
       tapToDismiss: true,
     }),
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

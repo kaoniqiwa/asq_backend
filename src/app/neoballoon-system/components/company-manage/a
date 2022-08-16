@@ -1,0 +1,48 @@
+ <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>企业账号</th>
+            <th>企业名称</th>
+            <th>ASQ剩余机会</th>
+            <th>SE剩余机会</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td></td>
+            <td></td>
+            <td>家庭端</td>
+            <td>0</td>
+            <td>0</td>
+
+            <td>
+              <a
+                routerLink="../hospital-info"
+                [queryParams]="{ id: 1000000053 }"
+                >查看</a
+              >
+              |
+              <a
+                routerLink="../hospital-info"
+                [queryParams]="{ id: 1000000053 }"
+                >编辑</a
+              >
+              |<a
+                routerLink="../doctor-manage"
+                [queryParams]="{ id: 1000000053 }"
+                >医生</a
+              >
+            </td>
+          </tr> -->
+          <tr *ngFor="let model of dataSource">
+            <td>{{ model.Id }}</td>
+            <td>{{ model.CompanyAccount }}</td>
+            <td>{{ model.CompanyName }}</td>
+            <td>{{ model.ASQLeft }}</td>
+            <td>{{ model.SELeft }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

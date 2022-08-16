@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { CompanyModel } from "../../model/company.model";
+import { CompanyManageModel } from "src/app/view-model/company-manage.model";
+import { CompanyModel } from "../../model/conpany.model";
+import { companyUrl } from "../../url/base.url";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
@@ -19,7 +21,8 @@ export class CompanyRequestService {
   }
 
   list(params: GetCompanyParams = new GetCompanyParams()) {
-    return this.type.paged(CompanyUrl.list(), params)
+    params.flow = 'list_company';
+    return this.type.paged(companyUrl, params)
   }
 
   // list(params: GetCamerasParams = new GetCamerasParams()) {

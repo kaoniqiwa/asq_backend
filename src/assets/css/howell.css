@@ -73,8 +73,10 @@ form {
   color: #999;
   opacity: 1;
 }
+.form-control[readonly] {
+  background-color: white;
+}
 .form-control[disabled],
-.form-control[readonly],
 fieldset[disabled] .form-control {
   background-color: #eee;
   cursor: not-allowed;

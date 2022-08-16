@@ -5,7 +5,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { CookieService } from "ngx-cookie-service";
 import { LocalStorageService } from "src/app/common/service/local-storage.service";
 import { SessionStorageService } from "src/app/common/service/session-storage.service";
-import { StoreService } from "src/app/common/service/store.service";
+import { GlobalStoreService } from "src/app/common/service/store.service";
 import { Md5 } from 'ts-md5';
 import CryptoJS from 'crypto-js';
 
@@ -29,7 +29,7 @@ export class AuthorizationService implements CanActivate {
 
     private _cookieService: CookieService,
     private _router: Router,
-    private _store: StoreService
+    private _store: GlobalStoreService
   ) {
     if (this._cookieService.check('username')) {
       let username = this._cookieService.get('username');
@@ -74,7 +74,7 @@ export class AuthorizationService implements CanActivate {
     // return axios.get('/api/login.php')
     this._username = username;
     this._password = password;
-    this._config.url = '/api/login/backend.php';
+    this._config.url = '/api/backend/login.php';
 
     this._config.headers = {
       'X-Webbrowser-Authentication': 'Forbidden',
