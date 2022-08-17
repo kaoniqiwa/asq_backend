@@ -7,7 +7,7 @@
   flex-grow: 1;
 
   padding-bottom: 0;
-  min-width: 400px;
+  // min-width: 400px;
   height: 100%;
 
   .vertical-header {
@@ -21,6 +21,16 @@
   .vertical-main {
     flex-grow: 1;
     overflow: auto;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    .table-header {
+      flex-shrink: 0;
+    }
+    .table-body {
+      flex-grow: 1;
+      overflow: auto;
+    }
   }
   .vertical-footer {
     flex-shrink: 0;

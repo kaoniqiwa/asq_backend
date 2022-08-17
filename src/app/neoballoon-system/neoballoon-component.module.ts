@@ -10,7 +10,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AccountStatisticComponent } from './components/account-statistic/account-statistic.component';
 import { MemberManageComponent } from './components/member-manage/member-manage.component';
 import { CompanyManageComponent } from './components/company-manage/company-manage.component';
-import { RegisterCompanyComponent } from './components/register-company/register-company.component';
+import { CompanyOperateComponent } from './components/company-operate/company-operate.component';
 import { HospitalInfoComponent } from './components/hospital-info/hospital-info.component';
 import { DoctorManageComponent } from './components/doctor-manage/doctor-manage.component';
 import { DoctorOperateComponent } from './components/doctor-operate/doctor-operate.component';
@@ -29,7 +29,7 @@ import { SendNotifyComponent } from './components/send-notify/send-notify.compon
     AccountStatisticComponent,
     MemberManageComponent,
     CompanyManageComponent,
-    RegisterCompanyComponent,
+    CompanyOperateComponent,
     HospitalInfoComponent,
     DoctorManageComponent,
     DoctorOperateComponent,

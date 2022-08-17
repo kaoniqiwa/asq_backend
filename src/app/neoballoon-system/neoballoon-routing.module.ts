@@ -11,7 +11,7 @@ import { MemberOperateComponent } from "./components/member-operate/member-opera
 import { NeoballoonManageComponent } from "./components/neoballoon-manage/neoballoon-manage.component";
 import { OrderManageComponent } from "./components/order-manage/order-manage.component";
 import { QuestListComponent } from "./components/quest-list/quest-list.component";
-import { RegisterCompanyComponent } from "./components/register-company/register-company.component";
+import { CompanyOperateComponent } from "./components/company-operate/company-operate.component";
 import { SendNotifyComponent } from "./components/send-notify/send-notify.component";
 import { NeoballoonComponent } from "./neoballoon.component";
 
@@ -64,7 +64,7 @@ const routes: Routes = [
       },
       {
         path: "register-company",
-        component: RegisterCompanyComponent
+        component: CompanyOperateComponent
       },
       {
         path: "hospital-info",

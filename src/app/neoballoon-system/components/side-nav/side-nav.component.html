@@ -7,14 +7,26 @@
 <nav class="side-bar">
   <ul class="nav nav-sidebar">
     <li *ngFor="let model of models; let i = index">
-      <a [routerLink]="model.path">
-        {{ model.title }}
-      </a>
-      <ul class="nav nav-nested" *ngFor="let child of model.children">
-        <li>
-          <a [routerLink]="child.path">{{ child.title }}</a>
-        </li>
-      </ul>
+      <ng-container *ngIf="!model.children || model.children.length == 0">
+        <a [routerLink]="model.path">
+          {{ model.title }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="model.children && model.children.length">
+        <a (click)="toggle(model)">
+          {{ model.title }}
+        </a>
+        <ul
+          class="nav nav-nested"
+          style="overflow: hidden"
+          *ngIf="model.children"
+          [@growShrink]="model.state"
+        >
+          <li *ngFor="let child of model.children">
+            <a [routerLink]="child.path">{{ child.title }}</a>
+          </li>
+        </ul>
+      </ng-container>
     </li>
   </ul>
 </nav>
