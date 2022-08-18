@@ -42,7 +42,7 @@
         <input
           type="search"
           class="search"
-          [(ngModel)]="searchInfo.Name"
+          [(ngModel)]="searchInfo.name"
           placeholder="企业账号或者企业名称"
           (keyup.enter)="search()"
         />
@@ -54,12 +54,6 @@
   </div>
 
   <div class="vertical-main">
-    <!-- <common-table
-      [dataSubject]="dataSubject"
-      [columnModel]="columnModel"
-      [displayedColumns]="displayedColumns"
-      [tableOperates]="tableOperates"
-    ></common-table> -->
     <div class="table-header">
       <table>
         <colgroup>
@@ -96,78 +90,17 @@
           <col style="width: 14%" />
         </colgroup>
         <tbody>
-          <!-- <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr>
-          <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr> -->
-          <tr>
-            <td>001</td>
-            <td>changhekm</td>
-            <td>昆明长和天城康复医院</td>
-            <td>0/1000</td>
-            <td>300/1000</td>
-            <td>20/1000</td>
-            <td>
-              <a>编辑</a><span>|</span>
-              <a>添加</a>
-            </td>
-          </tr>
+          <ng-container *ngFor="let model of dataSource">
+            <tr>
+              <td>{{ model.id.padStart(3, "0") }}</td>
+              <td>{{ model.name }}</td>
+              <td>{{ model.account_name }}</td>
+              <td>{{ model.asq_info }}</td>
+              <td>{{ model.asq_se_info }}</td>
+              <td>{{ model.asq_se2_info }}</td>
+              <td><a tabindex>编辑</a></td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
@@ -178,8 +111,8 @@
       <app-paginator
         *ngIf="page"
         [showFirstLastButtons]="true"
-        [length]="page.TotalRecordCount"
-        [pageSize]="page.PageSize"
+        [length]="page.totalRecordCount"
+        [pageSize]="page.pageSize"
         [pagerCount]="pagerCount"
         [pageIndex]="pageIndex - 1"
         (page)="pageEvent($event)"

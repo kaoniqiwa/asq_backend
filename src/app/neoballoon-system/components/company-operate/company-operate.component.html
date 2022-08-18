@@ -10,79 +10,126 @@
       </div>
     </div></app-toast-window
   >
+
   <div class="large-title underline-title vertical-header">开通机构账号</div>
   <div class="operate">
     <main>
       <div class="left-wrapper col-sm-9">
-        <form class="form-horizontal vertical-main">
+        <form class="form-horizontal vertical-main" [formGroup]="myForm">
           <div class="wrapper">
             <div class="normal-title">【基础信息】</div>
             <div class="form-group">
-              <label class="control-label">编号</label>
+              <label class="control-label">机构名称</label>
               <div class="col-sm-6">
                 <input
                   class="form-control"
-                  type="number"
-                  placeholder="请遵守编号的规则"
+                  type="text"
+                  formControlName="name"
                 />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label">机构名称</label>
-              <div class="col-sm-6">
-                <input class="form-control" type="text" />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label">机构账号</label>
               <div class="col-sm-6">
-                <input class="form-control" type="text" />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="accountName"
+                />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label">密码</label>
               <div class="col-sm-6">
-                <input class="form-control" type="text" />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="accountPass"
+                />
               </div>
             </div>
           </div>
           <div class="wrapper" style="margin-top: 10px">
             <div class="normal-title">【筛查次数】</div>
+            <div class="form-group" style="font-size: 24px">
+              <label class="control-label"></label>
+              <div class="col-sm-6" style="display: flex">
+                <div style="width: 100%">剩余</div>
+                <div style="margin: 0 10px">/</div>
+                <div style="width: 100%">总次数</div>
+              </div>
+            </div>
             <div class="form-group">
               <label class="control-label">ASQ-3</label>
               <div class="col-sm-6 caculate">
-                <button class="btn btn-default">+</button>
-                &nbsp;
-                <button class="btn btn-default">-</button>
-                &nbsp; &nbsp;
-                <span>10/100</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="left form-control"
+                  formControlName="asqLeft"
+                />
+                <span>/</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="total form-control"
+                  formControlName="asqTotal"
+                />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label">ASQ:SE</label>
               <div class="col-sm-6 caculate">
-                <button class="btn btn-default">+</button>
-                &nbsp;
-                <button class="btn btn-default">-</button>
-                &nbsp; &nbsp;
-                <span>10/100</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="left form-control"
+                  formControlName="asqSELeft"
+                />
+                <span>/</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="total form-control"
+                  formControlName="asqSETotal"
+                />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label">ASQ:SE-2</label>
               <div class="col-sm-6 caculate">
-                <button class="btn btn-default">+</button>
-                &nbsp;
-                <button class="btn btn-default">-</button>
-                &nbsp; &nbsp;
-                <span>10/100</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="left form-control"
+                  formControlName="asqSE2Left"
+                />
+                <span>/</span>
+                <input
+                  type="number"
+                  #num
+                  min="0"
+                  max="100000"
+                  class="total form-control"
+                  formControlName="asqSE2Total"
+                />
               </div>
             </div>
           </div>
         </form>
       </div>
       <div class="right-wrapper col-sm-3">
-        <div class="inner-wrapper vertical-layout">
+        <div class="inner-wrapper vertical-layout" style="height: 90%">
           <div class="normal-title vertical-header">【子账号列表】</div>
           <div class="account-wrapper vertical-main">
             <div class="item">
@@ -302,8 +349,14 @@
     </main>
 
     <div class="footer">
-      <button class="btn btn-default" type="submit">保存</button>
-      <button class="btn btn-default" type="button">返回</button>
+      <button class="btn btn-default" type="button" (click)="onSubmit()">
+        保存
+      </button>
+      <button class="btn btn-default" type="button" (click)="onReset()">
+        返回
+      </button>
     </div>
   </div>
 </div>
+
+{{ myForm.value | json }}

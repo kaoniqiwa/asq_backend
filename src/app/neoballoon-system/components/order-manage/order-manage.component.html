@@ -127,8 +127,8 @@
       <app-paginator
         *ngIf="page"
         [showFirstLastButtons]="true"
-        [length]="page.TotalRecordCount"
-        [pageSize]="page.PageSize"
+        [length]="page.totalRecordCount"
+        [pageSize]="page.pageSize"
         [pagerCount]="pagerCount"
         [pageIndex]="pageIndex - 1"
         (page)="pageEvent($event)"

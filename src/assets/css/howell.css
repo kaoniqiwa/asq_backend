@@ -1034,9 +1034,9 @@ ul {
 }
 
 a {
-  color: #428bca !important;
-  cursor: pointer !important;
+  color: #428bca;
+  cursor: pointer;
 }
 a:hover {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }

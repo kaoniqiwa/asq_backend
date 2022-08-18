@@ -1,6 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { CompanyModel } from "../network/model/conpany.model";
+import { CompanyModel } from "../network/model/company.model";
 import { CompanyManageModel } from "../view-model/company-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
 
@@ -22,13 +22,14 @@ export class CompanyManageConverter extends CommonModelConverter<CompanyManageMo
 
   private _fromCompanyModel(item: CompanyModel) {
     let model = new CompanyManageModel();
-    model.Id = item.id.padStart(3, '0');
-    model.CompanyAccount = item.a_name;
-    model.CompanyName = item.name;
-    model.ASQInfo = `${item.asq_l ??
-      "-"}/${item.asq_t ?? "-"}`;
-    model.ASQSEInfo = `${item.asq_se_l ?? "-"}/${item.asq_se_t ?? "-"}`;
-    model.ASQSE2Info = `${item.asq_se_2_l ?? "_"}/${item.asq_se_2_t ?? "_"}`;
+    model.id = item.id;
+    model.guid = item.guid;
+    model.name = item.name;
+    model.account_name = item.account_name;
+    model.asq_info = `${item.asq_left ??
+      "-"}/${item.asq_total ?? "-"}`;
+    model.asq_se_info = `${item.asq_se_left ?? "-"}/${item.asq_se_total ?? "-"}`;
+    model.asq_se2_info = `${item.asq_se_2_left ?? "_"}/${item.asq_se_2_total ?? "_"}`;
     return model;
   }
 

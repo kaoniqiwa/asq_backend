@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CompanyManageModel } from "src/app/view-model/company-manage.model";
-import { CompanyModel } from "../../model/conpany.model";
+import { CompanyModel } from "../../model/company.model";
 import { companyUrl } from "../../url/base.url";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
@@ -21,16 +21,17 @@ export class CompanyRequestService {
   }
 
   list(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'list_company';
+    params.flow = 'listCompany';
     return this.type.paged(companyUrl, params)
+  }
+  create(model: CompanyModel) {
+    return this.type.post(companyUrl, model);
   }
 
   // list(params: GetCamerasParams = new GetCamerasParams()) {
   //   return this.type.paged(AICamerasUrl.list(), params);
   // }
-  // create(item: AICamera) {
-  //   return this.type.post(AICamerasUrl.create(), item)
-  // }
+
 
   // get(id: string) {
   //   return this.type.get(AICamerasUrl.item(id));

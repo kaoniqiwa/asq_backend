@@ -2,12 +2,12 @@ import { Exclude, Transform } from 'class-transformer';
 import { TimeUnit } from 'src/app/enum/time-unit.enum';
 import { transformDateTime } from '../model/transform.model';
 
-export interface IParams {}
+export interface IParams { }
 export class PagedParams implements IParams {
   /**页码[1-n](可选) */
-  PageIndex?: number = 1;
+  pageIndex?: number = 1;
   /**分页大小[1-100](可选) */
-  PageSize?: number = 9999;
+  pageSize?: number = 9999;
 }
 export class DurationParams {
   /**	DateTime	开始时间	M */

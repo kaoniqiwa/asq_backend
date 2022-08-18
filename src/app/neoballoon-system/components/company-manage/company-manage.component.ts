@@ -23,34 +23,20 @@ export class CompanyManageComponent implements OnInit {
 
   // Table
   dataSource: CompanyManageModel[] = [];
-  tableOperates: TableOperateModel[] = []
-  // Table
-  dataSubject = new BehaviorSubject<CompanyManageModel[]>([]);
-  columnModel: TableColumnModel[] = [...CompanyManageConf]; // 表格列配置详情
-  displayedColumns: string[] = this.columnModel.map((model) => model.columnDef); // 表格列 id
 
   // Paginator
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 5;
+  pageSize = 9;
 
   searchInfo: CompanyManageSearchInfo = {
-    Name: "",
+    name: "",
   }
   id: string = '';
 
 
   constructor(private _business: CompanyManageBusiness, private _router: Router,) {
-    this.tableOperates.push(
-      new TableOperateModel(
-        'edit',
-        ['howell-icon-modification'],
-        '编辑',
-        this._clickEditBtn.bind(this)
-      ),
-
-    );
   }
 
   ngOnInit() {
@@ -59,9 +45,9 @@ export class CompanyManageComponent implements OnInit {
   }
   private async _init() {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
-    this.dataSubject.next(res.Data);
-    this.page = res.Page
-    console.log(res)
+    this.dataSource = res.data;
+    this.page = res.page
+    console.log('res', res)
   }
   search() {
     this._init();
@@ -91,7 +77,7 @@ export class CompanyManageComponent implements OnInit {
   }
   private _clickEditBtn(row: CompanyManageModel) {
     console.log(row)
-    this.id = row.Id;
+    // this.id = row.Id;
   }
 
 }

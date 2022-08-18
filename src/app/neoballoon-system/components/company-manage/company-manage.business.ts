@@ -16,16 +16,16 @@ export class CompanyManageBusiness {
   }
   async init(searchInfo: CompanyManageSearchInfo, pageIndex = 1, pageSize = 9) {
     let params = new GetCompanyParams();
-    params.PageIndex = pageIndex;
-    params.PageSize = pageSize;
-    if (searchInfo.Name) {
-      params.Name = searchInfo.Name
+    params.pageIndex = pageIndex;
+    params.pageSize = pageSize;
+    if (searchInfo.name) {
+      params.name = searchInfo.name
     }
-    let { Data, Page } = await this._listCompany(params);
+    let { data: Data, page: Page } = await this._listCompany(params);
     let data = this._converter.iterateToModel(Data)
     let res: PagedList<CompanyManageModel> = {
-      Page: Page,
-      Data: data,
+      page: Page,
+      data: data,
     };
 
     return res;
