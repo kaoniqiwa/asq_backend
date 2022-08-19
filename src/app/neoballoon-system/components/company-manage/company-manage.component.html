@@ -23,7 +23,9 @@
         <button class="btn btn-default" style="margin-left: 10px">
           导出机构数据
         </button>
-        <button class="btn btn-default" (click)="register()">开通账号</button>
+        <button class="btn btn-default" (click)="registerCompany()">
+          开通账号
+        </button>
       </div>
     </div>
     <div class="operate-bar">
@@ -98,7 +100,7 @@
               <td>{{ model.asq_info }}</td>
               <td>{{ model.asq_se_info }}</td>
               <td>{{ model.asq_se2_info }}</td>
-              <td><a tabindex>编辑</a></td>
+              <td><a tabindex (click)="editCompany(model)">编辑</a></td>
             </tr>
           </ng-container>
         </tbody>

@@ -23,7 +23,6 @@ export class CompanyManageConverter extends CommonModelConverter<CompanyManageMo
   private _fromCompanyModel(item: CompanyModel) {
     let model = new CompanyManageModel();
     model.id = item.id;
-    model.guid = item.guid;
     model.name = item.name;
     model.account_name = item.account_name;
     model.asq_info = `${item.asq_left ??

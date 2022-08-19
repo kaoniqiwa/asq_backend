@@ -28,14 +28,16 @@ export class CompanyRequestService {
     return this.type.post(companyUrl, model);
   }
 
+
+  get(params: GetCompanyParams) {
+    return this.type.post(companyUrl, params);
+  }
+
   // list(params: GetCamerasParams = new GetCamerasParams()) {
   //   return this.type.paged(AICamerasUrl.list(), params);
   // }
 
 
-  // get(id: string) {
-  //   return this.type.get(AICamerasUrl.item(id));
-  // }
 
   // update(item: AICamera) {
   //   return this.type.put(AICamerasUrl.item(item.Id), item)

@@ -31,16 +31,20 @@ export class ServiceHelper {
       console.error(response.faultReason, response.innerException);
       throw new Error(response.faultReason);
     }
+    if (response.data) {
+      if ((response.data as PagedList<T>).page) {
+        let result = response.data as PagedList<T>;
+        result.data = plainToClass(
+          t,
+          (response.data as PagedList<T>).data
+        ) as unknown as T[];
+        return result;
+      } else {
+        return plainToClass(t, response.data);
+      }
 
-    if ((response.data as PagedList<T>).page) {
-      let result = response.data as PagedList<T>;
-      result.data = plainToClass(
-        t,
-        (response.data as PagedList<T>).data
-      ) as unknown as T[];
-      return result;
-    } else {
-      return plainToClass(t, response.data);
     }
+    return true;
+
   }
 }

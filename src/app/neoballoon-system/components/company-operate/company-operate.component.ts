@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import $ from 'jquery';
 
@@ -23,8 +23,25 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
   FormState = FormState
 
+  // 默认为添加页
   state: FormState = FormState.add;
 
+
+  // 添加为空,编辑为对应id
+  operateId: string = '';
+
+  // 根据id查询到的model
+  companyModel: CompanyModel | null = null;
+
+  // 子账号id
+  subId: number = 1;
+  //子账号明年成
+  subName: string = '';
+  subAccounts: string[] = [];
+  subState = FormState.add;
+  subEditId: number = 0;
+
+  // 表单数据
   myForm = this._fb.group({
     name: ['', Validators.required],
     accountName: ['', Validators.required],
@@ -36,44 +53,115 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     asqSE2Total: [2000, [Validators.required, Validators.min(0), Validators.max(100000)]],
     asqSE2Left: [1000, [Validators.required, Validators.min(0), Validators.max(100000)]],
   });
+
+  // 添加子账号弹框
   showToast = false;
 
-  @ViewChildren('num') nums?: QueryList<ElementRef<HTMLInputElement>>;
-
+  get title() {
+    if (this.state == FormState.add) {
+      return '开通机构账号'
+    } else {
+      return '编辑机构账号'
+    }
+  }
 
   constructor(private _business: CompanyOperateBusiness, private _fb: FormBuilder,
-    private _activeRoute: ActivatedRoute, private _toastrService: ToastrService) { }
+    private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
+    this._activeRoute.queryParams.subscribe((queryParams: Params) => {
+      let type = queryParams['type'];
+      this.operateId = queryParams['id'];
 
-  ngOnInit(): void {
-    // console.log(this._activeRoute)
+      if (type == 'add') {
+        this.state = FormState.add;
+      } else if (type == 'edit') {
+        this.state = FormState.edit;
+      }
+    })
+  }
+
+  async ngOnInit() {
+    if (this.state == FormState.edit) {
+      this.companyModel = await this._business.get(this.operateId);
+      console.log(this.companyModel)
+      if (this.companyModel) {
+        this.myForm.patchValue(
+          {
+            name: this.companyModel.name,
+            accountName: this.companyModel.account_name,
+            accountPass: this.companyModel.account_pass,
+            asqTotal: this.companyModel.asq_total,
+            asqLeft: this.companyModel.asq_left,
+            asqSETotal: this.companyModel.asq_se_total,
+            asqSELeft: this.companyModel.asq_se_left,
+            asqSE2Total: this.companyModel.asq_se_2_total,
+            asqSE2Left: this.companyModel.asq_se_2_left
+          }
+        )
+      }
+    }
+
   }
   ngAfterViewInit(): void {
 
-
   }
-  onSubmit() {
+  closeToast() {
+    this.showToast = false;
+  }
+  confirmToast() {
+    if (this.subName != '') {
+      if (this.subState == FormState.add) {
+        this.subId++;
+        this.subAccounts.push(this.subName);
+        this.subName = '';
+        this.showToast = false;
+      } else if (this.subState == FormState.edit) {
+        this.subAccounts[this.subEditId] = this.subName;
+      }
+
+    }
+  }
+  addSubAccount() {
+    this.showToast = true;
+    this.subState = FormState.add;
+  }
+  editSubAccount(index: number) {
+    this.subEditId = index;
+    this.subName = this.subAccounts[index];
+    this.showToast = true;
+    this.subState = FormState.edit;
+  }
+  removeSubAccount(index: number) {
+    this.subAccounts.splice(index, 1)
+  }
+
+  async onSubmit() {
 
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        let model = new CompanyModel();
-        model.guid = '';
-        model.flow = 'addCompany';
-        model.name = this.myForm.value.name ?? "";
-        model.account_name = this.myForm.value.accountName ?? "";
-        model.account_pass = this.myForm.value.accountPass ?? "";
-        model.asq_total = this.myForm.value.asqTotal ?? 0;
-        model.asq_left = this.myForm.value.asqLeft ?? 0;
-        model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
-        model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
-        model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
-        model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+        // let model = new CompanyModel();
+        // model.id = "";
+        // model.flow = 'addCompany';
+        // model.name = this.myForm.value.name?.trim() ?? "";
+        // model.account_name = this.myForm.value.accountName?.trim() ?? "";
+        // model.account_pass = this.myForm.value.accountPass?.trim() ?? "";
+        // model.asq_total = this.myForm.value.asqTotal ?? 0;
+        // model.asq_left = this.myForm.value.asqLeft ?? 0;
+        // model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
+        // model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
+        // model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
+        // model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
 
-        this._business.create(model)
+        // let res = await this._business.create(model);
+        // console.log(res)
+        // if (res) {
+        //   this.onReset();
+        // }
       }
     }
   }
-  onReset() {
 
+  onReset() {
+    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage"])
   }
   private _checkForm() {
     if (this.myForm.get('name')?.invalid) {

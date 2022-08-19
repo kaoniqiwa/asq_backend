@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { BehaviorSubject, lastValueFrom } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Page, PagedList } from 'src/app/network/model/page_list.model';
 import { CompanyManageModel, CompanyManageSearchInfo } from 'src/app/view-model/company-manage.model';
-import { TableColumnModel, TableOperateModel } from 'src/app/view-model/table.model';
 import { CompanyManageBusiness } from './company-manage.business';
-import { CompanyManageConf } from './company-manage.config';
 
 @Component({
   selector: 'app-company-manage',
@@ -36,7 +33,7 @@ export class CompanyManageComponent implements OnInit {
   id: string = '';
 
 
-  constructor(private _business: CompanyManageBusiness, private _router: Router,) {
+  constructor(private _business: CompanyManageBusiness, private _activeRoute: ActivatedRoute, private _router: Router,) {
   }
 
   ngOnInit() {
@@ -47,7 +44,6 @@ export class CompanyManageComponent implements OnInit {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
     this.dataSource = res.data;
     this.page = res.page
-    console.log('res', res)
   }
   search() {
     this._init();
@@ -68,16 +64,22 @@ export class CompanyManageComponent implements OnInit {
   exportASQSE2() {
 
   }
-  register() {
+  registerCompany() {
     this._router.navigate(['/neoballoon/neoballoon-manage/register-company'], {
       queryParams: {
-        id: this.id
+        id: '',
+        type: 'add'
       }
     })
   }
-  private _clickEditBtn(row: CompanyManageModel) {
-    console.log(row)
-    // this.id = row.Id;
+  editCompany(model: CompanyManageModel) {
+    this._router.navigate(['/neoballoon/neoballoon-manage/register-company'], {
+      queryParams: {
+        id: model.id,
+        type: 'edit'
+      }
+    })
   }
+
 
 }

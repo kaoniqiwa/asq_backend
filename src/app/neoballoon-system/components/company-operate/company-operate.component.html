@@ -1,17 +1,22 @@
 <div class="company-operate vertical-layout">
-  <app-toast-window *ngIf="showToast"
-    ><div class="sub-window">
+  <app-toast-window *ngIf="showToast" (closeEvent)="closeToast()">
+    <div class="sub-window">
       <div class="name-input">
-        <label>编号34:</label>
-        <input type="text" class="form-control" />
+        <label>编号{{ subId.toString().padStart(2, "0") }}:</label>
+        <input
+          type="text"
+          class="form-control"
+          maxlength="10"
+          [(ngModel)]="subName"
+        />
       </div>
       <div style="text-align: center; margin-top: 10px">
-        <button class="btn btn-default">保存</button>
+        <button class="btn btn-default" (click)="confirmToast()">保存</button>
       </div>
-    </div></app-toast-window
-  >
+    </div>
+  </app-toast-window>
 
-  <div class="large-title underline-title vertical-header">开通机构账号</div>
+  <div class="large-title underline-title vertical-header">{{ title }}</div>
   <div class="operate">
     <main>
       <div class="left-wrapper col-sm-9">
@@ -130,219 +135,31 @@
       </div>
       <div class="right-wrapper col-sm-3">
         <div class="inner-wrapper vertical-layout" style="height: 90%">
-          <div class="normal-title vertical-header">【子账号列表】</div>
+          <div
+            class="normal-title vertical-header"
+            style="justify-content: center"
+          >
+            【子账号列表】
+          </div>
           <div class="account-wrapper vertical-main">
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
+            <div
+              class="item"
+              *ngFor="let subAccount of subAccounts; let i = index"
+            >
+              <div>
+                {{ (i + 1).toString().padStart(2, "0") }} {{ subAccount }}
               </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
               <div class="operates">
-                <a>修改</a>
+                <a tabindex (click)="editSubAccount(i)">修改</a>
                 <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
-              </div>
-            </div>
-            <div class="item">
-              <div>33 东园区</div>
-              <div class="operates">
-                <a>修改</a>
-                <span>|</span>
-                <a>删除</a>
+                <a tabindex (click)="removeSubAccount(i)">删除</a>
               </div>
             </div>
           </div>
           <div class="vertical-footer">
-            <button class="btn btn-default">添加子账号</button>
+            <button class="btn btn-default" (click)="addSubAccount()">
+              添加子账号
+            </button>
           </div>
         </div>
       </div>
@@ -359,4 +176,4 @@
   </div>
 </div>
 
-{{ myForm.value | json }}
+<!-- {{ myForm.value | json }} -->

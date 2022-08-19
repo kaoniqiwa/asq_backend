@@ -1,6 +1,7 @@
+import { DoctorModel } from "./doctor.model";
+
 export class CompanyModel {
-  id?: string;
-  guid!: string;
+  id!: string;
   name!: string;
   account_name!: string;
   account_pass!: string;
@@ -10,5 +11,6 @@ export class CompanyModel {
   asq_se_left!: number;
   asq_se_2_total!: number;
   asq_se_2_left!: number;
+  sub_accounts!: DoctorModel[];
   flow?: string;
 }
