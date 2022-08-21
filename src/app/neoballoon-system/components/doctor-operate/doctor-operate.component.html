@@ -1,46 +1,47 @@
 <div class="hospital-info vertical-layout">
   <div class="large-title underline-title vertical-header">医生信息</div>
   <div class="vertical-main">
-    <form class="form-horizontal">
+    <form class="form-horizontal" [formGroup]="myForm">
       <div class="form-group">
-        <label class="col-sm-2 control-label">编号</label>
+        <label class="col-sm-2 control-label"
+          >医生名称
+          <span>*</span>
+        </label>
         <div class="col-sm-9">
-          <input
-            class="form-control"
-            type="text"
-            readonly="readonly"
-            value="2"
-          />
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">医生名称</label>
-        <div class="col-sm-9">
-          <input class="form-control" type="text" />
+          <input class="form-control" type="text" formControlName="name" />
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">职称</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" />
+          <input class="form-control" type="text" formControlName="level" />
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">科室</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" />
+          <input class="form-control" type="text" formControlName="dept" />
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">手机号</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" />
+          <input
+            class="form-control"
+            type="text"
+            maxlength="11"
+            formControlName="phone"
+          />
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-9">
-          <button class="btn btn-default" type="submit">保存</button>
-          <button class="btn btn-default" type="button">返回</button>
+          <button class="btn btn-default" type="button" (click)="submit()">
+            保存
+          </button>
+          <button class="btn btn-default" type="button" (click)="reset()">
+            返回
+          </button>
         </div>
       </div>
     </form>

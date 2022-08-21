@@ -5,12 +5,12 @@
  * @Last Modified time: 2022-08-15 16:43:19
  */
 
-import { BaseAQSUrl } from "./base.url";
+import { BaseASQUrl } from "./base.url";
 
 
 export class UserUrl {
   static basic() {
-    return `${BaseAQSUrl}/Users`;
+    return `${BaseASQUrl}/Users`;
   }
   static login(username: string): string {
     return `${this.basic()}/Login/${username}`;

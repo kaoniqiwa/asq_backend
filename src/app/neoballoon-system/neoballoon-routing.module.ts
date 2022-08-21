@@ -63,7 +63,7 @@ const routes: Routes = [
         component: QuestListComponent
       },
       {
-        path: "register-company",
+        path: "company-operate",
         component: CompanyOperateComponent
       },
       {

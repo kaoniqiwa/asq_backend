@@ -4,6 +4,10 @@
     padding-top: 7px;
     text-align: right;
   }
+  .form-horizontal .control-label span {
+    color: #fc4b6c;
+    vertical-align: sub;
+  }
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {

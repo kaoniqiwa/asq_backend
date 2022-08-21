@@ -23,12 +23,11 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
   FormState = FormState
 
-  // 默认为添加页
   state: FormState = FormState.add;
 
 
   // 添加为空,编辑为对应id
-  operateId: string = '';
+  cid: string = '';
 
   // 根据id查询到的model
   companyModel: CompanyModel | null = null;
@@ -47,11 +46,11 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     accountName: ['', Validators.required],
     accountPass: ['', Validators.required],
     asqTotal: [2000, Validators.required],
-    asqLeft: [1000, [Validators.required, Validators.min(0), Validators.max(100000)]],
+    asqLeft: [0, [Validators.required, Validators.min(0), Validators.max(100000)]],
     asqSETotal: [2000, [Validators.required, Validators.min(0), Validators.max(100000)]],
-    asqSELeft: [1000, [Validators.required, Validators.min(0), Validators.max(100000)]],
+    asqSELeft: [0, [Validators.required, Validators.min(0), Validators.max(100000)]],
     asqSE2Total: [2000, [Validators.required, Validators.min(0), Validators.max(100000)]],
-    asqSE2Left: [1000, [Validators.required, Validators.min(0), Validators.max(100000)]],
+    asqSE2Left: [0, [Validators.required, Validators.min(0), Validators.max(100000)]],
   });
 
   // 添加子账号弹框
@@ -69,7 +68,7 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
     this._activeRoute.queryParams.subscribe((queryParams: Params) => {
       let type = queryParams['type'];
-      this.operateId = queryParams['id'];
+      this.cid = queryParams['cid'];
 
       if (type == 'add') {
         this.state = FormState.add;
@@ -81,8 +80,7 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     if (this.state == FormState.edit) {
-      this.companyModel = await this._business.get(this.operateId);
-      console.log(this.companyModel)
+      this.companyModel = await this._business.get(this.cid);
       if (this.companyModel) {
         this.myForm.patchValue(
           {
@@ -138,24 +136,43 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        // let model = new CompanyModel();
-        // model.id = "";
-        // model.flow = 'addCompany';
-        // model.name = this.myForm.value.name?.trim() ?? "";
-        // model.account_name = this.myForm.value.accountName?.trim() ?? "";
-        // model.account_pass = this.myForm.value.accountPass?.trim() ?? "";
-        // model.asq_total = this.myForm.value.asqTotal ?? 0;
-        // model.asq_left = this.myForm.value.asqLeft ?? 0;
-        // model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
-        // model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
-        // model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
-        // model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+        let model = new CompanyModel();
+        model.id = "";
+        model.flow = 'addCompany';
+        model.name = this.myForm.value.name?.trim() ?? "";
+        model.account_name = this.myForm.value.accountName?.trim() ?? "";
+        model.account_pass = this.myForm.value.accountPass?.trim() ?? "";
+        model.asq_total = this.myForm.value.asqTotal ?? 0;
+        model.asq_left = this.myForm.value.asqLeft ?? 0;
+        model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
+        model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
+        model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
+        model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
 
-        // let res = await this._business.create(model);
-        // console.log(res)
-        // if (res) {
-        //   this.onReset();
-        // }
+        let res = await this._business.create(model);
+        if (res) {
+          this._toastrService.success('操作成功');
+          this.onReset();
+        }
+      } else if (this.state == FormState.edit) {
+        if (this.companyModel) {
+          this.companyModel.flow = 'editCompany';
+          this.companyModel.name = this.myForm.value.name?.trim() ?? "";
+          this.companyModel.account_name = this.myForm.value.accountName?.trim() ?? "";
+          this.companyModel.account_pass = this.myForm.value.accountPass?.trim() ?? "";
+          this.companyModel.asq_total = this.myForm.value.asqTotal ?? 0;
+          this.companyModel.asq_left = this.myForm.value.asqLeft ?? 0;
+          this.companyModel.asq_se_total = this.myForm.value.asqSETotal ?? 0;
+          this.companyModel.asq_se_left = this.myForm.value.asqSELeft ?? 0;
+          this.companyModel.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
+          this.companyModel.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+
+          let res = await this._business.update(this.companyModel)
+          if (res) {
+            this._toastrService.success('编辑成功');
+            this.onReset();
+          }
+        }
       }
     }
   }

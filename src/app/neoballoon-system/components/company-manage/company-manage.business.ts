@@ -34,4 +34,9 @@ export class CompanyManageBusiness {
   private _listCompany(params: GetCompanyParams = new GetCompanyParams()) {
     return this._companyRequest.list(params)
   }
+  deleteCompany(id: string) {
+    let params = new GetCompanyParams();
+    params.id = id;
+    return this._companyRequest.delete(params)
+  }
 }

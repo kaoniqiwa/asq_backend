@@ -4,7 +4,6 @@
  * @Last Modified by: pmx
  * @Last Modified time: 2022-08-15 20:13:08
  */
-const BaseAQSUrl = '/api';
-const companyUrl = "/api/backend/company.php"
+const BaseASQUrl = '/api/backend';
 
-export { BaseAQSUrl, companyUrl };
+export { BaseASQUrl };

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Page, PagedList } from 'src/app/network/model/page_list.model';
 import { CompanyManageModel, CompanyManageSearchInfo } from 'src/app/view-model/company-manage.model';
 import { CompanyManageBusiness } from './company-manage.business';
@@ -33,7 +34,7 @@ export class CompanyManageComponent implements OnInit {
   id: string = '';
 
 
-  constructor(private _business: CompanyManageBusiness, private _activeRoute: ActivatedRoute, private _router: Router,) {
+  constructor(private _business: CompanyManageBusiness, private _router: Router, private _toastrService: ToastrService) {
   }
 
   ngOnInit() {
@@ -64,22 +65,38 @@ export class CompanyManageComponent implements OnInit {
   exportASQSE2() {
 
   }
-  registerCompany() {
-    this._router.navigate(['/neoballoon/neoballoon-manage/register-company'], {
+  addCompany() {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-operate'], {
       queryParams: {
-        id: '',
+        cid: '',
         type: 'add'
       }
     })
   }
   editCompany(model: CompanyManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/register-company'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-operate'], {
       queryParams: {
-        id: model.id,
+        cid: model.id,
         type: 'edit'
       }
     })
   }
+  async deleteCompany(model: CompanyManageModel) {
+    let res = await this._business.deleteCompany(model.id);
+    if (res) {
+      this._toastrService.success('删除成功');
+      this._init();
+    }
+  }
+  doctorManage(model: CompanyManageModel) {
+    this._router.navigate(['/neoballoon/neoballoon-manage/doctor-manage'], {
+      queryParams: {
+        cid: model.id,
+      }
+    })
+  }
+
+
 
 
 }

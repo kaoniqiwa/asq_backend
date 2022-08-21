@@ -11,6 +11,6 @@ export class CompanyModel {
   asq_se_left!: number;
   asq_se_2_total!: number;
   asq_se_2_left!: number;
-  sub_accounts!: DoctorModel[];
+  doctors!: DoctorModel[];
   flow?: string;
 }

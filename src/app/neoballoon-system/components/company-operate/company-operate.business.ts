@@ -5,6 +5,9 @@ import { CompanyRequestService } from "src/app/network/request/company/company.s
 import { PagedParams } from "src/app/network/request/IParams.interface";
 import { CompanyOperateModel } from "src/app/view-model/company-operate.model";
 
+import * as axios from 'axios';
+
+
 @Injectable()
 export class CompanyOperateBusiness {
 
@@ -15,9 +18,11 @@ export class CompanyOperateBusiness {
     return this._companyRequest.create(model)
   }
   get(id: string) {
-    let params = new GetCompanyParams();
-    params.id = id;
-    params.flow = 'getCompany';
-    return this._companyRequest.get(params);
+
+    return this._companyRequest.get(id);
+  }
+
+  update(model: CompanyModel) {
+    return this._companyRequest.update(model);
   }
 }

@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { ToastrModule } from "ngx-toastr";
 import { HowellModule } from "../common/howell.module";
 import { NeoballoonManageComponent } from "./components/neoballoon-manage/neoballoon-manage.component";
 import { NeoballoonComponentModule } from "./neoballoon-component.module";
@@ -9,7 +10,7 @@ import { NeoballoonComponent } from "./neoballoon.component";
   declarations: [NeoballoonComponent],
   imports: [
     NeoballoonRoutingModule,
-    NeoballoonComponentModule
+    NeoballoonComponentModule,
   ]
 })
 export class NeoballoonModule {

@@ -23,12 +23,10 @@
         <button class="btn btn-default" style="margin-left: 10px">
           导出机构数据
         </button>
-        <button class="btn btn-default" (click)="registerCompany()">
-          开通账号
-        </button>
+        <button class="btn btn-default" (click)="addCompany()">开通账号</button>
       </div>
     </div>
-    <div class="operate-bar">
+    <!-- <div class="operate-bar">
       <div class="left-wrapper">
         <button class="btn btn-default" (click)="exportASQ()">
           导出ASQ数据
@@ -52,14 +50,14 @@
           搜索
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="vertical-main">
     <div class="table-header">
       <table>
         <colgroup>
-          <col style="width: 16%" />
+          <col style="width: 10%" />
           <col style="width: 14%" />
           <col style="width: 14%" />
           <col style="width: 14%" />
@@ -83,7 +81,7 @@
     <div class="table-body">
       <table>
         <colgroup>
-          <col style="width: 16%" />
+          <col style="width: 10%" />
           <col style="width: 14%" />
           <col style="width: 14%" />
           <col style="width: 14%" />
@@ -92,15 +90,22 @@
           <col style="width: 14%" />
         </colgroup>
         <tbody>
-          <ng-container *ngFor="let model of dataSource">
+          <ng-container *ngFor="let model of dataSource; let i = index">
             <tr>
-              <td>{{ model.id.padStart(3, "0") }}</td>
+              <td>{{ (i + 1).toString().padStart(3, "0") }}</td>
               <td>{{ model.name }}</td>
               <td>{{ model.account_name }}</td>
               <td>{{ model.asq_info }}</td>
               <td>{{ model.asq_se_info }}</td>
               <td>{{ model.asq_se2_info }}</td>
-              <td><a tabindex (click)="editCompany(model)">编辑</a></td>
+              <td>
+                <a tabindex (click)="editCompany(model)">编辑</a> <span>|</span>
+
+                <a tabindex (click)="deleteCompany(model)">删除</a>
+                <span>|</span>
+
+                <a tabindex (click)="doctorManage(model)">医生</a>
+              </td>
             </tr>
           </ng-container>
         </tbody>
@@ -110,6 +115,11 @@
 
   <div class="vertical-footer" style="justify-content: flex-end">
     <div class="footer-item">
+      <div class="footer-info">
+        <div class="info-item">当前数量: {{ page && page.recordCount }}</div>
+        <div class="info-item">总数量: {{ page && page.totalRecordCount }}</div>
+      </div>
+
       <app-paginator
         *ngIf="page"
         [showFirstLastButtons]="true"

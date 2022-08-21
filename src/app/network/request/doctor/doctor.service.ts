@@ -1,43 +1,53 @@
 import { Injectable } from "@angular/core";
 import { CompanyManageModel } from "src/app/view-model/company-manage.model";
 import { CompanyModel } from "../../model/company.model";
+import { DoctorModel } from "../../model/doctor.model";
 import { CompanyUrl } from "../../url/company.url";
+import { DoctorUrl } from "../../url/doctor.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
-import { GetCompanyParams } from "./company.params";
+import { GetDoctorParams } from "./doctor.params";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyRequestService {
+export class DoctorRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<CompanyModel>;
+  private type: BaseTypeRequestService<DoctorModel>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(CompanyModel);
+    this.type = this.basic.type(DoctorModel);
   }
 
-  list(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'listCompany';
-    return this.type.paged(CompanyUrl.list(), params)
+  create(model: DoctorModel) {
+    console.log('model', model);
+    return this.type.post(DoctorUrl.create(), model);
   }
-  create(model: CompanyModel) {
-    return this.type.post(CompanyUrl.create(), model);
+  list(params: GetDoctorParams = new GetDoctorParams()) {
+    params.flow = 'listDoctor';
+    return this.type.postArray(DoctorUrl.list(), params)
+  }
+
+  delete(params: GetDoctorParams = new GetDoctorParams()) {
+    params.flow = 'deleteDoctor';
+    return this.type.post(DoctorUrl.delete(), params)
   }
   get(id: string) {
-    return this.type.get(CompanyUrl.get(id));
+    return this.type.get(DoctorUrl.get(id));
   }
-  delete(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'deleteCompany';
-    return this.type.post(CompanyUrl.delete(), params)
+
+  update(model: DoctorModel) {
+    return this.type.post(DoctorUrl.update(), model)
 
   }
-  update(model: CompanyModel) {
-    return this.type.post(CompanyUrl.update(), model)
-
-  }
+  // create(model: CompanyModel) {
+  //   return this.type.post(CompanyUrl.create(), model);
+  // }
+  // get(id: string) {
+  //   return this.type.get(CompanyUrl.get(id));
+  // }
 
 
   // deleteDocotr(params: GetCompanyParams) {
