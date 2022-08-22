@@ -106,8 +106,6 @@ export class DoctorOperateComponent implements OnInit {
     this._router.navigateByUrl(`/neoballoon/neoballoon-manage/doctor-manage?cid=${this.cid}`)
   }
   private _checkForm() {
-
-
     if (this.myForm.invalid) {
       if (this.myForm.get('name')?.invalid) {
         this._toastrService.warning('请输入医生姓名');
@@ -118,8 +116,6 @@ export class DoctorOperateComponent implements OnInit {
         return;
       }
     }
-
-
     return true;
   }
 

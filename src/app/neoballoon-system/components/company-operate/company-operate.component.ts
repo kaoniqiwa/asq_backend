@@ -9,6 +9,7 @@ import { CompanyOperateModel } from 'src/app/view-model/company-operate.model';
 import { CompanyOperateBusiness } from './company-operate.business';
 import { fromEvent } from 'rxjs';
 import { FormState } from 'src/app/enum/form-state.enum';
+import { DoctorModel } from 'src/app/network/model/doctor.model';
 
 
 @Component({
@@ -21,18 +22,28 @@ import { FormState } from 'src/app/enum/form-state.enum';
 })
 export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
+  /**
+   * Company
+   */
   FormState = FormState
-
   state: FormState = FormState.add;
-
-
-  // 添加为空,编辑为对应id
   cid: string = '';
-
   // 根据id查询到的model
   companyModel: CompanyModel | null = null;
 
-  // 子账号id
+  /**
+   *  Doctor
+   */
+  doctorsToBeAdd: DoctorModel[] = [];
+  doctorsToBeDelete: DoctorModel[] = [];
+  doctorsInModel: DoctorModel[] = [];
+  curDoctor: DoctorModel | null = null;
+
+  get doctorsTotal() {
+    return [...this.doctorsInModel, ...this.doctorsToBeAdd];
+  }
+
+
   subId: number = 1;
   //子账号明年成
   subName: string = '';
@@ -82,6 +93,7 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     if (this.state == FormState.edit) {
       this.companyModel = await this._business.get(this.cid);
       if (this.companyModel) {
+        this.doctorsInModel = [...this.companyModel.doctors];
         this.myForm.patchValue(
           {
             name: this.companyModel.name,
@@ -102,40 +114,57 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
 
   }
-  closeToast() {
-    this.showToast = false;
-  }
-  confirmToast() {
-    if (this.subName != '') {
-      if (this.subState == FormState.add) {
-        this.subId++;
-        this.subAccounts.push(this.subName);
-        this.subName = '';
-        this.showToast = false;
-      } else if (this.subState == FormState.edit) {
-        this.subAccounts[this.subEditId] = this.subName;
-      }
 
-    }
-  }
-  addSubAccount() {
+  addDoctor() {
     this.showToast = true;
     this.subState = FormState.add;
   }
-  editSubAccount(index: number) {
-    this.subEditId = index;
-    this.subName = this.subAccounts[index];
+
+
+  editDoctor(doctor: DoctorModel) {
     this.showToast = true;
     this.subState = FormState.edit;
+    this.curDoctor = doctor;
+
   }
-  removeSubAccount(index: number) {
-    this.subAccounts.splice(index, 1)
+
+  removeDoctor(doctor: DoctorModel) {
+
+    let index = this.doctorsInModel.findIndex(model => model.id == doctor.id);
+    if (index != -1) {
+      // 删除服务器上现有的doctor
+      this.doctorsInModel.splice(index, 1)
+      this.doctorsToBeDelete.push(doctor);
+    } else {
+      // 删除缓存中的 doctor,不会创建该doctor
+      let index = this.doctorsToBeAdd.findIndex(model => model.name == doctor.name)
+      if (index != -1) {
+        this.doctorsToBeAdd.splice(index, 1);
+      }
+    }
   }
+  closeDoctorOperate(data: { data: DoctorModel, type: FormState } | null) {
+    this.showToast = false;
+    if (data) {
+      if (data.type == FormState.add) {
+        this.doctorsToBeAdd.push(data.data);
+      } else if (data.type == FormState.edit) {
+        this.curDoctor = data.data;
+      }
+    }
+  }
+
+  closeToast() {
+    this.showToast = false;
+  }
+
+
 
   async onSubmit() {
 
     if (this._checkForm()) {
       if (this.state == FormState.add) {
+        console.log(this.doctorsToBeAdd);
         let model = new CompanyModel();
         model.id = "";
         model.flow = 'addCompany';
@@ -151,8 +180,14 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
         let res = await this._business.create(model);
         if (res) {
-          this._toastrService.success('操作成功');
-          this.onReset();
+          if (this.doctorsToBeAdd.length) {
+            let doctors = await this._business.addDoctor(res.id, this.doctorsToBeAdd);
+            if (doctors) {
+              this._toastrService.success('操作成功');
+              this.onReset();
+            }
+          }
+
         }
       } else if (this.state == FormState.edit) {
         if (this.companyModel) {
@@ -169,9 +204,21 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
           let res = await this._business.update(this.companyModel)
           if (res) {
+
+            if (this.doctorsToBeDelete.length) {
+              await this._business.deleteDoctor(res.id, this.doctorsToBeDelete);
+            }
+            if (this.doctorsToBeAdd.length) {
+              await this._business.addDoctor(res.id, this.doctorsToBeAdd)
+            }
+            if (this.doctorsInModel.length) {
+              await this._business.editDoctor(this.doctorsInModel)
+            }
+
             this._toastrService.success('编辑成功');
             this.onReset();
           }
+
         }
       }
     }

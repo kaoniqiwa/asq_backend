@@ -6,27 +6,35 @@
         <input
           class="form-control"
           type="text"
+          [date]="beginTime"
           placeholder="筛查时间"
           readonly
           DateTimePicker
           [format]="dateFormat"
+          (change)="changeBegin($event)"
         />
         <span>-</span>
         <input
           class="form-control"
           type="text"
+          [date]="endTime"
           placeholder="筛查时间"
           readonly
           DateTimePicker
           [format]="dateFormat"
+          (change)="changeEnd($event)"
         />
-        <button class="btn btn-default" style="margin-left: 10px">
+        <button
+          class="btn btn-default"
+          style="margin-left: 10px"
+          (click)="exportCompany()"
+        >
           导出机构数据
         </button>
         <button class="btn btn-default" (click)="addCompany()">开通账号</button>
       </div>
     </div>
-    <!-- <div class="operate-bar">
+    <div class="operate-bar">
       <div class="left-wrapper">
         <button class="btn btn-default" (click)="exportASQ()">
           导出ASQ数据
@@ -50,7 +58,7 @@
           搜索
         </button>
       </div>
-    </div> -->
+    </div>
   </div>
 
   <div class="vertical-main">
@@ -68,8 +76,8 @@
         <thead>
           <tr>
             <th>编号</th>
-            <th>机构账号</th>
             <th>机构名称</th>
+            <th>机构账号</th>
             <th>ASQ3剩余/总次数</th>
             <th>ASQ:SE剩余/总次数</th>
             <th>ASQ:SE-2剩余/总次数</th>

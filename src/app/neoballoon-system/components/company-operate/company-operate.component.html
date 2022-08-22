@@ -1,20 +1,11 @@
 <div class="company-operate vertical-layout">
   <app-toast-window *ngIf="showToast" (closeEvent)="closeToast()">
-    <!-- <div class="sub-window">
-      <div class="name-input">
-        <label>编号{{ subId.toString().padStart(2, "0") }}:</label>
-        <input
-          type="text"
-          class="form-control"
-          maxlength="10"
-          [(ngModel)]="subName"
-        />
-      </div>
-      <div style="text-align: center; margin-top: 10px">
-        <button class="btn btn-default" (click)="confirmToast()">保存</button>
-      </div>
-    </div> -->
-    <!-- <doctor-operate></doctor-operate> -->
+    <app-doctor-operate-toast
+      [state]="subState"
+      [cid]="cid"
+      [doctor]="curDoctor"
+      (closeDoctorOperate)="closeDoctorOperate($event)"
+    ></app-doctor-operate-toast>
   </app-toast-window>
 
   <div class="large-title underline-title vertical-header">{{ title }}</div>
@@ -143,22 +134,24 @@
             【子账号列表】
           </div>
           <div class="account-wrapper vertical-main">
-            <ng-container *ngIf="companyModel">
+            <ng-container>
               <div
                 class="item"
-                *ngFor="let doctor of companyModel.doctors; let i = index"
+                *ngFor="let doctor of doctorsTotal; let i = index"
               >
-                <div>{{ doctor.id }} {{ doctor.name }}</div>
+                <div>
+                  {{ (i + 1).toString().padStart(3, "0") }} {{ doctor.name }}
+                </div>
                 <div class="operates">
-                  <a tabindex (click)="editSubAccount(i)">修改</a>
+                  <a tabindex (click)="editDoctor(doctor)">修改</a>
                   <span>|</span>
-                  <a tabindex (click)="removeSubAccount(i)">删除</a>
+                  <a tabindex (click)="removeDoctor(doctor)">删除</a>
                 </div>
               </div>
             </ng-container>
           </div>
           <div class="vertical-footer">
-            <button class="btn btn-default" (click)="addSubAccount()">
+            <button class="btn btn-default" (click)="addDoctor()">
               添加子账号
             </button>
           </div>

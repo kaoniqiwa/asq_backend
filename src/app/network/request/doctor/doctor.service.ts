@@ -22,7 +22,6 @@ export class DoctorRequestService {
   }
 
   create(model: DoctorModel) {
-    console.log('model', model);
     return this.type.post(DoctorUrl.create(), model);
   }
   list(params: GetDoctorParams = new GetDoctorParams()) {

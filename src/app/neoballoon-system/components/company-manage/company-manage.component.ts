@@ -18,6 +18,8 @@ export class CompanyManageComponent implements OnInit {
 
   dateFormat: string = 'yyyy-MM-dd';
 
+  beginTime = new Date();
+  endTime = new Date();
 
   // Table
   dataSource: CompanyManageModel[] = [];
@@ -56,6 +58,15 @@ export class CompanyManageComponent implements OnInit {
     this._init();
   }
 
+  changeBegin(date: Date) {
+    this.beginTime = date;
+  }
+  changeEnd(date: Date) {
+    this.endTime = date;
+  }
+  exportCompany() {
+
+  }
   exportASQ() {
 
   }

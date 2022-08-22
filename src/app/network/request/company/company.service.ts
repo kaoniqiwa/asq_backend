@@ -36,7 +36,6 @@ export class CompanyRequestService {
   }
   update(model: CompanyModel) {
     return this.type.post(CompanyUrl.update(), model)
-
   }
 
 

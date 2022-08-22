@@ -1,7 +1,8 @@
 <div class="doctor-manage vertical-layout">
-  <div class="vertical-header">
+  <div class="vertical-header" style="justify-content: flex-start">
     <div class="large-title underline-title">医生列表</div>
     <button class="btn btn-default" (click)="addDoctor()">添加医生</button>
+    <button class="btn btn-default" (click)="backCompany()">返回</button>
   </div>
 
   <div class="vertical-main">
@@ -23,7 +24,6 @@
             <th>职称</th>
             <th>科室</th>
             <th>手机号</th>
-            <!-- <th>所属医院</th> -->
             <th>操作</th>
           </tr>
         </thead>
