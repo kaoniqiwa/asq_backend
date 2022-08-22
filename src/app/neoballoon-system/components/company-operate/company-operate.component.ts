@@ -164,7 +164,6 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        console.log(this.doctorsToBeAdd);
         let model = new CompanyModel();
         model.id = "";
         model.flow = 'addCompany';
@@ -182,11 +181,10 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         if (res) {
           if (this.doctorsToBeAdd.length) {
             let doctors = await this._business.addDoctor(res.id, this.doctorsToBeAdd);
-            if (doctors) {
-              this._toastrService.success('操作成功');
-              this.onReset();
-            }
+
           }
+          this._toastrService.success('操作成功');
+          this.onReset();
 
         }
       } else if (this.state == FormState.edit) {

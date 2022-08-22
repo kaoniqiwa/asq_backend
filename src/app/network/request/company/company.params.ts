@@ -6,5 +6,7 @@ export class GetCompanyParams {
   id?: string;
   name?: string;
   accountName?: string;
+  beginTime?: Date;
+  endTime?: Date;
   flow!: string;
 }

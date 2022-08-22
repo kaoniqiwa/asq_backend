@@ -1,7 +1,10 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HwExport } from 'src/app/common/tools/hw-export';
+import { CompanyModel } from 'src/app/network/model/company.model';
 import { Page, PagedList } from 'src/app/network/model/page_list.model';
 import { CompanyManageModel, CompanyManageSearchInfo } from 'src/app/view-model/company-manage.model';
 import { CompanyManageBusiness } from './company-manage.business';
@@ -21,7 +24,6 @@ export class CompanyManageComponent implements OnInit {
   beginTime = new Date();
   endTime = new Date();
 
-  // Table
   dataSource: CompanyManageModel[] = [];
 
   // Paginator
@@ -33,8 +35,8 @@ export class CompanyManageComponent implements OnInit {
   searchInfo: CompanyManageSearchInfo = {
     name: "",
   }
-  id: string = '';
 
+  exportedDataSource: CompanyModel[] = [];
 
   constructor(private _business: CompanyManageBusiness, private _router: Router, private _toastrService: ToastrService) {
   }
@@ -46,7 +48,9 @@ export class CompanyManageComponent implements OnInit {
   private async _init() {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
     this.dataSource = res.data;
-    this.page = res.page
+    this.page = res.page;
+    console.log(res.data);
+
   }
   search() {
     this._init();
@@ -64,8 +68,13 @@ export class CompanyManageComponent implements OnInit {
   changeEnd(date: Date) {
     this.endTime = date;
   }
-  exportCompany() {
+  async exportCompany() {
 
+    let res = await this._business.getExport(this.beginTime, this.endTime);
+    let title = this._getTitle();
+    let header = ['序号', '机构名称', '机构账号', 'ASQ-3总次数', 'ASQ-3剩余次数', 'ASQ:SE总次数', 'ASQ:SE剩余次数', 'ASQ:SE-2总次数', 'ASQ:SE-2剩余次数'];
+
+    this._business.exportXLSX(title, header, res)
   }
   exportASQ() {
 
@@ -107,6 +116,11 @@ export class CompanyManageComponent implements OnInit {
     })
   }
 
+  private _getTitle() {
+    let beginTime = formatDate(this.beginTime, 'yyyy年MM月dd日', 'zh-CN');
+    let endTime = formatDate(this.endTime, 'yyyy年MM月dd日', 'zh-CN');
+    return `${beginTime}-${endTime}注册机构信息`;
+  }
 
 
 

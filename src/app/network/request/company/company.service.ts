@@ -37,7 +37,10 @@ export class CompanyRequestService {
   update(model: CompanyModel) {
     return this.type.post(CompanyUrl.update(), model)
   }
-
+  export(params: GetCompanyParams = new GetCompanyParams()) {
+    params.flow = 'exportCompany';
+    return this.type.postArray(CompanyUrl.export(), params)
+  }
 
   // deleteDocotr(params: GetCompanyParams) {
   //   return this.type.delete(companyUrl, params)

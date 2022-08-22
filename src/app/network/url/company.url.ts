@@ -20,5 +20,7 @@ export class CompanyUrl {
   static update() {
     return `${this.basic}.php`;
   }
-
+  static export() {
+    return `${this.basic}.php`;
+  }
 }

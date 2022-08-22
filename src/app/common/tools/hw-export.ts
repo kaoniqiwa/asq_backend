@@ -58,7 +58,7 @@ export class HwExport {
       columnNum: header.length,
       columWidth: columnWidth
     }
-    console.log(info)
+    // console.log(info)
 
     if (data.length) {
       let obj = data[0];
@@ -69,9 +69,11 @@ export class HwExport {
       data.forEach(row => {
         for (let i = 0; i < len; i++) {
           let value = row[keys[i]];
-          let c = 0;
-          c = value.replace(/[^\x00-\xff]/g, '00').length
-          if (c > info.columWidth[i].wch) info.columWidth[i] = { wch: c };
+          if (value) {
+            let c = 0;
+            c = value.replace(/[^\x00-\xff]/g, '00').length
+            if (c > info.columWidth[i].wch) info.columWidth[i] = { wch: c };
+          }
         }
       })
 

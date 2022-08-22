@@ -11,7 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
+
+import zh from '@angular/common/locales/zh';
+
+registerLocaleData(zh, 'zh-CN');
 
 
 @NgModule({
