@@ -15,7 +15,7 @@ import { HospitalInfoComponent } from './components/hospital-info/hospital-info.
 import { DoctorManageComponent } from './components/doctor-manage/doctor-manage.component';
 import { DoctorOperateComponent } from './components/doctor-operate/doctor-operate.component';
 import { MemberOperateComponent } from './components/member-operate/member-operate.component';
-import { BabyListComponent } from './components/baby-list/baby-list.component';
+import { BabyManageComponent } from './components/baby-manage/baby-manage.component';
 import { OrderManageComponent } from './components/order-manage/order-manage.component';
 import { SendNotifyComponent } from './components/send-notify/send-notify.component';
 import { DoctorOperateToastComponent } from './components/doctor-operate-toast/doctor-operate-toast.component';
@@ -35,7 +35,7 @@ import { DoctorOperateToastComponent } from './components/doctor-operate-toast/d
     DoctorManageComponent,
     DoctorOperateComponent,
     MemberOperateComponent,
-    BabyListComponent,
+    BabyManageComponent,
     OrderManageComponent,
     SendNotifyComponent,
     DoctorOperateToastComponent

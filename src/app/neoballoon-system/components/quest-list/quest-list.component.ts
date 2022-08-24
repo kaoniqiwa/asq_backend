@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestListComponent implements OnInit {
 
-  constructor() { }
+
+  cid: string = '';
+  id: string = '';
+
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

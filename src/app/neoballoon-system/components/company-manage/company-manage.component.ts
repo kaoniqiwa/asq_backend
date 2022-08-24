@@ -21,8 +21,8 @@ export class CompanyManageComponent implements OnInit {
 
   dateFormat: string = 'yyyy-MM-dd';
 
-  beginTime = new Date();
-  endTime = new Date();
+  beginTime: Date | null = null;
+  endTime: Date | null = null;
 
   dataSource: CompanyManageModel[] = [];
 
@@ -36,8 +36,6 @@ export class CompanyManageComponent implements OnInit {
     name: "",
   }
 
-  exportedDataSource: CompanyModel[] = [];
-
   constructor(private _business: CompanyManageBusiness, private _router: Router, private _toastrService: ToastrService) {
   }
 
@@ -49,8 +47,7 @@ export class CompanyManageComponent implements OnInit {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
     this.dataSource = res.data;
     this.page = res.page;
-    console.log(res.data);
-
+    // console.log(res.data);
   }
   search() {
     this._init();
@@ -67,14 +64,19 @@ export class CompanyManageComponent implements OnInit {
   }
   changeEnd(date: Date) {
     this.endTime = date;
+
   }
   async exportCompany() {
+    if (this.beginTime && this.endTime) {
+      let res = await this._business.getExport(this.beginTime, this.endTime);
+      let title = this._getTitle();
+      let header = ['序号', '机构名称', '机构账号', 'ASQ-3剩余次数', 'ASQ-3总次数', 'ASQ:SE剩余次数', 'ASQ:SE总次数', 'ASQ:SE-2剩余次数', 'ASQ:SE-2总次数',];
 
-    let res = await this._business.getExport(this.beginTime, this.endTime);
-    let title = this._getTitle();
-    let header = ['序号', '机构名称', '机构账号', 'ASQ-3总次数', 'ASQ-3剩余次数', 'ASQ:SE总次数', 'ASQ:SE剩余次数', 'ASQ:SE-2总次数', 'ASQ:SE-2剩余次数'];
+      this._business.exportXLSX(title, header, res)
+    } else {
+      this._toastrService.warning('请选择导出时间');
+    }
 
-    this._business.exportXLSX(title, header, res)
   }
   exportASQ() {
 
@@ -117,9 +119,13 @@ export class CompanyManageComponent implements OnInit {
   }
 
   private _getTitle() {
-    let beginTime = formatDate(this.beginTime, 'yyyy年MM月dd日', 'zh-CN');
-    let endTime = formatDate(this.endTime, 'yyyy年MM月dd日', 'zh-CN');
-    return `${beginTime}-${endTime}注册机构信息`;
+    if (this.beginTime && this.endTime) {
+      let beginTime = formatDate(this.beginTime, 'yyyy年MM月dd日', 'zh-CN');
+      let endTime = formatDate(this.endTime, 'yyyy年MM月dd日', 'zh-CN');
+      return `${beginTime}-${endTime}注册机构信息`;
+    }
+    return '';
+
   }
 
 

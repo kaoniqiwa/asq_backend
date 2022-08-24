@@ -1,13 +1,14 @@
 <div class="company-manage vertical-layout">
   <div class="vertical-header">
     <div class="large-title underline-title">机构列表</div>
+
     <div class="operate-bar">
       <div class="left-wrapper questDate">
+        选择时间:&nbsp;
         <input
           class="form-control"
           type="text"
-          [date]="beginTime"
-          placeholder="筛查时间"
+          placeholder="开始时间"
           readonly
           DateTimePicker
           [format]="dateFormat"
@@ -17,8 +18,7 @@
         <input
           class="form-control"
           type="text"
-          [date]="endTime"
-          placeholder="筛查时间"
+          placeholder="结束时间"
           readonly
           DateTimePicker
           [format]="dateFormat"

@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AccountStatisticComponent } from "./components/account-statistic/account-statistic.component";
-import { BabyListComponent } from "./components/baby-list/baby-list.component";
+import { BabyManageComponent } from "./components/baby-manage/baby-manage.component";
 import { CompanyManageComponent } from "./components/company-manage/company-manage.component";
 import { DoctorManageComponent } from "./components/doctor-manage/doctor-manage.component";
 import { DoctorOperateComponent } from "./components/doctor-operate/doctor-operate.component";
@@ -39,24 +39,21 @@ const routes: Routes = [
         component: CompanyManageComponent
       },
       {
-        path: "member-manage",
-        component: MemberManageComponent
-      },
-      {
         path: "member-list",
         component: MemberManageComponent
-      },
-      {
-        path: "order-manage",
-        component: OrderManageComponent
       },
       {
         path: "member-operate",
         component: MemberOperateComponent
       },
       {
-        path: "baby-list",
-        component: BabyListComponent
+        path: "order-manage",
+        component: OrderManageComponent
+      },
+
+      {
+        path: "baby-manage",
+        component: BabyManageComponent
       },
       {
         path: "quest-list",

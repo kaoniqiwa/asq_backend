@@ -24,6 +24,7 @@ export class CompanyRequestService {
     return this.type.paged(CompanyUrl.list(), params)
   }
   create(model: CompanyModel) {
+    model.flow = 'addCompany'
     return this.type.post(CompanyUrl.create(), model);
   }
   get(id: string) {
@@ -35,6 +36,7 @@ export class CompanyRequestService {
 
   }
   update(model: CompanyModel) {
+    model.flow = 'editCompany'
     return this.type.post(CompanyUrl.update(), model)
   }
   export(params: GetCompanyParams = new GetCompanyParams()) {

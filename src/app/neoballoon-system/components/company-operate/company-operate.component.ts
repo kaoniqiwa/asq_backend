@@ -34,6 +34,8 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   /**
    *  Doctor
    */
+  subState = FormState.add;
+
   doctorsToBeAdd: DoctorModel[] = [];
   doctorsToBeDelete: DoctorModel[] = [];
   doctorsInModel: DoctorModel[] = [];
@@ -44,12 +46,6 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   }
 
 
-  subId: number = 1;
-  //子账号明年成
-  subName: string = '';
-  subAccounts: string[] = [];
-  subState = FormState.add;
-  subEditId: number = 0;
 
   // 表单数据
   myForm = this._fb.group({
@@ -166,7 +162,6 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
       if (this.state == FormState.add) {
         let model = new CompanyModel();
         model.id = "";
-        model.flow = 'addCompany';
         model.name = this.myForm.value.name?.trim() ?? "";
         model.account_name = this.myForm.value.accountName?.trim() ?? "";
         model.account_pass = this.myForm.value.accountPass?.trim() ?? "";
@@ -189,7 +184,6 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         }
       } else if (this.state == FormState.edit) {
         if (this.companyModel) {
-          this.companyModel.flow = 'editCompany';
           this.companyModel.name = this.myForm.value.name?.trim() ?? "";
           this.companyModel.account_name = this.myForm.value.accountName?.trim() ?? "";
           this.companyModel.account_pass = this.myForm.value.accountPass?.trim() ?? "";

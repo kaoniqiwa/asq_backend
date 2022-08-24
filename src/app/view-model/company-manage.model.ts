@@ -12,6 +12,8 @@ export class CompanyManageModel {
 }
 export class CompanyManageSearchInfo {
   name!: string;
+  beginTime?: Date;
+  endTime?: Date;
 }
 
 export class CompanyManageXLSX {

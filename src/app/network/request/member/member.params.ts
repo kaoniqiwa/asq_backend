@@ -1,6 +1,4 @@
-import { PagedParams } from "../IParams.interface";
-
-export class GetCompanyParams {
+export class GetMemberParams {
   pageIndex?: number;
   pageSize?: number;
   id?: string;

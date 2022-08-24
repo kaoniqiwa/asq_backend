@@ -5,6 +5,8 @@ export class DoctorModel {
   level?: string;
   dept?: string;
   phone?: string;
+  create_time!: string;
+  update_time!: string;
   flow?: string;
 
 }

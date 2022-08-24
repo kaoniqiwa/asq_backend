@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { serialize } from "class-transformer";
 import { lastValueFrom } from "rxjs";
 import { HwExport } from "src/app/common/tools/hw-export";
 import { Time } from "src/app/common/tools/time";
@@ -24,6 +25,7 @@ export class CompanyManageBusiness {
     if (searchInfo.name) {
       params.name = searchInfo.name
     }
+
 
     let { data: Data, page: Page } = await this._listCompany(params);
     let data = this._converter.iterateToModel(Data)
@@ -58,12 +60,12 @@ export class CompanyManageBusiness {
       xlsxModel.id = (index + 1).toString();
       xlsxModel.name = model.name;
       xlsxModel.account_name = model.account_name
-      xlsxModel.asq_total = model.asq_total + "";
       xlsxModel.asq_left = model.asq_left + "";
-      xlsxModel.asq_se_total = model.asq_se_total + "";
+      xlsxModel.asq_total = model.asq_total + "";
       xlsxModel.asq_se_left = model.asq_se_left + "";
-      xlsxModel.asq_se2_total = model.asq_se_2_total + "";
+      xlsxModel.asq_se_total = model.asq_se_total + "";
       xlsxModel.asq_se2_left = model.asq_se_2_left + "";
+      xlsxModel.asq_se2_total = model.asq_se_2_total + "";
 
       doctorNum = Math.max(doctorNum, model.doctors.length);
       for (let i = 0; i < model.doctors.length; i++) {

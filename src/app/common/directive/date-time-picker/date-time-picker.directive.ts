@@ -21,7 +21,7 @@ export class DateTimePickerDirective
   implements AfterContentInit, OnDestroy, OnChanges {
   private ele: HTMLInputElement;
   @Input('format') format = 'yyyy-MM-dd';
-  @Input('date') date: Date = new Date();
+  @Input('date') date: Date | null = null;
   // @Input('changeDate') changeDate: (val: any) => void;
   @Input('startView') startView: DateTimePickerView = DateTimePickerView.month;
   @Input('minView') minView: DateTimePickerView = DateTimePickerView.month;
@@ -62,7 +62,7 @@ export class DateTimePickerDirective
     startView: number,
     minView: number,
     format: string,
-    value: Date,
+    value: Date | null,
     week?: boolean
   ) {
     $(this.ele).val('');
@@ -113,14 +113,16 @@ export class DateTimePickerDirective
             });
           });
         });
-      const week_ = OneWeekDate(new Date(value));
-      $(this.ele).val(
-        `${formatDate(week_.monday, 'yyyy年MM月dd日', 'en')} 至 ${formatDate(
-          week_.sunday,
-          'yyyy年MM月dd日',
-          'en'
-        )}`
-      );
+      if (value) {
+        const week_ = OneWeekDate(new Date(value));
+        $(this.ele).val(
+          `${formatDate(week_.monday, 'yyyy年MM月dd日', 'en')} 至 ${formatDate(
+            week_.sunday,
+            'yyyy年MM月dd日',
+            'en'
+          )}`
+        );
+      }
     } else {
       $(this.ele)
         .datetimepicker({
@@ -141,7 +143,8 @@ export class DateTimePickerDirective
           const dayDom = $('.datetimepicker-days');
           dayDom.find('.week-tr').removeClass('week-tr');
         });
-      $(this.ele).val(formatDate(value, this.format, 'en'));
+      if (value)
+        $(this.ele).val(formatDate(value, this.format, 'en'));
     }
   }
 }

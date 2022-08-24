@@ -3,11 +3,11 @@ import { IModel } from './model.interface';
 import { transformDateTime } from './transform.model';
 export class User implements IModel {
   /**	String	唯一标识符	M	R */
-  Id!: string;
+  id!: string;
   /**	String	用户名	M	RW */
-  Username!: string;
+  username!: string;
   /**	String	密码	O	W */
-  Name!: string;
-  Grade!: number;
+  name!: string;
+  grade!: string;
 
 }

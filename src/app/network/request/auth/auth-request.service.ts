@@ -61,7 +61,7 @@ export class AuthorizationService implements CanActivate {
     let user = this._localStorageService.user;
     let holdCookie = this._cookieService.check('userName');
     // console.log(userResource);
-    if (challenge && user && user.Id && holdCookie) {
+    if (challenge && user && user.id && holdCookie) {
       return true;
     }
 
@@ -101,8 +101,8 @@ export class AuthorizationService implements CanActivate {
         }
 
         this._sessionStorageService.challenge = challenge;
-        return axios(this._config).then((res: AxiosResponse<User>) => {
-          let result = plainToClass(User, res.data)
+        return axios(this._config).then((res: AxiosResponse<{ data: User }>) => {
+          let result = plainToClass(User, res.data.data)
           this._storeUserInfo(result, password,);
           return result;
         }
@@ -129,7 +129,7 @@ export class AuthorizationService implements CanActivate {
     ).toString();
 
     let userName = window.btoa(
-      prefix + user.Username + suffix
+      prefix + user.username + suffix
     );
     this._cookieService.set('userName', userName, options);
 
