@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BabyManageModel, BabyManageSearchInfo } from 'src/app/view-model/baby-manage.model';
 import { BabyManageBusiness } from './baby-manage.business';
 
 @Component({
@@ -13,15 +14,48 @@ import { BabyManageBusiness } from './baby-manage.business';
 })
 export class BabyManageComponent implements OnInit {
 
-  mid: string = '';
+  dataSource: BabyManageModel[] = [];
+
+  searchInfo: BabyManageSearchInfo = {
+    name: "",
+    mid: ""
+  }
+
 
   constructor(private _business: BabyManageBusiness, private _router: Router, private _activeRoute: ActivatedRoute, private _toastrService: ToastrService) {
     this._activeRoute.queryParams.subscribe(params => {
-      this.mid = params['cid']
+      this.searchInfo.mid = params['mid']
     })
   }
 
   ngOnInit(): void {
+    this._init();
+
+  }
+
+  private async _init() {
+    let res = await this._business.init(this.searchInfo)
+    this.dataSource = res;
+  }
+  addBaby() {
+    this._router.navigate(["/neoballoon/neoballoon-manage/baby-operate"], {
+      queryParams: {
+        mid: this.searchInfo.mid,
+        type: 'add'
+      }
+    })
+  }
+  editDoctor(model: BabyManageModel) {
+    this._router.navigate(["/neoballoon/neoballoon-manage/baby-operate"], {
+      queryParams: {
+        id: model.id,
+        mid: this.searchInfo.mid,
+        type: 'edit'
+      }
+    })
+  }
+  backMember() {
+    this._router.navigate(["/neoballoon/neoballoon-manage/member-manage"], {})
   }
 
 }

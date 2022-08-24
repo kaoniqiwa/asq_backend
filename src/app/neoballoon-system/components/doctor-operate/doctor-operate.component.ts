@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
 import { DoctorModel } from 'src/app/network/model/doctor.model';
 import { DoctorOperateBusiness } from './doctor-operate.business';
@@ -22,16 +23,15 @@ export class DoctorOperateComponent implements OnInit {
   state: FormState = FormState.add;
 
 
-  cid: string = '';
   id: string = '';
+  cid: string = '';
 
 
-  ValidPhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,2,3,5-9])|19[0-9])\d{8}$/
   myForm = this._fb.group({
     name: ['', Validators.required],
     level: "",
     dept: "",
-    phone: ['', Validators.pattern(this.ValidPhone)]
+    phone: ['', Validators.pattern(ValidPhone)]
   });
 
 

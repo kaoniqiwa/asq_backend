@@ -62,9 +62,7 @@ export class DoctorManageComponent implements OnInit {
     })
   }
   backCompany() {
-    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage"], {
-
-    })
+    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage"], {})
   }
 
 }

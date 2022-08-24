@@ -44,7 +44,7 @@ export class MemberManageComponent implements OnInit {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
     this.dataSource = res.data;
     this.page = res.page;
-    console.log(res)
+    console.log('member manage', res)
   }
   pageEvent(pageInfo: PageEvent) {
     if (this.pageIndex == pageInfo.pageIndex + 1) return;
@@ -76,7 +76,7 @@ export class MemberManageComponent implements OnInit {
   }
 
   babyManage(model: MemberManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/baby-list'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/baby-manage'], {
       queryParams: {
         mid: model.id,
       }

@@ -128,7 +128,7 @@ export class MemberOperateComponent implements OnInit {
   }
 
   reset() {
-    this._router.navigateByUrl(`/neoballoon/neoballoon-manage/member-list`)
+    this._router.navigateByUrl(`/neoballoon/neoballoon-manage/member-manage`)
   }
 
   private _checkForm() {

@@ -14,6 +14,7 @@ import { QuestListComponent } from "./components/quest-list/quest-list.component
 import { CompanyOperateComponent } from "./components/company-operate/company-operate.component";
 import { SendNotifyComponent } from "./components/send-notify/send-notify.component";
 import { NeoballoonComponent } from "./neoballoon.component";
+import { BabyOperateComponent } from "./components/baby-operate/baby-operate.component";
 
 const routes: Routes = [
   {
@@ -39,7 +40,11 @@ const routes: Routes = [
         component: CompanyManageComponent
       },
       {
-        path: "member-list",
+        path: "company-operate",
+        component: CompanyOperateComponent
+      },
+      {
+        path: "member-manage",
         component: MemberManageComponent
       },
       {
@@ -47,22 +52,26 @@ const routes: Routes = [
         component: MemberOperateComponent
       },
       {
-        path: "order-manage",
-        component: OrderManageComponent
-      },
-
-      {
         path: "baby-manage",
         component: BabyManageComponent
       },
       {
+        path: "baby-operate",
+        component: BabyOperateComponent
+      },
+
+
+      {
+        path: "order-manage",
+        component: OrderManageComponent
+      },
+
+
+      {
         path: "quest-list",
         component: QuestListComponent
       },
-      {
-        path: "company-operate",
-        component: CompanyOperateComponent
-      },
+
       {
         path: "hospital-info",
         component: HospitalInfoComponent

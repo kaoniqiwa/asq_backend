@@ -1,0 +1,89 @@
+<div class="hospital-info vertical-layout">
+  <div class="large-title underline-title vertical-header">宝宝信息</div>
+  <div class="vertical-main">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+          >宝宝姓名
+          <span>*</span>
+        </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">性别 <span>*</span></label>
+        <div class="col-sm-9" style="height: 34px; line-height: 34px">
+          <input type="radio" value="男" name="gender" />
+          男
+          <input type="radio" value="女" name="gender" />
+          女
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">出生日期 <span>*</span></label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">筛查时间 <span>*</span></label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" maxlength="11" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">是否早产 <span>*</span></label>
+        <div class="col-sm-9" style="height: 34px; line-height: 34px">
+          <input type="radio" value="0" name="premature" />
+          是
+          <input type="radio" value="1" name="premature" />
+          否
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">出生情况 <span>*</span></label>
+        <div class="col-sm-9" style="height: 34px; line-height: 34px">
+          <div>
+            <input type="radio" value="0" name="birth" />
+            顺产
+            <input type="radio" value="1" name="birth" />
+            剖腹产 &nbsp; &nbsp;
+            <input type="radio" value="0" name="help-birth" />
+            产钳助产
+            <input type="radio" value="1" name="help-birth" />
+            吸引器助产 &nbsp; &nbsp;
+            <input type="radio" value="0" name="multi-baby" />
+            双胞胎
+            <input type="radio" value="1" name="multi-baby" />
+            多胞胎
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">身份信息</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">出生体重</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-9">
+          <button class="btn btn-default" type="button" (click)="submit()">
+            保存
+          </button>
+          <button class="btn btn-default" type="button" (click)="reset()">
+            返回
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

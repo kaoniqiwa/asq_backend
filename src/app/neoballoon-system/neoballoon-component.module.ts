@@ -19,6 +19,7 @@ import { BabyManageComponent } from './components/baby-manage/baby-manage.compon
 import { OrderManageComponent } from './components/order-manage/order-manage.component';
 import { SendNotifyComponent } from './components/send-notify/send-notify.component';
 import { DoctorOperateToastComponent } from './components/doctor-operate-toast/doctor-operate-toast.component';
+import { BabyOperateComponent } from './components/baby-operate/baby-operate.component';
 
 
 
@@ -38,7 +39,8 @@ import { DoctorOperateToastComponent } from './components/doctor-operate-toast/d
     BabyManageComponent,
     OrderManageComponent,
     SendNotifyComponent,
-    DoctorOperateToastComponent
+    DoctorOperateToastComponent,
+    BabyOperateComponent
   ],
   imports: [
     CommonModule,

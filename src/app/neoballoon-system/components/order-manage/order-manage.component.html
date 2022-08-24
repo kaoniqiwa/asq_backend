@@ -15,8 +15,17 @@
   </div>
 
   <div class="vertical-main">
-    <div class="table-responsive">
-      <table class="table table-striped">
+    <div class="table-header">
+      <table>
+        <colgroup>
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+        </colgroup>
         <thead>
           <tr>
             <th>编号</th>
@@ -25,98 +34,36 @@
             <th>订单金额</th>
             <th>消费类型</th>
             <th>订单日期</th>
+            <th>操作</th>
           </tr>
         </thead>
+      </table>
+    </div>
+    <div class="table-body">
+      <table>
+        <colgroup>
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+          <col style="width: 10%" />
+        </colgroup>
         <tbody>
-          <tr>
-            <td>202208131141232083248651712745</td>
-            <td></td>
-            <td>18520482258</td>
-            <td>400.00</td>
-            <td>微信</td>
-            <td>2022-08-13 11:41:28</td>
-          </tr>
-
-          <tr>
-            <td>202208130753408420790325923110</td>
-            <td></td>
-            <td>18779185056</td>
-            <td>50.00</td>
-            <td>微信</td>
-            <td>2022-08-13 07:53:46</td>
-          </tr>
-
-          <tr>
-            <td>202208121959565596390967565349</td>
-            <td></td>
-            <td>18668263688</td>
-            <td>50.00</td>
-            <td>微信</td>
-            <td>2022-08-12 20:00:02</td>
-          </tr>
-
-          <tr>
-            <td>202208112207326852271681518483</td>
-            <td></td>
-            <td>18511906971</td>
-            <td>200.00</td>
-            <td>微信</td>
-            <td>2022-08-11 22:07:48</td>
-          </tr>
-
-          <tr>
-            <td>202208111231282288122242868301</td>
-            <td>李静</td>
-            <td>13866979979</td>
-            <td>50.00</td>
-            <td>微信</td>
-            <td>2022-08-11 12:31:33</td>
-          </tr>
-
-          <tr>
-            <td>202208101354190859049465702118</td>
-            <td></td>
-            <td>13716988229</td>
-            <td>200.00</td>
-            <td>微信</td>
-            <td>2022-08-10 13:54:49</td>
-          </tr>
-
-          <tr>
-            <td>202208091105584358687639000700</td>
-            <td>叶碧晗</td>
-            <td>17394977036</td>
-            <td>50.00</td>
-            <td>微信</td>
-            <td>2022-08-09 11:06:05</td>
-          </tr>
-
-          <tr>
-            <td>202208081303215001893614441682</td>
-            <td></td>
-            <td>13963139699</td>
-            <td>400.00</td>
-            <td>微信</td>
-            <td>2022-08-08 13:03:38</td>
-          </tr>
-
-          <tr>
-            <td>202208081135139713398829027551</td>
-            <td></td>
-            <td>13760626641</td>
-            <td>400.00</td>
-            <td>微信</td>
-            <td>2022-08-08 11:35:26</td>
-          </tr>
-
-          <tr>
-            <td>202208081130239423735283173434</td>
-            <td></td>
-            <td>13888250196</td>
-            <td>200.00</td>
-            <td>微信</td>
-            <td>2022-08-08 11:30:37</td>
-          </tr>
+          <ng-container *ngFor="let model of dataSource; let i = index">
+            <tr>
+              <td>{{ (i + 1).toString().padStart(3, "0") }}</td>
+              <td>{{ model.name }}</td>
+              <td>{{ model.phone }}</td>
+              <td>{{ model.price }}</td>
+              <td>{{ model.orderType }}</td>
+              <td>{{ model.createTime }}</td>
+              <td>
+                <a tabindex>删除</a>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>

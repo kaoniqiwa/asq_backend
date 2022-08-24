@@ -8,7 +8,7 @@
   <ul class="nav nav-sidebar">
     <li *ngFor="let model of models; let i = index">
       <ng-container *ngIf="!model.children || model.children.length == 0">
-        <a [routerLink]="model.path">
+        <a [routerLink]="model.path" routerLinkActive="active">
           {{ model.title }}
         </a>
       </ng-container>
@@ -23,7 +23,9 @@
           [@growShrink]="model.state"
         >
           <li *ngFor="let child of model.children">
-            <a [routerLink]="child.path">{{ child.title }}</a>
+            <a [routerLink]="child.path" routerLinkActive="active">{{
+              child.title
+            }}</a>
           </li>
         </ul>
       </ng-container>
