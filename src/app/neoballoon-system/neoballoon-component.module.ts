@@ -17,7 +17,7 @@ import { DoctorOperateComponent } from './components/doctor-operate/doctor-opera
 import { MemberOperateComponent } from './components/member-operate/member-operate.component';
 import { BabyManageComponent } from './components/baby-manage/baby-manage.component';
 import { OrderManageComponent } from './components/order-manage/order-manage.component';
-import { SendNotifyComponent } from './components/send-notify/send-notify.component';
+import { InformManage } from './components/inform-manage/inform-manage.component';
 import { DoctorOperateToastComponent } from './components/doctor-operate-toast/doctor-operate-toast.component';
 import { BabyOperateComponent } from './components/baby-operate/baby-operate.component';
 
@@ -38,7 +38,7 @@ import { BabyOperateComponent } from './components/baby-operate/baby-operate.com
     MemberOperateComponent,
     BabyManageComponent,
     OrderManageComponent,
-    SendNotifyComponent,
+    InformManage,
     DoctorOperateToastComponent,
     BabyOperateComponent
   ],

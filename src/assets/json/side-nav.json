@@ -30,8 +30,8 @@
     },
     {
       "title": "前台页面编辑",
-      "id": "send-notify",
-      "path": "/neoballoon/neoballoon-manage/send-notify"
+      "id": "inform-manage",
+      "path": "/neoballoon/neoballoon-manage/inform-manage"
     }
   ]
 }

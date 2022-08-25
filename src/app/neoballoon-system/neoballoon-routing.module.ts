@@ -12,7 +12,7 @@ import { NeoballoonManageComponent } from "./components/neoballoon-manage/neobal
 import { OrderManageComponent } from "./components/order-manage/order-manage.component";
 import { QuestListComponent } from "./components/quest-list/quest-list.component";
 import { CompanyOperateComponent } from "./components/company-operate/company-operate.component";
-import { SendNotifyComponent } from "./components/send-notify/send-notify.component";
+import { InformManage } from "./components/inform-manage/inform-manage.component";
 import { NeoballoonComponent } from "./neoballoon.component";
 import { BabyOperateComponent } from "./components/baby-operate/baby-operate.component";
 
@@ -85,8 +85,8 @@ const routes: Routes = [
         component: DoctorOperateComponent
       },
       {
-        path: 'send-notify',
-        component: SendNotifyComponent
+        path: 'inform-manage',
+        component: InformManage
       },
 
     ]
