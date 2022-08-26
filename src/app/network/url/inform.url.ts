@@ -11,6 +11,11 @@ export class InformUrl {
   static list() {
     return `${this.basic}.php`;
   }
+
+  static getLatest() {
+    return `${this.basic}.php`;
+  }
+
   static get(id: string) {
     return `${this.basic}.php?id=${id}`
   }

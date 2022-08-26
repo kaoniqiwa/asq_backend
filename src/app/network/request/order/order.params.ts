@@ -4,5 +4,8 @@ export class GetOrderParams {
   pageSize?: number;
   id?: string;
   phone?: string;
+  beginTime?: Date;
+  endTime?: Date;
+
   flow!: string;
 }

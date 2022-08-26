@@ -1,8 +1,8 @@
 /*
  * @Author: zzl
  * @Date: 2021-09-16 10:11:01
- * @Last Modified by:   zzl
- * @Last Modified time: 2021-09-16 10:11:01
+ * @Last Modified by: pmx
+ * @Last Modified time: 2022-08-26 16:08:28
  */
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { HowellResponse } from '../model/howell-response.model';
@@ -44,7 +44,7 @@ export class ServiceHelper {
       }
 
     }
-    return true;
+    return plainToClass(t, response.data);;
 
   }
 }

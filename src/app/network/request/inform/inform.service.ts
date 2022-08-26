@@ -18,30 +18,23 @@ export class InformRequestService {
     this.type = this.basic.type(InformModel);
   }
 
-  // create(model: InformModel) {
-  //   return this.type.post(InformUrl.create(), model);
-  // }
+  create(model: InformModel) {
+    model.flow = 'addInform';
+    return this.type.post(InformUrl.create(), model);
+  }
   list(params: GetInformParams = new GetInformParams()) {
-    params.flow = 'listDoctor';
+    params.flow = 'listInform';
     return this.type.postArray(InformUrl.list(), params)
   }
-  getInform(params: GetInformParams = new GetInformParams()) {
-    params.flow = 'getInform';
-    return this.type.post(InformUrl.list(), params)
+  getLatestInform(params: GetInformParams = new GetInformParams()) {
+    params.flow = 'getLatestInform';
+    return this.type.post(InformUrl.getLatest(), params)
   }
 
-  // delete(params: GetInformParams = new GetInformParams()) {
-  //   params.flow = 'deleteDoctor';
-  //   return this.type.post(InformUrl.delete(), params)
-  // }
-  // get(id: string) {
-  //   return this.type.get(InformUrl.get(id));
-  // }
-
-  // update(model: InformModel) {
-  //   return this.type.post(InformUrl.update(), model)
-
-  // }
+  delete(params: GetInformParams = new GetInformParams()) {
+    params.flow = 'deleteInform';
+    return this.type.post(InformUrl.delete(), params)
+  }
 
 
 }

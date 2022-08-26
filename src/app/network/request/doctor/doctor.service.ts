@@ -22,6 +22,7 @@ export class DoctorRequestService {
   }
 
   create(model: DoctorModel) {
+    model.flow = 'addDoctor';
     return this.type.post(DoctorUrl.create(), model);
   }
   list(params: GetDoctorParams = new GetDoctorParams()) {
@@ -38,6 +39,7 @@ export class DoctorRequestService {
   }
 
   update(model: DoctorModel) {
+    model.flow = 'editDoctor';
     return this.type.post(DoctorUrl.update(), model)
 
   }

@@ -13,4 +13,6 @@ export class BabyModel {
   premature!: string;
   create_time!: string;
   update_time!: string;
+  flow?: string;
+
 }

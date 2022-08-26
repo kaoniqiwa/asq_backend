@@ -7,7 +7,6 @@ export class OrderManageModel {
   orderType!: OrderType;
   price!: string;
   createTime!: string;
-  updateTime!: string;
   flow?: string;
 
 }
@@ -18,12 +17,9 @@ export class OrderManageSearchInfo {
 export class OrderManageXLSX {
   id!: string;
   name!: string;
-  account_name!: string;
-  asq_total!: string;
-  asq_left!: string;
-  asq_se_total!: string;
-  asq_se_left!: string;
-  asq_se2_total!: string;
-  asq_se2_left!: string;
+  phone!: string;
+  order_type!: OrderType;
+  price!: string;
+  create_time!: string;
   [key: string]: any;
 }

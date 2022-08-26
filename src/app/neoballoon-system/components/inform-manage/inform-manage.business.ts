@@ -1,27 +1,31 @@
 import { Injectable } from "@angular/core";
-import { BabyManageConverter } from "src/app/converter/baby-manage.converter";
-import { GetBabyParams } from "src/app/network/request/baby/baby.params";
-import { BabyRequestService } from "src/app/network/request/baby/baby.service";
+import { InformManageConverter } from "src/app/converter/inform-manage.converter";
+import { InformModel } from "src/app/network/model/inform.model";
 import { GetInformParams } from "src/app/network/request/inform/inform.params";
 import { InformRequestService } from "src/app/network/request/inform/inform.service";
-import { BabyManageSearchInfo } from "src/app/view-model/baby-manage.model";
 
 @Injectable()
-export class SendNotifyBusiness {
+export class InformManageBusiness {
 
-  constructor(private _informRequest: InformRequestService,) {
+  constructor(private _informRequest: InformRequestService, private _converter: InformManageConverter) {
 
   }
 
   async init() {
     let params = new GetInformParams();
-
-    let data = await this._getInform(params);
-
-    return data;
+    let res = await this._getInform(params);
+    return res;
   }
 
   private _getInform(params: GetInformParams) {
-    return this._informRequest.getInform(params)
+    return this._informRequest.getLatestInform(params)
+  }
+  create(model: InformModel) {
+    return this._informRequest.create(model)
+  }
+  delete(id: string) {
+    let params = new GetInformParams();
+    params.id = id;
+    return this._informRequest.delete(params);
   }
 }

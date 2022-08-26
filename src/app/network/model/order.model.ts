@@ -7,6 +7,5 @@ export class OrderModel {
   order_type!: OrderType;
   price!: string;
   create_time!: string;
-  update_time!: string;
   flow?: string;
 }

@@ -3,20 +3,55 @@
     <div class="large-title underline-title">订单列表</div>
     <div class="operate-bar">
       <div class="left-wrapper questDate">
-        <button class="btn btn-default" style="margin-left: 10px">
+        选择时间:&nbsp;
+        <input
+          class="form-control"
+          type="text"
+          placeholder="开始时间"
+          readonly
+          DateTimePicker
+          [date]="beginTime"
+          [format]="dateFormat"
+          (change)="changeBegin($event)"
+        />
+        <span>-</span>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="结束时间"
+          readonly
+          DateTimePicker
+          [date]="endTime"
+          [format]="dateFormat"
+          (change)="changeEnd($event)"
+        />
+
+        <button
+          class="btn btn-default"
+          style="margin-left: 10px"
+          (click)="exportOrder()"
+        >
           导出数据
         </button>
       </div>
       <div class="right-wrapper">
-        <input type="search" class="search" />
-        <button class="btn btn-default btnSearch">搜索</button>
+        <input
+          type="search"
+          class="form-control"
+          maxlength="11"
+          [(ngModel)]="searchInfo.phone"
+          (keyup.enter)="search()"
+        />
+        <button class="btn btn-default btnSearch" (click)="search()">
+          搜索
+        </button>
       </div>
     </div>
   </div>
 
   <div class="vertical-main">
     <div class="table-header">
-      <table>
+      <table style="width: 100%">
         <colgroup>
           <col style="width: 10%" />
           <col style="width: 10%" />
@@ -53,14 +88,14 @@
         <tbody>
           <ng-container *ngFor="let model of dataSource; let i = index">
             <tr>
-              <td>{{ (i + 1).toString().padStart(3, "0") }}</td>
+              <td>{{ i + 1 }}</td>
               <td>{{ model.name }}</td>
               <td>{{ model.phone }}</td>
               <td>{{ model.price }}</td>
               <td>{{ model.orderType }}</td>
               <td>{{ model.createTime }}</td>
               <td>
-                <a tabindex>删除</a>
+                <a tabindex (click)="deleteOrder(model)">删除</a>
               </td>
             </tr>
           </ng-container>
@@ -71,6 +106,10 @@
 
   <div class="vertical-footer" style="justify-content: flex-end">
     <div class="footer-item">
+      <div class="footer-info">
+        <div class="info-item">当前数量: {{ page && page.recordCount }}</div>
+        <div class="info-item">总数量: {{ page && page.totalRecordCount }}</div>
+      </div>
       <app-paginator
         *ngIf="page"
         [showFirstLastButtons]="true"

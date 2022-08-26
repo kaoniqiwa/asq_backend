@@ -12,10 +12,11 @@
           maxlength="100"
           placeholder="暂无通知展示"
           readonly="readonly"
+          [value]="messageToShow"
         ></textarea>
       </div>
       <div>
-        <button class="press">删除通知</button>
+        <button class="press" (click)="deleteInform()">删除通知</button>
       </div>
     </div>
     <div style="margin-top: 50px">
@@ -25,14 +26,15 @@
           rows="10"
           cols="80"
           maxlength="100"
-          name="inform.content"
+          name="content"
           placeholder="发送通知会显示在企业端登录页和首页，最多100字,发送的通知会覆盖掉上一条通知，一次最多展示一条通知"
           required="required"
+          [(ngModel)]="messageToSubmit"
         ></textarea
         ><br />
       </div>
       <div>
-        <button class="press">发送通知</button>
+        <button class="press" (click)="submit()">发送通知</button>
       </div>
     </div>
   </div>

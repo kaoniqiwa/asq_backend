@@ -29,7 +29,7 @@ export class OrderManageConverter extends CommonModelConverter<OrderManageModel>
     model.phone = item.phone;
     model.orderType = item.order_type;
     model.price = item.price;
-    model.createTime = formatDate(item.create_time, 'yyy-MM-dd', 'zh-CN')
+    model.createTime = formatDate(item.create_time, 'yyy-MM-dd HH:mm:ss', 'zh-CN')
 
 
     return model;
