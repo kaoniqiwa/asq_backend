@@ -93,8 +93,8 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         this.myForm.patchValue(
           {
             name: this.companyModel.name,
-            accountName: this.companyModel.account_name,
-            accountPass: this.companyModel.account_pass,
+            accountName: this.companyModel.username,
+            accountPass: this.companyModel.password,
             asqTotal: this.companyModel.asq_total,
             asqLeft: this.companyModel.asq_left,
             asqSETotal: this.companyModel.asq_se_total,
@@ -163,8 +163,8 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         let model = new CompanyModel();
         model.id = "";
         model.name = this.myForm.value.name?.trim() ?? "";
-        model.account_name = this.myForm.value.accountName?.trim() ?? "";
-        model.account_pass = this.myForm.value.accountPass?.trim() ?? "";
+        model.username = this.myForm.value.accountName?.trim() ?? "";
+        model.password = this.myForm.value.accountPass?.trim() ?? "";
         model.asq_total = this.myForm.value.asqTotal ?? 0;
         model.asq_left = this.myForm.value.asqLeft ?? 0;
         model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
@@ -185,8 +185,8 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
       } else if (this.state == FormState.edit) {
         if (this.companyModel) {
           this.companyModel.name = this.myForm.value.name?.trim() ?? "";
-          this.companyModel.account_name = this.myForm.value.accountName?.trim() ?? "";
-          this.companyModel.account_pass = this.myForm.value.accountPass?.trim() ?? "";
+          this.companyModel.username = this.myForm.value.accountName?.trim() ?? "";
+          this.companyModel.password = this.myForm.value.accountPass?.trim() ?? "";
           this.companyModel.asq_total = this.myForm.value.asqTotal ?? 0;
           this.companyModel.asq_left = this.myForm.value.asqLeft ?? 0;
           this.companyModel.asq_se_total = this.myForm.value.asqSETotal ?? 0;

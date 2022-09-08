@@ -1,8 +1,8 @@
 import { BaseASQUrl } from "./base.url";
 
-export class OrdersUrl {
+export class OrderUrl {
   static get basic() {
-    return `${BaseASQUrl}/orders`;
+    return `${BaseASQUrl}/order`;
   }
 
   static create() {

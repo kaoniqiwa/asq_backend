@@ -30,7 +30,7 @@ export class CompanyManageComponent implements OnInit {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 9;
+  pageSize = 4;
 
   searchInfo: CompanyManageSearchInfo = {
     name: "",
@@ -107,6 +107,11 @@ export class CompanyManageComponent implements OnInit {
     let res = await this._business.deleteCompany(model.id);
     if (res) {
       this._toastrService.success('删除成功');
+
+
+      if (this.page?.recordCount == 1) {
+        this.pageIndex = Math.max(this.pageIndex - 1, 1);
+      }
       this._init();
     }
   }

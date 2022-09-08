@@ -25,7 +25,7 @@ export class CompanyManageConverter extends CommonModelConverter<CompanyManageMo
     model.id = item.id;
     model.doctors = item.doctors;
     model.name = item.name;
-    model.account_name = item.account_name;
+    model.username = item.username;
     model.asq_info = `${item.asq_left ??
       "-"}/${item.asq_total ?? "-"}`;
     model.asq_se_info = `${item.asq_se_left ?? "-"}/${item.asq_se_total ?? "-"}`;

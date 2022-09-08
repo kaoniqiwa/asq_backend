@@ -71,6 +71,9 @@ export class MemberManageComponent implements OnInit {
     let res = await this._business.deletMember(model.id);
     if (res) {
       this._toastrService.success('删除成功');
+      if (this.page?.recordCount == 1) {
+        this.pageIndex = Math.max(this.pageIndex - 1, 1);
+      }
       this._init();
     }
   }

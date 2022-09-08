@@ -3,7 +3,7 @@ import { DoctorModel } from "../network/model/doctor.model";
 export class CompanyManageModel {
   id!: string;
   name!: string;
-  account_name!: string;
+  username!: string;
   asq_info!: string;
   asq_se_info!: string;
   asq_se2_info!: string;
@@ -19,7 +19,7 @@ export class CompanyManageSearchInfo {
 export class CompanyManageXLSX {
   id!: string;
   name!: string;
-  account_name!: string;
+  username!: string;
   asq_total!: string;
   asq_left!: string;
   asq_se_total!: string;

@@ -59,7 +59,7 @@ export class CompanyManageBusiness {
       let xlsxModel = new CompanyManageXLSX();
       xlsxModel.id = (index + 1).toString();
       xlsxModel.name = model.name;
-      xlsxModel.account_name = model.account_name
+      xlsxModel.username = model.username
       xlsxModel.asq_left = model.asq_left + "";
       xlsxModel.asq_total = model.asq_total + "";
       xlsxModel.asq_se_left = model.asq_se_left + "";

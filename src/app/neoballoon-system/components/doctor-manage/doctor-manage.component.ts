@@ -37,6 +37,7 @@ export class DoctorManageComponent implements OnInit {
 
   private async _init() {
     let res = await this._business.init(this.searchInfo)
+
     this.dataSource = res;
   }
   async deleteDoctor(model: DoctorManageModel) {

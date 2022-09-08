@@ -3,8 +3,8 @@ import { DoctorModel } from "./doctor.model";
 export class CompanyModel {
   id!: string;
   name!: string;
-  account_name!: string;
-  account_pass!: string;
+  username!: string;
+  password!: string;
   asq_total!: number;
   asq_left!: number;
   asq_se_total!: number;
