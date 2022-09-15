@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
     }
   }
   private _checkForm() {
-    if (this.formGroup.get('userName')?.invalid) {
+    if (this.formGroup.get('username')?.invalid) {
       this._toastrService.warning('请输入账号');
       return;
     }
-    if (this.formGroup.get('passWord')?.invalid) {
+    if (this.formGroup.get('password')?.invalid) {
       this._toastrService.warning('请输入密码');
       return;
     }

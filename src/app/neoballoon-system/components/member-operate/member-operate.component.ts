@@ -44,9 +44,13 @@ export class MemberOperateComponent implements OnInit {
   constructor(private _business: MemberOperateBusiness, private _fb: FormBuilder,
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
 
+
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.mid = params['mid'];
+    })
+
     this._activeRoute.queryParams.subscribe((queryParams: Params) => {
       let type = queryParams['type'];
-      this.mid = queryParams['mid'];
 
       if (type == 'add') {
         this.state = FormState.add;

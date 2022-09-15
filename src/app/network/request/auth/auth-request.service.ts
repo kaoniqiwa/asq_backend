@@ -3,9 +3,8 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { CookieService } from "ngx-cookie-service";
-import { LocalStorageService } from "src/app/common/service/local-storage.service";
 import { SessionStorageService } from "src/app/common/service/session-storage.service";
-import { GlobalStoreService } from "src/app/common/service/store.service";
+import { GlobalStorageService } from "src/app/common/service/global-storage.service";
 import { Md5 } from 'ts-md5';
 import CryptoJS from 'crypto-js';
 
@@ -24,12 +23,11 @@ export class AuthorizationService implements CanActivate {
   private _config: AxiosRequestConfig = { headers: {} };
 
   constructor(
-    private _localStorageService: LocalStorageService,
+    private _globalStorageService: GlobalStorageService,
     private _sessionStorageService: SessionStorageService,
 
     private _cookieService: CookieService,
     private _router: Router,
-    private _store: GlobalStoreService
   ) {
     if (this._cookieService.check('username')) {
       let username = this._cookieService.get('username');
@@ -58,8 +56,8 @@ export class AuthorizationService implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // console.log(route, state);
     let challenge = this._sessionStorageService.challenge;
-    let user = this._localStorageService.user;
-    let holdCookie = this._cookieService.check('userName');
+    let user = this._globalStorageService.user;
+    let holdCookie = this._cookieService.check('username');
     // console.log(userResource);
     if (challenge && user && user.id && holdCookie) {
       return true;
@@ -74,7 +72,7 @@ export class AuthorizationService implements CanActivate {
     // return axios.get('/api/login.php')
     this._username = username;
     this._password = password;
-    this._config.url = '/api/backend/login.php';
+    this._config.url = '/api/back_end.login.php';
 
     this._config.headers = {
       'X-Webbrowser-Authentication': 'Forbidden',
@@ -131,7 +129,7 @@ export class AuthorizationService implements CanActivate {
     let userName = window.btoa(
       prefix + user.username + suffix
     );
-    this._cookieService.set('userName', userName, options);
+    this._cookieService.set('username', userName, options);
 
     //password
     prefix = CryptoJS.MD5(
@@ -143,10 +141,9 @@ export class AuthorizationService implements CanActivate {
     let passWord = window.btoa(
       prefix + password + suffix
     );
-    this._cookieService.set('passWord', passWord, options);
+    this._cookieService.set('password', passWord, options);
 
-    this._localStorageService.user = user;
-    this._store.password = passWord;
+    this._globalStorageService.user = user;
   }
 
 

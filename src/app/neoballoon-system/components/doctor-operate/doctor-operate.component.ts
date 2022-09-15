@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
@@ -23,7 +23,7 @@ export class DoctorOperateComponent implements OnInit {
   state: FormState = FormState.add;
 
 
-  id: string = '';
+  did: string = '';
   cid: string = '';
 
 
@@ -37,11 +37,13 @@ export class DoctorOperateComponent implements OnInit {
 
   constructor(private _business: DoctorOperateBusiness, private _fb: FormBuilder, private _router: Router, private _activeRoute: ActivatedRoute, private _toastrService: ToastrService) {
 
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.cid = params['cid'];
+      this.did = params['did']
+    })
+
     this._activeRoute.queryParams.subscribe(params => {
       let type = params['type'];
-      this.cid = params['cid'];
-      this.id = params['id'];
-
       if (type == 'add') {
         this.state = FormState.add;
       } else if (type == 'edit') {
@@ -52,7 +54,7 @@ export class DoctorOperateComponent implements OnInit {
 
   async ngOnInit() {
     if (this.state == FormState.edit) {
-      this.doctorModel = await this._business.get(this.id);
+      this.doctorModel = await this._business.get(this.did);
       if (this.doctorModel) {
         this.myForm.patchValue(
           {
@@ -103,7 +105,7 @@ export class DoctorOperateComponent implements OnInit {
 
   }
   reset() {
-    this._router.navigateByUrl(`/neoballoon/neoballoon-manage/doctor-manage?cid=${this.cid}`)
+    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-manage", this.cid])
   }
   private _checkForm() {
     if (this.myForm.invalid) {

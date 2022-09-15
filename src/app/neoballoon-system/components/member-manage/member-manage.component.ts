@@ -54,15 +54,13 @@ export class MemberManageComponent implements OnInit {
   addMember() {
     this._router.navigate(['/neoballoon/neoballoon-manage/member-operate'], {
       queryParams: {
-        mid: '',
         type: 'add'
       }
     })
   }
   editMember(model: MemberManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/member-operate'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/member-operate', model.id], {
       queryParams: {
-        mid: model.id,
         type: 'edit'
       }
     })
@@ -79,11 +77,7 @@ export class MemberManageComponent implements OnInit {
   }
 
   babyManage(model: MemberManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/baby-manage'], {
-      queryParams: {
-        mid: model.id,
-      }
-    })
+    this._router.navigate(['/neoballoon/neoballoon-manage/baby-manage', model.id])
   }
 
   changeBegin(date: Date) {

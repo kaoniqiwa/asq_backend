@@ -40,7 +40,7 @@ const routes: Routes = [
         component: CompanyManageComponent
       },
       {
-        path: "company-operate",
+        path: "company-operate/:cid",
         component: CompanyOperateComponent
       },
       {
@@ -48,11 +48,11 @@ const routes: Routes = [
         component: MemberManageComponent
       },
       {
-        path: "member-operate",
+        path: "member-operate/:mid",
         component: MemberOperateComponent
       },
       {
-        path: "baby-manage",
+        path: "baby-manage/:mid",
         component: BabyManageComponent
       },
       {
@@ -77,11 +77,11 @@ const routes: Routes = [
         component: HospitalInfoComponent
       },
       {
-        path: 'doctor-manage',
+        path: 'doctor-manage/:cid',
         component: DoctorManageComponent
       },
       {
-        path: 'doctor-operate',
+        path: 'doctor-operate/:cid/:did',
         component: DoctorOperateComponent
       },
       {

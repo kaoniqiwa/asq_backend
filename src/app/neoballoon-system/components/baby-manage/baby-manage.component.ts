@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BabyManageModel, BabyManageSearchInfo } from 'src/app/view-model/baby-manage.model';
 import { BabyManageBusiness } from './baby-manage.business';
@@ -23,8 +23,9 @@ export class BabyManageComponent implements OnInit {
 
 
   constructor(private _business: BabyManageBusiness, private _router: Router, private _activeRoute: ActivatedRoute, private _toastrService: ToastrService) {
-    this._activeRoute.queryParams.subscribe(params => {
-      this.searchInfo.mid = params['mid']
+
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.searchInfo.mid = params['mid'];
     })
   }
 

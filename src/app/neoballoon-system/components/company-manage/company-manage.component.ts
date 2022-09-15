@@ -30,7 +30,7 @@ export class CompanyManageComponent implements OnInit {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 4;
+  pageSize = 9;
 
   searchInfo: CompanyManageSearchInfo = {
     name: "",
@@ -88,17 +88,15 @@ export class CompanyManageComponent implements OnInit {
 
   }
   addCompany() {
-    this._router.navigate(['/neoballoon/neoballoon-manage/company-operate'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate'], {
       queryParams: {
-        cid: '',
         type: 'add'
       }
     })
   }
   editCompany(model: CompanyManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/company-operate'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-operate/', model.id], {
       queryParams: {
-        cid: model.id,
         type: 'edit'
       }
     })
@@ -116,11 +114,7 @@ export class CompanyManageComponent implements OnInit {
     }
   }
   doctorManage(model: CompanyManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/doctor-manage'], {
-      queryParams: {
-        cid: model.id,
-      }
-    })
+    this._router.navigate(['/neoballoon/neoballoon-manage/doctor-manage', model.id])
   }
 
   private _getTitle() {

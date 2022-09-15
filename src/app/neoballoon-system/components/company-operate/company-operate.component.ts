@@ -1,3 +1,4 @@
+
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -73,9 +74,12 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
   constructor(private _business: CompanyOperateBusiness, private _fb: FormBuilder,
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
+
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.cid = params['cid'];
+    })
     this._activeRoute.queryParams.subscribe((queryParams: Params) => {
       let type = queryParams['type'];
-      this.cid = queryParams['cid'];
 
       if (type == 'add') {
         this.state = FormState.add;
@@ -171,6 +175,8 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
         model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
         model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+
+        model.create_time = new Date().toISOString();
 
         let res = await this._business.create(model);
         if (res) {

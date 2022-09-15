@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/common/service/local-storage.service';
 import { SessionStorageService } from 'src/app/common/service/session-storage.service';
-import { GlobalStoreService } from 'src/app/common/service/store.service';
+import { GlobalStorageService } from 'src/app/common/service/global-storage.service';
 import { RoutePath } from 'src/app/enum/route-path.enum';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,8 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderNavComponent implements OnInit {
 
   constructor(private _sessionStorageService: SessionStorageService,
-    private _localStorageService: LocalStorageService,
-    private _store: GlobalStoreService,
+    private _globalStorageService: GlobalStorageService,
     private _cookieService: CookieService,
     private _router: Router) { }
 
@@ -24,8 +23,8 @@ export class HeaderNavComponent implements OnInit {
   }
   logoOut() {
     this._sessionStorageService.clear();
-    this._localStorageService.clear();
-
+    this._cookieService.deleteAll("/");
+    this._globalStorageService.clear();
     this._router.navigateByUrl(RoutePath.login)
   }
 

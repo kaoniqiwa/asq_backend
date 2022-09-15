@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Page } from 'src/app/network/model/page_list.model';
 import { CompanyManageSearchInfo } from 'src/app/view-model/company-manage.model';
@@ -25,8 +25,8 @@ export class DoctorManageComponent implements OnInit {
 
 
   constructor(private _business: DoctorManageBusiness, private _router: Router, private _activeRoute: ActivatedRoute, private _toastrService: ToastrService) {
-    this._activeRoute.queryParams.subscribe(params => {
-      this.searchInfo.cid = params['cid']
+    this._activeRoute.params.subscribe((params: Params) => {
+      this.searchInfo.cid = params['cid'];
     })
   }
 
@@ -46,18 +46,15 @@ export class DoctorManageComponent implements OnInit {
     this._init();
   }
   addDoctor() {
-    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate"], {
+    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate", this.searchInfo.cid, ""], {
       queryParams: {
-        cid: this.searchInfo.cid,
         type: 'add'
       }
     })
   }
   editDoctor(model: DoctorManageModel) {
-    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate"], {
+    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate", this.searchInfo.cid, model.id], {
       queryParams: {
-        id: model.id,
-        cid: this.searchInfo.cid,
         type: 'edit'
       }
     })
