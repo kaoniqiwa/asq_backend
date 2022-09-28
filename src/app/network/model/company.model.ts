@@ -1,18 +1,18 @@
 import { DoctorModel } from "./doctor.model";
 
 export class CompanyModel {
-  id!: string;
-  name!: string;
-  username!: string;
-  password!: string;
-  asq_total!: number;
-  asq_left!: number;
-  asq_se_total!: number;
-  asq_se_left!: number;
-  asq_se_2_total!: number;
-  asq_se_2_left!: number;
-  create_time?: string;
-  update_time?: string;
-  doctors!: DoctorModel[];
-  flow?: string;
+  Id!: string;
+  Name!: string;
+  Username!: string;
+  Password!: string;
+  AsqTotal!: number;
+  AsqLeft!: number;
+  AsqSeTotal!: number;
+  AsqSeLeft!: number;
+  AsqSe2Total!: number;
+  AsqSe2Left!: number;
+  CreateTime?: string;
+  UpdateTime?: string;
+  Doctors!: DoctorModel[];
+  Flow?: string;
 }

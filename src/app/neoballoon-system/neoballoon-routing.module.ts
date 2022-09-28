@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AccountStatisticComponent } from "./components/account-statistic/account-statistic.component";
 import { BabyManageComponent } from "./components/baby-manage/baby-manage.component";
-import { CompanyManageComponent } from "./components/company-manage/company-manage.component";
+import { CompanyListComponent } from "./components/company-list/company-list.component";
 import { DoctorManageComponent } from "./components/doctor-manage/doctor-manage.component";
 import { DoctorOperateComponent } from "./components/doctor-operate/doctor-operate.component";
 import { HospitalInfoComponent } from "./components/hospital-info/hospital-info.component";
@@ -15,6 +15,7 @@ import { CompanyOperateComponent } from "./components/company-operate/company-op
 import { InformManage } from "./components/inform-manage/inform-manage.component";
 import { NeoballoonComponent } from "./neoballoon.component";
 import { BabyOperateComponent } from "./components/baby-operate/baby-operate.component";
+import { CompanyManageComponent } from "./components/company-manage/company-manage.component";
 
 const routes: Routes = [
   {
@@ -37,7 +38,21 @@ const routes: Routes = [
       },
       {
         path: 'company-manage',
-        component: CompanyManageComponent
+        component: CompanyManageComponent,
+        children: [
+          {
+            path: "",
+            redirectTo: "company-list", pathMatch: 'full'
+
+          },
+          {
+            path: "company-list",
+            component: CompanyListComponent
+          }, {
+            path: "company-operate/:cid",
+            component: CompanyOperateComponent
+          }
+        ]
       },
       {
         path: "company-operate/:cid",

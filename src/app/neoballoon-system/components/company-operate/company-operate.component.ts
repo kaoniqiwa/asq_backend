@@ -93,18 +93,18 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     if (this.state == FormState.edit) {
       this.companyModel = await this._business.get(this.cid);
       if (this.companyModel) {
-        this.doctorsInModel = [...this.companyModel.doctors];
+        // this.doctorsInModel = [...this.companyModel.Doctors];
         this.myForm.patchValue(
           {
-            name: this.companyModel.name,
-            accountName: this.companyModel.username,
-            accountPass: this.companyModel.password,
-            asqTotal: this.companyModel.asq_total,
-            asqLeft: this.companyModel.asq_left,
-            asqSETotal: this.companyModel.asq_se_total,
-            asqSELeft: this.companyModel.asq_se_left,
-            asqSE2Total: this.companyModel.asq_se_2_total,
-            asqSE2Left: this.companyModel.asq_se_2_left
+            name: this.companyModel.Name,
+            accountName: this.companyModel.Username,
+            accountPass: this.companyModel.Password,
+            asqTotal: this.companyModel.AsqTotal,
+            asqLeft: this.companyModel.AsqLeft,
+            asqSETotal: this.companyModel.AsqSeTotal,
+            asqSELeft: this.companyModel.AsqSeLeft,
+            asqSE2Total: this.companyModel.AsqSe2Total,
+            asqSE2Left: this.companyModel.AsqSe2Left
           }
         )
       }
@@ -165,23 +165,23 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
         let model = new CompanyModel();
-        model.id = "";
-        model.name = this.myForm.value.name?.trim() ?? "";
-        model.username = this.myForm.value.accountName?.trim() ?? "";
-        model.password = this.myForm.value.accountPass?.trim() ?? "";
-        model.asq_total = this.myForm.value.asqTotal ?? 0;
-        model.asq_left = this.myForm.value.asqLeft ?? 0;
-        model.asq_se_total = this.myForm.value.asqSETotal ?? 0;
-        model.asq_se_left = this.myForm.value.asqSELeft ?? 0;
-        model.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
-        model.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+        model.Id = "";
+        model.Name = this.myForm.value.name?.trim() ?? "";
+        model.Username = this.myForm.value.accountName?.trim() ?? "";
+        model.Password = this.myForm.value.accountPass?.trim() ?? "";
+        model.AsqTotal = this.myForm.value.asqTotal ?? 0;
+        model.AsqLeft = this.myForm.value.asqLeft ?? 0;
+        model.AsqSeTotal = this.myForm.value.asqSETotal ?? 0;
+        model.AsqSeLeft = this.myForm.value.asqSELeft ?? 0;
+        model.AsqSe2Total = this.myForm.value.asqSE2Total ?? 0;
+        model.AsqSe2Left = this.myForm.value.asqSE2Left ?? 0;
 
-        model.create_time = new Date().toISOString();
+        model.CreateTime = new Date().toISOString();
 
         let res = await this._business.create(model);
         if (res) {
           if (this.doctorsToBeAdd.length) {
-            let doctors = await this._business.addDoctor(res.id, this.doctorsToBeAdd);
+            let doctors = await this._business.addDoctor(res.Id, this.doctorsToBeAdd);
 
           }
           this._toastrService.success('操作成功');
@@ -190,24 +190,24 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
         }
       } else if (this.state == FormState.edit) {
         if (this.companyModel) {
-          this.companyModel.name = this.myForm.value.name?.trim() ?? "";
-          this.companyModel.username = this.myForm.value.accountName?.trim() ?? "";
-          this.companyModel.password = this.myForm.value.accountPass?.trim() ?? "";
-          this.companyModel.asq_total = this.myForm.value.asqTotal ?? 0;
-          this.companyModel.asq_left = this.myForm.value.asqLeft ?? 0;
-          this.companyModel.asq_se_total = this.myForm.value.asqSETotal ?? 0;
-          this.companyModel.asq_se_left = this.myForm.value.asqSELeft ?? 0;
-          this.companyModel.asq_se_2_total = this.myForm.value.asqSE2Total ?? 0;
-          this.companyModel.asq_se_2_left = this.myForm.value.asqSE2Left ?? 0;
+          this.companyModel.Name = this.myForm.value.name?.trim() ?? "";
+          this.companyModel.Username = this.myForm.value.accountName?.trim() ?? "";
+          this.companyModel.Password = this.myForm.value.accountPass?.trim() ?? "";
+          this.companyModel.AsqTotal = this.myForm.value.asqTotal ?? 0;
+          this.companyModel.AsqLeft = this.myForm.value.asqLeft ?? 0;
+          this.companyModel.AsqSeTotal = this.myForm.value.asqSETotal ?? 0;
+          this.companyModel.AsqSeLeft = this.myForm.value.asqSELeft ?? 0;
+          this.companyModel.AsqSe2Total = this.myForm.value.asqSE2Total ?? 0;
+          this.companyModel.AsqSe2Left = this.myForm.value.asqSE2Left ?? 0;
 
           let res = await this._business.update(this.companyModel)
           if (res) {
 
             if (this.doctorsToBeDelete.length) {
-              await this._business.deleteDoctor(res.id, this.doctorsToBeDelete);
+              await this._business.deleteDoctor(res.Id, this.doctorsToBeDelete);
             }
             if (this.doctorsToBeAdd.length) {
-              await this._business.addDoctor(res.id, this.doctorsToBeAdd)
+              await this._business.addDoctor(res.Id, this.doctorsToBeAdd)
             }
             if (this.doctorsInModel.length) {
               await this._business.editDoctor(this.doctorsInModel)

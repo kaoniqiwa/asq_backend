@@ -9,27 +9,27 @@ import { CompanyModel } from "src/app/network/model/company.model";
 import { Page, PagedList } from "src/app/network/model/page_list.model";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { CompanyRequestService } from "src/app/network/request/company/company.service";
-import { CompanyManageModel, CompanyManageSearchInfo, CompanyManageXLSX } from "src/app/view-model/company-manage.model";
+import { CompanyListModel, CompanyListSearchInfo, CompanyListXLSX } from "src/app/view-model/company-manage.model";
 
 @Injectable()
-export class CompanyManageBusiness {
+export class CompanyListBusiness {
 
 
   constructor(private _companyRequest: CompanyRequestService, private _converter: CompanyManageConverter) {
 
   }
-  async init(searchInfo: CompanyManageSearchInfo, pageIndex = 1, pageSize = 9) {
+  async init(searchInfo: CompanyListSearchInfo, pageIndex = 1, pageSize = 9) {
     let params = new GetCompanyParams();
-    params.pageIndex = pageIndex;
-    params.pageSize = pageSize;
+    params.PageIndex = pageIndex;
+    params.PageSize = pageSize;
     if (searchInfo.name) {
-      params.name = searchInfo.name
+      params.Name = searchInfo.name.trim();
     }
 
 
     let { data: Data, page: Page } = await this._listCompany(params);
     let data = this._converter.iterateToModel(Data)
-    let res: PagedList<CompanyManageModel> = {
+    let res: PagedList<CompanyListModel> = {
       page: Page,
       data: data,
     };
@@ -42,13 +42,13 @@ export class CompanyManageBusiness {
   }
   deleteCompany(id: string) {
     let params = new GetCompanyParams();
-    params.id = id;
+    params.Id = id;
     return this._companyRequest.delete(params)
   }
   getExport(beginTime: Date, endTime: Date) {
     let params = new GetCompanyParams();
-    params.beginTime = Time.beginTime(beginTime);
-    params.endTime = Time.endTime(endTime);
+    params.BeginTime = Time.beginTime(beginTime);
+    params.EndTime = Time.endTime(endTime);
 
     return this._companyRequest.export(params);
   }
@@ -56,21 +56,21 @@ export class CompanyManageBusiness {
   exportXLSX(title: string, header: string[], models: CompanyModel[]) {
     let doctorNum: number = 0;
     let xlsxModels = models.map((model, index) => {
-      let xlsxModel = new CompanyManageXLSX();
+      let xlsxModel = new CompanyListXLSX();
       xlsxModel.id = (index + 1).toString();
-      xlsxModel.name = model.name;
-      xlsxModel.username = model.username
-      xlsxModel.asq_left = model.asq_left + "";
-      xlsxModel.asq_total = model.asq_total + "";
-      xlsxModel.asq_se_left = model.asq_se_left + "";
-      xlsxModel.asq_se_total = model.asq_se_total + "";
-      xlsxModel.asq_se2_left = model.asq_se_2_left + "";
-      xlsxModel.asq_se2_total = model.asq_se_2_total + "";
+      xlsxModel.name = model.Name;
+      xlsxModel.username = model.Username
+      xlsxModel.asq_left = model.AsqLeft + "";
+      xlsxModel.asq_total = model.AsqTotal + "";
+      xlsxModel.asq_se_left = model.AsqSeLeft + "";
+      xlsxModel.asq_se_total = model.AsqSeTotal + "";
+      xlsxModel.asq_se2_left = model.AsqSe2Left + "";
+      xlsxModel.asq_se2_total = model.AsqSe2Total + "";
 
-      doctorNum = Math.max(doctorNum, model.doctors.length);
-      for (let i = 0; i < model.doctors.length; i++) {
+      doctorNum = Math.max(doctorNum, model.Doctors.length);
+      for (let i = 0; i < model.Doctors.length; i++) {
 
-        xlsxModel['doctor' + (i + 1)] = model.doctors[i].name
+        xlsxModel['doctor' + (i + 1)] = model.Doctors[i].name
       }
 
       return xlsxModel;
@@ -81,6 +81,9 @@ export class CompanyManageBusiness {
 
     // console.log(xlsxModels)
     HwExport.exportXLXS(title, header, xlsxModels);
+
+  }
+  getData() {
 
   }
 

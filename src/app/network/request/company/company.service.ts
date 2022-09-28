@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { CompanyManageModel } from "src/app/view-model/company-manage.model";
+import { CompanyListModel } from "src/app/view-model/company-manage.model";
 import { CompanyModel } from "../../model/company.model";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
@@ -20,27 +20,27 @@ export class CompanyRequestService {
   }
 
   list(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'listCompany';
+    params.Flow = 'listCompany';
     return this.type.paged(CompanyUrl.list(), params)
   }
   create(model: CompanyModel) {
-    model.flow = 'addCompany'
+    model.Flow = 'addCompany'
     return this.type.post(CompanyUrl.create(), model);
   }
   get(id: string) {
     return this.type.get(CompanyUrl.get(id));
   }
   delete(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'deleteCompany';
+    params.Flow = 'deleteCompany';
     return this.type.post(CompanyUrl.delete(), params)
 
   }
   update(model: CompanyModel) {
-    model.flow = 'editCompany'
+    model.Flow = 'editCompany'
     return this.type.post(CompanyUrl.update(), model)
   }
   export(params: GetCompanyParams = new GetCompanyParams()) {
-    params.flow = 'exportCompany';
+    params.Flow = 'exportCompany';
     return this.type.postArray(CompanyUrl.export(), params)
   }
 

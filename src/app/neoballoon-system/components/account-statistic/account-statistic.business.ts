@@ -15,8 +15,8 @@ export class AccountStatisticBusiness {
   }
   getCompanyList() {
     let params = new GetCompanyParams();
-    params.pageIndex = 1;
-    params.pageSize = 9527e5;
+    params.PageIndex = 1;
+    params.PageSize = 9527e5;
     return this._companyRequest.list(params)
   }
   getMemberList() {

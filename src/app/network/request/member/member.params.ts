@@ -1,7 +1,7 @@
 export class GetMemberParams {
   pageIndex?: number;
   pageSize?: number;
-  id?: string;
+  Id?: string;
   name?: string;
   beginTime?: Date;
   endTime?: Date;

@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Page } from 'src/app/network/model/page_list.model';
-import { CompanyManageSearchInfo } from 'src/app/view-model/company-manage.model';
+import { CompanyListSearchInfo } from 'src/app/view-model/company-manage.model';
 import { DoctorManageModel, DoctorManageSearchInfo } from 'src/app/view-model/doctor-manage.model';
 import { DoctorManageBusiness } from './doctor-manage.business';
 

@@ -1,6 +1,6 @@
 import { DoctorModel } from "../network/model/doctor.model";
 
-export class CompanyManageModel {
+export class CompanyListModel {
   id!: string;
   name!: string;
   username!: string;
@@ -10,13 +10,13 @@ export class CompanyManageModel {
   doctors!: DoctorModel[];
 
 }
-export class CompanyManageSearchInfo {
+export class CompanyListSearchInfo {
   name!: string;
   beginTime?: Date;
   endTime?: Date;
 }
 
-export class CompanyManageXLSX {
+export class CompanyListXLSX {
   id!: string;
   name!: string;
   username!: string;

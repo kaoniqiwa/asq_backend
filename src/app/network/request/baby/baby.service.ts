@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { CompanyManageModel } from "src/app/view-model/company-manage.model";
+import { CompanyListModel } from "src/app/view-model/company-manage.model";
 import { BabyModel } from "../../model/baby.model";
 import { CompanyModel } from "../../model/company.model";
 import { BabyUrl } from "../../url/baby.url";

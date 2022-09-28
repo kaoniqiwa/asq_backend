@@ -11,7 +11,7 @@ import { Page, PagedList } from "src/app/network/model/page_list.model";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { GetMemberParams } from "src/app/network/request/member/member.params";
 import { MemberRequestService } from "src/app/network/request/member/member.service";
-import { CompanyManageModel, CompanyManageSearchInfo, CompanyManageXLSX } from "src/app/view-model/company-manage.model";
+import { CompanyListModel, CompanyListSearchInfo, CompanyListXLSX } from "src/app/view-model/company-manage.model";
 import { MemberManageModel, MemberManageSearchInfo } from "src/app/view-model/member-manage.model";
 
 @Injectable()
@@ -39,12 +39,12 @@ export class MemberManageBusiness {
     return res;
 
   }
-  private _listMember(params: GetCompanyParams = new GetCompanyParams()) {
+  private _listMember(params: GetMemberParams = new GetMemberParams()) {
     return this._memberRequest.list(params)
   }
   deletMember(id: string) {
-    let params = new GetCompanyParams();
-    params.id = id;
+    let params = new GetMemberParams();
+    params.Id = id;
     return this._memberRequest.delete(params)
   }
   // getExport(beginTime: Date, endTime: Date) {

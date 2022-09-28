@@ -2,7 +2,7 @@ import { DatePipe, formatDate } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { CompanyModel } from "../network/model/company.model";
 import { OrderModel } from "../network/model/order.model";
-import { CompanyManageModel } from "../view-model/company-manage.model";
+import { CompanyListModel } from "../view-model/company-manage.model";
 import { OrderManageModel } from "../view-model/order-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
 

@@ -1,11 +1,11 @@
 import { PagedParams } from "../IParams.interface";
 
 export class GetCompanyParams {
-  pageIndex?: number;
-  pageSize?: number;
-  id?: string;
-  name?: string;
-  beginTime?: Date;
-  endTime?: Date;
-  flow!: string;
+  PageIndex?: number;
+  PageSize?: number;
+  Id?: string;
+  Name?: string;
+  BeginTime?: Date;
+  EndTime?: Date;
+  Flow!: string;
 }

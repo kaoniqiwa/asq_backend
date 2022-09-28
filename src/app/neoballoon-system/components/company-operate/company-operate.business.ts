@@ -21,7 +21,6 @@ export class CompanyOperateBusiness {
     return this._companyRequest.create(model)
   }
   get(id: string) {
-
     return this._companyRequest.get(id);
   }
 

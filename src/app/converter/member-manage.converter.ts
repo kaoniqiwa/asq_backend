@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { mode } from "crypto-js";
 import { CompanyModel } from "../network/model/company.model";
 import { MemberModel } from "../network/model/member.model";
-import { CompanyManageModel } from "../view-model/company-manage.model";
+import { CompanyListModel } from "../view-model/company-manage.model";
 import { MemberManageModel } from "../view-model/member-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
 
