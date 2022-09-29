@@ -47,10 +47,10 @@ export class DoctorOperateToastComponent implements OnInit {
   ngOnInit(): void {
     if (this.state == FormState.edit) {
       this.myForm.patchValue({
-        name: this.doctor?.name,
-        level: this.doctor?.level,
-        dept: this.doctor?.dept,
-        phone: this.doctor?.phone
+        name: this.doctor?.Name,
+        level: this.doctor?.Level,
+        dept: this.doctor?.Dept,
+        phone: this.doctor?.Phone
       })
     }
   }
@@ -58,12 +58,12 @@ export class DoctorOperateToastComponent implements OnInit {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
         let model = new DoctorModel();
-        model.id = '';
-        model.cid = this.cid;
-        model.name = this.myForm.value.name ?? "";
-        model.level = this.myForm.value.level ?? ""
-        model.dept = this.myForm.value.dept ?? "";
-        model.phone = this.myForm.value.phone ?? "";
+        model.Id = '';
+        model.Cid = this.cid;
+        model.Name = this.myForm.value.name ?? "";
+        model.Level = this.myForm.value.level ?? ""
+        model.Dept = this.myForm.value.dept ?? "";
+        model.Phone = this.myForm.value.phone ?? "";
 
 
         this.closeDoctorOperate.emit({
@@ -74,10 +74,10 @@ export class DoctorOperateToastComponent implements OnInit {
       else if (this.state == FormState.edit) {
 
         if (this.doctor) {
-          this.doctor.name = this.myForm.value.name ?? "";
-          this.doctor.level = this.myForm.value.level ?? ""
-          this.doctor.dept = this.myForm.value.dept ?? "";
-          this.doctor.phone = this.myForm.value.phone ?? "";
+          this.doctor.Name = this.myForm.value.name ?? "";
+          this.doctor.Level = this.myForm.value.level ?? ""
+          this.doctor.Dept = this.myForm.value.dept ?? "";
+          this.doctor.Phone = this.myForm.value.phone ?? "";
           this.closeDoctorOperate.emit({
             data: this.doctor,
             type: this.state

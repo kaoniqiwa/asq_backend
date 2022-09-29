@@ -48,8 +48,8 @@ export class OrderManageComponent implements OnInit {
 
   private async _init() {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
-    this.dataSource = res.data;
-    this.page = res.page;
+    this.dataSource = res.Data;
+    this.page = res.Page;
     console.log('order-manage: ', res);
   }
   pageEvent(pageInfo: PageEvent) {
@@ -99,7 +99,7 @@ export class OrderManageComponent implements OnInit {
     if (res) {
       this._toastrService.success('删除成功');
 
-      if (this.page?.recordCount == 1) {
+      if (this.page?.RecordCount == 1) {
         this.pageIndex = Math.max(this.pageIndex - 1, 1);
       }
       this._init();

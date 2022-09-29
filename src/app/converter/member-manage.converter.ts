@@ -25,14 +25,13 @@ export class MemberManageConverter extends CommonModelConverter<MemberManageMode
 
   private _fromMemberModel(item: MemberModel) {
     let model = new MemberManageModel();
-    model.id = item.id;
-    model.name = item.name;
-    model.gender = item.gender;
-    model.phone = item.phone;
-    model.address = item.address || "-";
-    model.surveyLeft = item.survey_left || 0;
-    model.create_time = item.create_time || '-';
-    model.babys = item.babys;
+    model.id = item.Id;
+    model.name = item.Name;
+    model.gender = item.Gender;
+    model.phone = item.Phone;
+    model.address = item.Address || "-";
+    model.surveyLeft = item.SurveyLeft || 0;
+    model.create_time = item.CreateTime || '-';
     return model;
   }
 

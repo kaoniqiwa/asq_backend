@@ -27,11 +27,11 @@ export class CompanyListBusiness {
     }
 
 
-    let { data: Data, page: Page } = await this._listCompany(params);
+    let { Data: Data, Page: Page } = await this._listCompany(params);
     let data = this._converter.iterateToModel(Data)
     let res: PagedList<CompanyListModel> = {
-      page: Page,
-      data: data,
+      Page: Page,
+      Data: data,
     };
 
     return res;
@@ -54,33 +54,33 @@ export class CompanyListBusiness {
   }
 
   exportXLSX(title: string, header: string[], models: CompanyModel[]) {
-    let doctorNum: number = 0;
-    let xlsxModels = models.map((model, index) => {
-      let xlsxModel = new CompanyListXLSX();
-      xlsxModel.id = (index + 1).toString();
-      xlsxModel.name = model.Name;
-      xlsxModel.username = model.Username
-      xlsxModel.asq_left = model.AsqLeft + "";
-      xlsxModel.asq_total = model.AsqTotal + "";
-      xlsxModel.asq_se_left = model.AsqSeLeft + "";
-      xlsxModel.asq_se_total = model.AsqSeTotal + "";
-      xlsxModel.asq_se2_left = model.AsqSe2Left + "";
-      xlsxModel.asq_se2_total = model.AsqSe2Total + "";
+    // let doctorNum: number = 0;
+    // let xlsxModels = models.map((model, index) => {
+    //   let xlsxModel = new CompanyListXLSX();
+    //   xlsxModel.id = (index + 1).toString();
+    //   xlsxModel.name = model.Name;
+    //   xlsxModel.username = model.Username
+    //   xlsxModel.asq_left = model.AsqLeft + "";
+    //   xlsxModel.asq_total = model.AsqTotal + "";
+    //   xlsxModel.asq_se_left = model.AsqSeLeft + "";
+    //   xlsxModel.asq_se_total = model.AsqSeTotal + "";
+    //   xlsxModel.asq_se2_left = model.AsqSe2Left + "";
+    //   xlsxModel.asq_se2_total = model.AsqSe2Total + "";
 
-      doctorNum = Math.max(doctorNum, model.Doctors.length);
-      for (let i = 0; i < model.Doctors.length; i++) {
+    //   doctorNum = Math.max(doctorNum, model.Doctors.length);
+    //   for (let i = 0; i < model.Doctors.length; i++) {
 
-        xlsxModel['doctor' + (i + 1)] = model.Doctors[i].name
-      }
+    //     xlsxModel['doctor' + (i + 1)] = model.Doctors[i].name
+    //   }
 
-      return xlsxModel;
-    })
-    for (let i = 0; i < doctorNum; i++) {
-      header.push('子账号' + (i + 1))
-    }
+    //   return xlsxModel;
+    // })
+    // for (let i = 0; i < doctorNum; i++) {
+    //   header.push('子账号' + (i + 1))
+    // }
 
-    // console.log(xlsxModels)
-    HwExport.exportXLXS(title, header, xlsxModels);
+    // // console.log(xlsxModels)
+    // HwExport.exportXLXS(title, header, xlsxModels);
 
   }
   getData() {

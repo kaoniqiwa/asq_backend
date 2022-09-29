@@ -140,7 +140,7 @@
                 *ngFor="let doctor of doctorsTotal; let i = index"
               >
                 <div>
-                  {{ (i + 1).toString().padStart(3, "0") }} {{ doctor.name }}
+                  {{ (i + 1).toString().padStart(3, "0") }} {{ doctor.Name }}
                 </div>
                 <div class="operates">
                   <a tabindex (click)="editDoctor(doctor)">修改</a>

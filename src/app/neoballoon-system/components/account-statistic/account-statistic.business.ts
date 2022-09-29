@@ -21,8 +21,8 @@ export class AccountStatisticBusiness {
   }
   getMemberList() {
     let params = new GetMemberParams();
-    params.pageIndex = 1;
-    params.pageSize = 9527e5;
+    params.PageIndex = 1;
+    params.PageSize = 9527e5;
     return this._memberRequest.list(params);
   }
   getOrderList() {

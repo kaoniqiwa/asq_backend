@@ -24,11 +24,11 @@ export class OrderManageBusiness {
     }
 
 
-    let { data: Data, page: Page } = await this._listCompany(params);
+    let { Data: Data, Page: Page } = await this._listCompany(params);
     let data = this._converter.iterateToModel(Data)
     let res: PagedList<OrderManageModel> = {
-      page: Page,
-      data: data,
+      Page: Page,
+      Data: data,
     };
 
     return res;

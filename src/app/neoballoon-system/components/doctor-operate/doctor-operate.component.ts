@@ -58,10 +58,10 @@ export class DoctorOperateComponent implements OnInit {
       if (this.doctorModel) {
         this.myForm.patchValue(
           {
-            name: this.doctorModel.name,
-            level: this.doctorModel.level,
-            dept: this.doctorModel.dept,
-            phone: this.doctorModel.phone,
+            name: this.doctorModel.Name,
+            level: this.doctorModel.Level,
+            dept: this.doctorModel.Dept,
+            phone: this.doctorModel.Phone,
           }
         )
       }
@@ -72,13 +72,13 @@ export class DoctorOperateComponent implements OnInit {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
         let model = new DoctorModel();
-        model.id = '';
-        model.cid = this.cid;
-        model.name = this.myForm.value.name ?? "";
-        model.level = this.myForm.value.level ?? ""
-        model.dept = this.myForm.value.dept ?? "";
-        model.phone = this.myForm.value.phone ?? "";
-        model.flow = 'addDoctor';
+        model.Id = '';
+        model.Cid = this.cid;
+        model.Name = this.myForm.value.name ?? "";
+        model.Level = this.myForm.value.level ?? ""
+        model.Dept = this.myForm.value.dept ?? "";
+        model.Phone = this.myForm.value.phone ?? "";
+        model.Flow = 'addDoctor';
 
         let res = await this._business.create(model);
 
@@ -88,11 +88,11 @@ export class DoctorOperateComponent implements OnInit {
       }
       else if (this.state == FormState.edit) {
         if (this.doctorModel) {
-          this.doctorModel.name = this.myForm.value.name ?? "";
-          this.doctorModel.level = this.myForm.value.level ?? ""
-          this.doctorModel.dept = this.myForm.value.dept ?? "";
-          this.doctorModel.phone = this.myForm.value.phone ?? "";
-          this.doctorModel.flow = 'editDoctor';
+          this.doctorModel.Name = this.myForm.value.name ?? "";
+          this.doctorModel.Level = this.myForm.value.level ?? ""
+          this.doctorModel.Dept = this.myForm.value.dept ?? "";
+          this.doctorModel.Phone = this.myForm.value.phone ?? "";
+          this.doctorModel.Flow = 'editDoctor';
           let res = await this._business.update(this.doctorModel);
           if (res) {
             this._toastrService.success('编辑成功');

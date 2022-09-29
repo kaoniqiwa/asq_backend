@@ -1,4 +1,3 @@
-import { DoctorModel } from "./doctor.model";
 
 export class CompanyModel {
   Id!: string;
@@ -13,6 +12,5 @@ export class CompanyModel {
   AsqSe2Left!: number;
   CreateTime?: string;
   UpdateTime?: string;
-  Doctors!: DoctorModel[];
   Flow?: string;
 }

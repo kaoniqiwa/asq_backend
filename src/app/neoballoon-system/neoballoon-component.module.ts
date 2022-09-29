@@ -8,7 +8,7 @@ import { NeoballoonManageComponent } from './components/neoballoon-manage/neobal
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AccountStatisticComponent } from './components/account-statistic/account-statistic.component';
-import { MemberManageComponent } from './components/member-manage/member-manage.component';
+import { MemberListComponent } from './components/member-list/member-list.component';
 import { CompanyListComponent } from './components/company-list/company-list.component';
 import { CompanyOperateComponent } from './components/company-operate/company-operate.component';
 import { HospitalInfoComponent } from './components/hospital-info/hospital-info.component';
@@ -21,6 +21,7 @@ import { InformManage } from './components/inform-manage/inform-manage.component
 import { DoctorOperateToastComponent } from './components/doctor-operate-toast/doctor-operate-toast.component';
 import { BabyOperateComponent } from './components/baby-operate/baby-operate.component';
 import { CompanyManageComponent } from './components/company-manage/company-manage.component';
+import { MemberManageComponent } from './components/member-manage/member-manage.component';
 
 
 
@@ -30,7 +31,7 @@ import { CompanyManageComponent } from './components/company-manage/company-mana
     HeaderNavComponent,
     SideNavComponent,
     AccountStatisticComponent,
-    MemberManageComponent,
+    MemberListComponent,
     CompanyListComponent,
     CompanyOperateComponent,
     HospitalInfoComponent,
@@ -42,7 +43,8 @@ import { CompanyManageComponent } from './components/company-manage/company-mana
     InformManage,
     DoctorOperateToastComponent,
     BabyOperateComponent,
-    CompanyManageComponent
+    CompanyManageComponent,
+    MemberManageComponent
   ],
   imports: [
     CommonModule,

@@ -18,11 +18,11 @@ export class DoctorManageConverter extends CommonModelConverter<DoctorManageMode
 
   private _fromDoctorModel(item: DoctorModel) {
     let model = new DoctorManageModel();
-    model.id = item.id;
-    model.name = item.name;
-    model.level = item.level || "-";
-    model.dept = item.dept || "-";
-    model.phone = item.phone || "-";
+    model.id = item.Id;
+    model.name = item.Name;
+    model.level = item.Level || "-";
+    model.dept = item.Dept || "-";
+    model.phone = item.Phone || "-";
     return model;
   }
 

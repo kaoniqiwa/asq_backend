@@ -27,15 +27,15 @@ export class AccountStatisticComponent implements OnInit {
   }
   async getCompanyList() {
     let res = await this._business.getCompanyList();
-    this.companyTotal = res.page.totalRecordCount;
+    this.companyTotal = res.Page.TotalRecordCount;
   }
   async getMemberList() {
     let res = await this._business.getMemberList();
-    this.memberTotal = res.page.totalRecordCount;
+    this.memberTotal = res.Page.TotalRecordCount;
   }
   async getOrderList() {
     let res = await this._business.getOrderList();
-    this.orderTotal = res.page.totalRecordCount;
+    this.orderTotal = res.Page.TotalRecordCount;
   }
 
 }

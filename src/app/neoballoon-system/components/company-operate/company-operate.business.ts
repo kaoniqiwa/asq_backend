@@ -29,8 +29,8 @@ export class CompanyOperateBusiness {
   }
   addDoctor(cid: string, doctors: DoctorModel[]) {
     let arr = doctors.map((doctor) => {
-      doctor.cid = cid;
-      doctor.flow = 'addDoctor';
+      doctor.Cid = cid;
+      doctor.Flow = 'addDoctor';
       return this._doctorRequest.create(doctor);
     }
     )
@@ -39,9 +39,9 @@ export class CompanyOperateBusiness {
   deleteDoctor(cid: string, doctors: DoctorModel[]) {
     let arr = doctors.map((doctor) => {
       let params = new GetDoctorParams();
-      params.cid = cid;
-      params.id = doctor.id;
-      params.flow = 'deleteDoctor';
+      params.Cid = cid;
+      params.Id = doctor.Id;
+      params.Flow = 'deleteDoctor';
       return this._doctorRequest.delete(params);
     }
     )
@@ -49,7 +49,7 @@ export class CompanyOperateBusiness {
   }
   editDoctor(doctors: DoctorModel[]) {
     let arr = doctors.map((doctor) => {
-      doctor.flow = "editDoctor";
+      doctor.Flow = "editDoctor";
       return this._doctorRequest.update(doctor);
     }
     )

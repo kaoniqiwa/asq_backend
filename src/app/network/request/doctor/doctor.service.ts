@@ -22,16 +22,16 @@ export class DoctorRequestService {
   }
 
   create(model: DoctorModel) {
-    model.flow = 'addDoctor';
+    model.Flow = 'addDoctor';
     return this.type.post(DoctorUrl.create(), model);
   }
   list(params: GetDoctorParams = new GetDoctorParams()) {
-    params.flow = 'listDoctor';
+    params.Flow = 'listDoctor';
     return this.type.postArray(DoctorUrl.list(), params)
   }
 
   delete(params: GetDoctorParams = new GetDoctorParams()) {
-    params.flow = 'deleteDoctor';
+    params.Flow = 'deleteDoctor';
     return this.type.post(DoctorUrl.delete(), params)
   }
   get(id: string) {
@@ -39,7 +39,7 @@ export class DoctorRequestService {
   }
 
   update(model: DoctorModel) {
-    model.flow = 'editDoctor';
+    model.Flow = 'editDoctor';
     return this.type.post(DoctorUrl.update(), model)
 
   }

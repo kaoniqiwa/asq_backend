@@ -45,8 +45,8 @@ export class CompanyListComponent implements OnInit {
   }
   private async _init() {
     let res = await this._business.init(this.searchInfo, this.pageIndex, this.pageSize);
-    this.dataSource = res.data;
-    this.page = res.page;
+    this.dataSource = res.Data;
+    this.page = res.Page;
     // console.log(res.data);
   }
   search() {
@@ -115,7 +115,7 @@ export class CompanyListComponent implements OnInit {
     // }
   }
   doctorManage(model: CompanyListModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/doctor-manage', model.id])
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/doctor-manage', model.id])
   }
 
   private _getTitle() {

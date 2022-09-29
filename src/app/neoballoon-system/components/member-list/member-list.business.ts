@@ -15,25 +15,25 @@ import { CompanyListModel, CompanyListSearchInfo, CompanyListXLSX } from "src/ap
 import { MemberManageModel, MemberManageSearchInfo } from "src/app/view-model/member-manage.model";
 
 @Injectable()
-export class MemberManageBusiness {
+export class MemberListBusiness {
 
   constructor(private _memberRequest: MemberRequestService, private _converter: MemberManageConverter) {
 
   }
   async init(searchInfo: MemberManageSearchInfo, pageIndex = 1, pageSize = 9) {
     let params = new GetMemberParams();
-    params.pageIndex = pageIndex;
-    params.pageSize = pageSize;
+    params.PageIndex = pageIndex;
+    params.PageSize = pageSize;
     if (searchInfo.name) {
-      params.name = searchInfo.name
+      params.Name = searchInfo.name
     }
 
 
-    let { data: Data, page: Page } = await this._listMember(params);
+    let { Data: Data, Page: Page } = await this._listMember(params);
     let data = this._converter.iterateToModel(Data)
     let res: PagedList<MemberManageModel> = {
-      page: Page,
-      data: data,
+      Page: Page,
+      Data: data,
     };
 
     return res;

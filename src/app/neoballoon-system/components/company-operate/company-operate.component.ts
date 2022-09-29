@@ -130,14 +130,14 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
   removeDoctor(doctor: DoctorModel) {
 
-    let index = this.doctorsInModel.findIndex(model => model.id == doctor.id);
+    let index = this.doctorsInModel.findIndex(model => model.Id == doctor.Id);
     if (index != -1) {
       // 删除服务器上现有的doctor
       this.doctorsInModel.splice(index, 1)
       this.doctorsToBeDelete.push(doctor);
     } else {
       // 删除缓存中的 doctor,不会创建该doctor
-      let index = this.doctorsToBeAdd.findIndex(model => model.name == doctor.name)
+      let index = this.doctorsToBeAdd.findIndex(model => model.Name == doctor.Name)
       if (index != -1) {
         this.doctorsToBeAdd.splice(index, 1);
       }

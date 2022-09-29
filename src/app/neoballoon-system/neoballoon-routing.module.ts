@@ -6,7 +6,7 @@ import { CompanyListComponent } from "./components/company-list/company-list.com
 import { DoctorManageComponent } from "./components/doctor-manage/doctor-manage.component";
 import { DoctorOperateComponent } from "./components/doctor-operate/doctor-operate.component";
 import { HospitalInfoComponent } from "./components/hospital-info/hospital-info.component";
-import { MemberManageComponent } from "./components/member-manage/member-manage.component";
+import { MemberListComponent } from "./components/member-list/member-list.component";
 import { MemberOperateComponent } from "./components/member-operate/member-operate.component";
 import { NeoballoonManageComponent } from "./components/neoballoon-manage/neoballoon-manage.component";
 import { OrderManageComponent } from "./components/order-manage/order-manage.component";
@@ -16,6 +16,7 @@ import { InformManage } from "./components/inform-manage/inform-manage.component
 import { NeoballoonComponent } from "./neoballoon.component";
 import { BabyOperateComponent } from "./components/baby-operate/baby-operate.component";
 import { CompanyManageComponent } from "./components/company-manage/company-manage.component";
+import { MemberManageComponent } from "./components/member-manage/member-manage.component";
 
 const routes: Routes = [
   {
@@ -48,10 +49,20 @@ const routes: Routes = [
           {
             path: "company-list",
             component: CompanyListComponent
-          }, {
+          },
+          {
             path: "company-operate/:cid",
             component: CompanyOperateComponent
-          }
+          },
+          {
+            path: 'doctor-manage/:cid',
+            component: DoctorManageComponent,
+
+          },
+          {
+            path: 'doctor-operate/:cid/:did',
+            component: DoctorOperateComponent
+          },
         ]
       },
       {
@@ -60,12 +71,25 @@ const routes: Routes = [
       },
       {
         path: "member-manage",
-        component: MemberManageComponent
+        component: MemberManageComponent,
+        children: [
+          {
+            path: "member-list",
+            component: MemberListComponent
+          },
+          {
+            path: "member-operate/:mid",
+            component: MemberOperateComponent
+          },
+
+          {
+            path: "order-manage",
+            component: OrderManageComponent
+          },
+
+        ]
       },
-      {
-        path: "member-operate/:mid",
-        component: MemberOperateComponent
-      },
+
       {
         path: "baby-manage/:mid",
         component: BabyManageComponent
@@ -75,11 +99,6 @@ const routes: Routes = [
         component: BabyOperateComponent
       },
 
-
-      {
-        path: "order-manage",
-        component: OrderManageComponent
-      },
 
 
       {
@@ -91,14 +110,8 @@ const routes: Routes = [
         path: "hospital-info",
         component: HospitalInfoComponent
       },
-      {
-        path: 'doctor-manage/:cid',
-        component: DoctorManageComponent
-      },
-      {
-        path: 'doctor-operate/:cid/:did',
-        component: DoctorOperateComponent
-      },
+
+
       {
         path: 'inform-manage',
         component: InformManage

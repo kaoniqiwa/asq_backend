@@ -71,13 +71,13 @@ export class MemberOperateComponent implements OnInit {
         this.myForm.get('surveyLeft')?.enable();
         this.myForm.patchValue(
           {
-            name: this.memberModel.name,
-            gender: this.memberModel.gender,
-            phone: this.memberModel.phone,
-            address: this.memberModel.address,
-            email: this.memberModel.email,
-            postCode: this.memberModel.post_code,
-            surveyLeft: this.memberModel.survey_left,
+            name: this.memberModel.Name,
+            gender: this.memberModel.Gender,
+            phone: this.memberModel.Phone,
+            address: this.memberModel.Address,
+            email: this.memberModel.Email,
+            postCode: this.memberModel.PostCode,
+            surveyLeft: this.memberModel.SurveyLeft,
           }
         )
       }
@@ -91,14 +91,14 @@ export class MemberOperateComponent implements OnInit {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
         let model = new MemberModel();
-        model.id = '';
-        model.name = this.myForm.value.name ?? "";
-        model.gender = this.myForm.value.gender ?? "";
-        model.phone = this.myForm.value.phone ?? '';
-        model.email = this.myForm.value.email ?? '';
-        model.post_code = this.myForm.value.postCode ?? '';
-        model.address = this.myForm.value.address ?? '';
-        model.survey_left = this.myForm.value.surveyLeft ?? 0;
+        model.Id = '';
+        model.Name = this.myForm.value.name ?? "";
+        model.Gender = this.myForm.value.gender ?? "";
+        model.Phone = this.myForm.value.phone ?? '';
+        model.Email = this.myForm.value.email ?? '';
+        model.PostCode = this.myForm.value.postCode ?? '';
+        model.Address = this.myForm.value.address ?? '';
+        model.SurveyLeft = this.myForm.value.surveyLeft ?? 0;
 
 
         let res = await this._business.create(model);
@@ -111,13 +111,13 @@ export class MemberOperateComponent implements OnInit {
       }
       else if (this.state == FormState.edit) {
         if (this.memberModel) {
-          this.memberModel.name = this.myForm.value.name ?? "";
-          this.memberModel.gender = this.myForm.value.gender ?? "";
-          this.memberModel.phone = this.myForm.value.phone ?? '';
-          this.memberModel.email = this.myForm.value.email ?? '';
-          this.memberModel.post_code = this.myForm.value.postCode ?? '';
-          this.memberModel.address = this.myForm.value.address ?? '';
-          this.memberModel.survey_left = this.myForm.value.surveyLeft ?? 0;
+          this.memberModel.Name = this.myForm.value.name ?? "";
+          this.memberModel.Gender = this.myForm.value.gender ?? "";
+          this.memberModel.Phone = this.myForm.value.phone ?? '';
+          this.memberModel.Email = this.myForm.value.email ?? '';
+          this.memberModel.PostCode = this.myForm.value.postCode ?? '';
+          this.memberModel.Address = this.myForm.value.address ?? '';
+          this.memberModel.SurveyLeft = this.myForm.value.surveyLeft ?? 0;
 
           let res = await this._business.update(this.memberModel)
           if (res) {

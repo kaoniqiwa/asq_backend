@@ -20,27 +20,27 @@ export class MemberRequestService {
   }
 
   list(params: GetMemberParams = new GetMemberParams()) {
-    params.flow = 'listMember';
+    params.Flow = 'listMember';
     return this.type.paged(MemberUrl.list(), params)
   }
   create(model: MemberModel) {
-    model.flow = 'addMember';
+    model.Flow = 'addMember';
     return this.type.post(MemberUrl.create(), model);
   }
   get(id: string) {
     return this.type.get(MemberUrl.get(id));
   }
   delete(params: GetMemberParams = new GetMemberParams()) {
-    params.flow = 'deleteMember';
+    params.Flow = 'deleteMember';
     return this.type.post(MemberUrl.delete(), params)
 
   }
   update(model: MemberModel) {
-    model.flow = 'editMember';
+    model.Flow = 'editMember';
     return this.type.post(MemberUrl.update(), model)
   }
   export(params: GetMemberParams = new GetMemberParams()) {
-    params.flow = 'exportMember';
+    params.Flow = 'exportMember';
     return this.type.postArray(MemberUrl.export(), params)
   }
 

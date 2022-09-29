@@ -1,9 +1,9 @@
 export class GetMemberParams {
-  pageIndex?: number;
-  pageSize?: number;
+  PageIndex?: number;
+  PageSize?: number;
   Id?: string;
-  name?: string;
-  beginTime?: Date;
-  endTime?: Date;
-  flow!: string;
+  Name?: string;
+  BeginTime?: Date;
+  EndTime?: Date;
+  Flow!: string;
 }
