@@ -19,20 +19,20 @@ export class InformRequestService {
   }
 
   create(model: InformModel) {
-    model.flow = 'addInform';
+    model.Flow = 'addInform';
     return this.type.post(InformUrl.create(), model);
   }
   list(params: GetInformParams = new GetInformParams()) {
-    params.flow = 'listInform';
+    params.Flow = 'listInform';
     return this.type.postArray(InformUrl.list(), params)
   }
   getLatestInform(params: GetInformParams = new GetInformParams()) {
-    params.flow = 'getLatestInform';
+    params.Flow = 'getLatestInform';
     return this.type.post(InformUrl.getLatest(), params)
   }
 
   delete(params: GetInformParams = new GetInformParams()) {
-    params.flow = 'deleteInform';
+    params.Flow = 'deleteInform';
     return this.type.post(InformUrl.delete(), params)
   }
 

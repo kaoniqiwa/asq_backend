@@ -19,27 +19,27 @@ export class OrderRequestService {
   }
 
   list(params: GetOrderParams = new GetOrderParams()) {
-    params.flow = 'listOrder';
+    params.Flow = 'listOrder';
     return this.type.paged(OrderUrl.list(), params)
   }
   create(model: OrderModel) {
-    model.flow = 'addOrder'
+    model.Flow = 'addOrder'
     return this.type.post(OrderUrl.create(), model);
   }
   get(id: string) {
     return this.type.get(OrderUrl.get(id));
   }
   delete(params: GetOrderParams = new GetOrderParams()) {
-    params.flow = 'deleteOrder';
+    params.Flow = 'deleteOrder';
     return this.type.post(OrderUrl.delete(), params)
 
   }
   update(model: OrderModel) {
-    model.flow = 'editOrder'
+    model.Flow = 'editOrder'
     return this.type.post(OrderUrl.update(), model)
   }
   export(params: GetOrderParams = new GetOrderParams()) {
-    params.flow = 'exportOrder';
+    params.Flow = 'exportOrder';
     return this.type.postArray(OrderUrl.export(), params)
   }
 

@@ -27,8 +27,8 @@ export class AccountStatisticBusiness {
   }
   getOrderList() {
     let params = new GetOrderParams();
-    params.pageIndex = 1;
-    params.pageSize = 9527e5;
+    params.PageIndex = 1;
+    params.PageSize = 9527e5;
     return this._orderRequest.list(params);
   }
 }

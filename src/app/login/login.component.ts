@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
     if (this._checkForm()) {
       try {
         let result: any = await this._authorizationService.login(
-          this.formGroup.get('username')?.value ?? '',
-          this.formGroup.get('password')?.value ?? ''
+          this.formGroup.value.username ?? "",
+          this.formGroup.value.password ?? ""
         );
         if (result instanceof User) {
           this._router.navigateByUrl(RoutePath.neoballoon)

@@ -18,9 +18,9 @@ export class InformManageConverter extends CommonModelConverter<InformManageMode
 
   private _fromInformModel(item: InformModel) {
     let model = new InformManageModel();
-    model.id = item.id;
-    model.content = item.content;
-    model.createTime = formatDate(item.create_time, 'yyy-MM-dd', 'zh-CN');
+    model.id = item.Id;
+    model.content = item.Content;
+    model.createTime = formatDate(item.CreateTime, 'yyy-MM-dd', 'zh-CN');
     return model;
   }
 

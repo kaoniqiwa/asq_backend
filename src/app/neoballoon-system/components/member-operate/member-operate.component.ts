@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ValidIP } from 'src/app/common/tools/tool';
+import { ValidIP, ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
 import { MemberModel } from 'src/app/network/model/member.model';
 import { MemberOperateBusiness } from './member-operate.business';
@@ -25,12 +25,10 @@ export class MemberOperateComponent implements OnInit {
   // 表单数据
   myForm = this._fb.group({
     name: ['', Validators.required],
-    gender: ["男", Validators.required],
-    phone: ['', Validators.required],
+    phone: ['', [Validators.required, Validators.pattern(ValidPhone)]],
     address: ['', Validators.required],
     email: ['', [Validators.email]],
     postCode: '',
-    surveyLeft: 0
   });
 
   get title() {
@@ -72,12 +70,10 @@ export class MemberOperateComponent implements OnInit {
         this.myForm.patchValue(
           {
             name: this.memberModel.Name,
-            gender: this.memberModel.Gender,
             phone: this.memberModel.Phone,
             address: this.memberModel.Address,
             email: this.memberModel.Email,
             postCode: this.memberModel.PostCode,
-            surveyLeft: this.memberModel.SurveyLeft,
           }
         )
       }
@@ -92,13 +88,13 @@ export class MemberOperateComponent implements OnInit {
       if (this.state == FormState.add) {
         let model = new MemberModel();
         model.Id = '';
+        model.Did = "70f1c13a-b1c7-4160-ab70-03cd1593399e";
+
         model.Name = this.myForm.value.name ?? "";
-        model.Gender = this.myForm.value.gender ?? "";
         model.Phone = this.myForm.value.phone ?? '';
         model.Email = this.myForm.value.email ?? '';
         model.PostCode = this.myForm.value.postCode ?? '';
         model.Address = this.myForm.value.address ?? '';
-        model.SurveyLeft = this.myForm.value.surveyLeft ?? 0;
 
 
         let res = await this._business.create(model);
@@ -112,12 +108,10 @@ export class MemberOperateComponent implements OnInit {
       else if (this.state == FormState.edit) {
         if (this.memberModel) {
           this.memberModel.Name = this.myForm.value.name ?? "";
-          this.memberModel.Gender = this.myForm.value.gender ?? "";
           this.memberModel.Phone = this.myForm.value.phone ?? '';
           this.memberModel.Email = this.myForm.value.email ?? '';
           this.memberModel.PostCode = this.myForm.value.postCode ?? '';
           this.memberModel.Address = this.myForm.value.address ?? '';
-          this.memberModel.SurveyLeft = this.myForm.value.surveyLeft ?? 0;
 
           let res = await this._business.update(this.memberModel)
           if (res) {
@@ -138,11 +132,16 @@ export class MemberOperateComponent implements OnInit {
   private _checkForm() {
     if (this.myForm.invalid) {
       if (this.myForm.get('name')?.invalid) {
-        this._toastrService.warning('请输入医生姓名');
+        this._toastrService.warning('请输入会员姓名');
         return;
       }
       if (this.myForm.get('phone')?.invalid) {
-        this._toastrService.warning('请填写手机号');
+        if ('required' in this.myForm.get('phone')?.errors!) {
+          this._toastrService.warning('请填写手机号');
+        } if ("pattern" in this.myForm.get('phone')?.errors!) {
+          this._toastrService.warning('手机号格式不对');
+        }
+
         return;
       }
       if (this.myForm.get('email')?.invalid) {

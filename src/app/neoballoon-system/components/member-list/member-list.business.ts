@@ -7,7 +7,7 @@ import { Time } from "src/app/common/tools/time";
 import { CompanyManageConverter } from "src/app/converter/company-manage.converter";
 import { MemberManageConverter } from "src/app/converter/member-manage.converter";
 import { CompanyModel } from "src/app/network/model/company.model";
-import { Page, PagedList } from "src/app/network/model/page_list.model";
+import { Page, PagedList } from "src/app/network/model/page-list.model";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { GetMemberParams } from "src/app/network/request/member/member.params";
 import { MemberRequestService } from "src/app/network/request/member/member.service";

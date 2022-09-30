@@ -1,11 +1,10 @@
 
 export class GetOrderParams {
-  pageIndex?: number;
-  pageSize?: number;
-  id?: string;
-  phone?: string;
-  beginTime?: Date;
-  endTime?: Date;
-
-  flow!: string;
+  PageIndex?: number;
+  PageSize?: number;
+  Id?: string;
+  Phone?: string;
+  BeginTime?: Date;
+  EndTime?: Date;
+  Flow!: string;
 }

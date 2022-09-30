@@ -1,7 +1,7 @@
 import { ClassConstructor, classToPlain } from 'class-transformer';
 import { lastValueFrom } from 'rxjs';
 import { HowellResponse } from '../model/howell-response.model';
-import { PagedList } from '../model/page_list.model';
+import { PagedList } from '../model/page-list.model';
 import { HowellAuthHttpService } from './howell-auth-http.service';
 import { IParams } from './IParams.interface';
 import { ServiceHelper } from './service-helper';

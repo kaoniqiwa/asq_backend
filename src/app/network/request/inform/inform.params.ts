@@ -1,6 +1,6 @@
 
 export class GetInformParams {
-  content?: string;
-  id?: string;
-  flow!: string;
+  Content?: string;
+  Id?: string;
+  Flow!: string;
 }

@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidPhone } from 'src/app/common/tools/tool';
-import { Page } from 'src/app/network/model/page_list.model';
+import { Page } from 'src/app/network/model/page-list.model';
 import { OrderManageModel, OrderManageSearchInfo } from 'src/app/view-model/order-manage.model';
 import { OrderManageBusiness } from './order-manage.business';
 

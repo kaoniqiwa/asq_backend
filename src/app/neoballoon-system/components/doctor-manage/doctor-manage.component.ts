@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Page } from 'src/app/network/model/page_list.model';
+import { Page } from 'src/app/network/model/page-list.model';
 import { CompanyListSearchInfo } from 'src/app/view-model/company-manage.model';
 import { DoctorManageModel, DoctorManageSearchInfo } from 'src/app/view-model/doctor-manage.model';
 import { DoctorManageBusiness } from './doctor-manage.business';

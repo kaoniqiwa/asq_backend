@@ -1,12 +1,8 @@
-import { IModel } from './model.interface';
-export class User implements IModel {
-  id!: string;
-  username!: string;
-  status!: string;
-  name!: string;
-  grade!: string;
-  create_time!: string;
-  update_time!: string;
-
-
+export class User {
+  Id!: string;
+  Username!: string;
+  Password!: string;
+  Name!: string;
+  CreateTime!: string;
+  UpdateTime!: string;
 }

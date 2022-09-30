@@ -30,7 +30,6 @@ export class MemberManageConverter extends CommonModelConverter<MemberManageMode
     model.gender = item.Gender;
     model.phone = item.Phone;
     model.address = item.Address || "-";
-    model.surveyLeft = item.SurveyLeft || 0;
     model.create_time = item.CreateTime || '-';
     return model;
   }

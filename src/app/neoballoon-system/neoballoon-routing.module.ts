@@ -66,10 +66,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: "company-operate/:cid",
-        component: CompanyOperateComponent
-      },
-      {
         path: "member-manage",
         component: MemberManageComponent,
         children: [

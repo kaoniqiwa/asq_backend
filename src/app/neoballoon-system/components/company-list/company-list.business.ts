@@ -6,7 +6,7 @@ import { HwExport } from "src/app/common/tools/hw-export";
 import { Time } from "src/app/common/tools/time";
 import { CompanyManageConverter } from "src/app/converter/company-manage.converter";
 import { CompanyModel } from "src/app/network/model/company.model";
-import { Page, PagedList } from "src/app/network/model/page_list.model";
+import { Page, PagedList } from "src/app/network/model/page-list.model";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { CompanyRequestService } from "src/app/network/request/company/company.service";
 import { CompanyListModel, CompanyListSearchInfo, CompanyListXLSX } from "src/app/view-model/company-manage.model";

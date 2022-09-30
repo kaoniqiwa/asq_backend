@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HwExport } from 'src/app/common/tools/hw-export';
 import { CompanyModel } from 'src/app/network/model/company.model';
-import { Page, PagedList } from 'src/app/network/model/page_list.model';
+import { Page, PagedList } from 'src/app/network/model/page-list.model';
 import { CompanyListModel, CompanyListSearchInfo } from 'src/app/view-model/company-manage.model';
 import { CompanyListBusiness } from './company-list.business';
 
@@ -88,12 +88,11 @@ export class CompanyListComponent implements OnInit {
 
   }
   addCompany() {
-    // this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate'], {
-    //   queryParams: {
-    //     type: 'add'
-    //   }
-    // })
-    this._business.getData();
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate', ""], {
+      queryParams: {
+        type: 'add'
+      }
+    })
   }
   editCompany(model: CompanyListModel) {
     this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate', model.id], {

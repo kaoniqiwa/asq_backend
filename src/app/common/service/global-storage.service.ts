@@ -6,9 +6,7 @@ import { User } from 'src/app/network/model/user.model';
   providedIn: 'root',
 })
 export class GlobalStorageService {
-  statusChange = new EventEmitter();
 
-  password?: string;
 
 
   private _user: User | null = null;

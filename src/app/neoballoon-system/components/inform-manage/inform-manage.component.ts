@@ -33,7 +33,7 @@ export class InformManage implements OnInit {
     let res = await this._business.init();
     console.log('inform-manage: ', res);
     if (res) {
-      this.messageToShow = res.content;
+      this.messageToShow = res.Content;
       this.model = res;
     } else {
       this.messageToShow = '';
@@ -41,7 +41,7 @@ export class InformManage implements OnInit {
   }
   async deleteInform() {
     if (this.model) {
-      await this._business.delete(this.model.id);
+      await this._business.delete(this.model.Id);
       this.model = null;
       this._init();
     }
@@ -52,7 +52,7 @@ export class InformManage implements OnInit {
       return;
     }
     let model = new InformModel();
-    model.content = this.messageToSubmit;
+    model.Content = this.messageToSubmit;
     let res = await this._business.create(model);
     console.log(res)
     if (res) {

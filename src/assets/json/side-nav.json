@@ -13,16 +13,16 @@
     },
     {
       "title": "会员管理",
-      "id": "member-info",
+      "id": "member-manage",
       "state": "shrink",
       "children": [
         {
-          "path": "/neoballoon/neoballoon-manage/member-manage",
+          "path": "/neoballoon/neoballoon-manage/member-manage/member-list",
           "title": "会员列表",
-          "id": "member-manage"
+          "id": "member-list"
         },
         {
-          "path": "/neoballoon/neoballoon-manage/order-manage",
+          "path": "/neoballoon/neoballoon-manage/member-manage/order-manage",
           "title": "订单查询",
           "id": "order-manage"
         }

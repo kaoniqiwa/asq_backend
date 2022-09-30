@@ -25,7 +25,7 @@ export class InformManageBusiness {
   }
   delete(id: string) {
     let params = new GetInformParams();
-    params.id = id;
+    params.Id = id;
     return this._informRequest.delete(params);
   }
 }

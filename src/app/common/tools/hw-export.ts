@@ -45,7 +45,7 @@ export class HwExport {
 
     worksheet["!cols"] = columnInfo?.columWidth ?? [];
 
-    console.log(worksheet)
+    // console.log(worksheet)
     // 工作表添加到工作簿中
     XLSX.utils.book_append_sheet(workbook, worksheet);
 

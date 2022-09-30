@@ -12,6 +12,7 @@ import { DigestResponse } from "./digest-response.class";
 import { plainToClass } from "class-transformer";
 import { UserUrl } from "../../url/user.url";
 import { User } from "../../model/user.model";
+import { LocalStorageService } from "src/app/common/service/local-storage.service";
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class AuthorizationService implements CanActivate {
   constructor(
     private _globalStorageService: GlobalStorageService,
     private _sessionStorageService: SessionStorageService,
-
+    private _localStorage: LocalStorageService,
     private _cookieService: CookieService,
     private _router: Router,
   ) {
@@ -56,17 +57,17 @@ export class AuthorizationService implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // console.log(route, state);
     let challenge = this._sessionStorageService.challenge;
-    let user = this._globalStorageService.user;
+    let user = this._localStorage.user;
     let holdCookie = this._cookieService.check('username');
     // console.log(userResource);
-    if (challenge && user && user.id && holdCookie) {
+    if (challenge && user && user.Id && holdCookie) {
       return true;
     }
 
     return this._router.parseUrl('/login');
   }
   login(username: string, password: string): Promise<User | AxiosResponse<any> | null> {
-    return this.loginByUsername(username, password)
+    return this.loginByUsername(username.trim(), password.trim())
   }
   async loginByUsername(username: string, password: string) {
     // return axios.get('/api/login.php')
@@ -99,8 +100,8 @@ export class AuthorizationService implements CanActivate {
         }
 
         this._sessionStorageService.challenge = challenge;
-        return axios(this._config).then((res: AxiosResponse<{ data: User }>) => {
-          let result = plainToClass(User, res.data.data)
+        return axios(this._config).then((res: AxiosResponse<{ Data: User }>) => {
+          let result = plainToClass(User, res.data.Data)
           this._storeUserInfo(result, password,);
           return result;
         }
@@ -127,7 +128,7 @@ export class AuthorizationService implements CanActivate {
     ).toString();
 
     let userName = window.btoa(
-      prefix + user.username + suffix
+      prefix + user.Username + suffix
     );
     this._cookieService.set('username', userName, options);
 
@@ -143,7 +144,7 @@ export class AuthorizationService implements CanActivate {
     );
     this._cookieService.set('password', passWord, options);
 
-    this._globalStorageService.user = user;
+    this._localStorage.user = user;
   }
 
 

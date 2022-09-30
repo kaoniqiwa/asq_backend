@@ -6,7 +6,7 @@
  */
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { HowellResponse } from '../model/howell-response.model';
-import { PagedList } from '../model/page_list.model';
+import { PagedList } from '../model/page-list.model';
 
 export class ServiceHelper {
   static ResponseProcess<T>(

@@ -24,12 +24,12 @@ export class OrderManageConverter extends CommonModelConverter<OrderManageModel>
 
   private _fromOrdersModel(item: OrderModel) {
     let model = new OrderManageModel();
-    model.id = item.id;
-    model.name = item.name;
-    model.phone = item.phone;
-    model.orderType = item.order_type;
-    model.price = item.price;
-    model.createTime = formatDate(item.create_time, 'yyy-MM-dd HH:mm:ss', 'zh-CN')
+    model.id = item.Id;
+    model.name = item.Name;
+    model.phone = item.Phone;
+    model.orderType = item.OrderType;
+    model.price = item.Price;
+    model.createTime = formatDate(item.CreateTime, 'yyy-MM-dd HH:mm:ss', 'zh-CN')
 
 
     return model;

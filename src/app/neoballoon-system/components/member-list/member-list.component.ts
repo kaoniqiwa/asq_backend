@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { mode } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
-import { Page } from 'src/app/network/model/page_list.model';
+import { Page } from 'src/app/network/model/page-list.model';
 import { MemberManageModel, MemberManageSearchInfo } from 'src/app/view-model/member-manage.model';
 import { MemberListBusiness } from './member-list.business';
 
@@ -52,7 +52,7 @@ export class MemberListComponent implements OnInit {
     console.log(pageInfo)
   }
   addMember() {
-    this._router.navigate(['/neoballoon/neoballoon-manage/member-operate'], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/member-manage/member-operate', ""], {
       queryParams: {
         type: 'add'
       }
