@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HwExport } from "src/app/common/tools/hw-export";
 import { Time } from "src/app/common/tools/time";
 import { OrderManageConverter } from "src/app/converter/order-manage.converter";
-import { OrderModel } from "src/app/network/model/order.model";
+import { Order } from "src/app/network/model/order.model";
 import { PagedList } from "src/app/network/model/page-list.model";
 import { GetOrderParams } from "src/app/network/request/order/order.params";
 import { OrderRequestService } from "src/app/network/request/order/order.service";
@@ -49,7 +49,7 @@ export class OrderManageBusiness {
     return this._orderRequest.export(params);
   }
 
-  exportXLSX(title: string, header: string[], models: OrderModel[]) {
+  exportXLSX(title: string, header: string[], models: Order[]) {
     let xlsxModels = models.map((model, index) => {
       let xlsxModel = new OrderManageXLSX();
       xlsxModel.id = (index + 1).toString();

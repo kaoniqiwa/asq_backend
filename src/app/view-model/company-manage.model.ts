@@ -1,4 +1,4 @@
-import { DoctorModel } from "../network/model/doctor.model";
+import { Doctor } from "../network/model/doctor.model";
 
 export class CompanyListModel {
   id!: string;
@@ -7,7 +7,7 @@ export class CompanyListModel {
   asq_info!: string;
   asq_se_info!: string;
   asq_se2_info!: string;
-  doctors!: DoctorModel[];
+  doctors!: Doctor[];
 
 }
 export class CompanyListSearchInfo {

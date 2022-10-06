@@ -5,12 +5,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import $ from 'jquery';
 
-import { CompanyModel } from 'src/app/network/model/company.model';
+import { Company } from 'src/app/network/model/company.model';
 import { CompanyOperateModel } from 'src/app/view-model/company-operate.model';
 import { CompanyOperateBusiness } from './company-operate.business';
 import { fromEvent } from 'rxjs';
 import { FormState } from 'src/app/enum/form-state.enum';
-import { DoctorModel } from 'src/app/network/model/doctor.model';
+import { Doctor } from 'src/app/network/model/doctor.model';
 
 
 @Component({
@@ -30,17 +30,17 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   state: FormState = FormState.add;
   cid: string = '';
   // 根据id查询到的model
-  companyModel: CompanyModel | null = null;
+  companyModel: Company | null = null;
 
   /**
    *  Doctor
    */
   subState = FormState.add;
 
-  doctorsToBeAdd: DoctorModel[] = [];
-  doctorsToBeDelete: DoctorModel[] = [];
-  doctorsInModel: DoctorModel[] = [];
-  curDoctor: DoctorModel | null = null;
+  doctorsToBeAdd: Doctor[] = [];
+  doctorsToBeDelete: Doctor[] = [];
+  doctorsInModel: Doctor[] = [];
+  curDoctor: Doctor | null = null;
 
   get doctorsTotal() {
     return [...this.doctorsInModel, ...this.doctorsToBeAdd];
@@ -75,18 +75,18 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   constructor(private _business: CompanyOperateBusiness, private _fb: FormBuilder,
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
 
-    this._activeRoute.params.subscribe((params: Params) => {
-      this.cid = params['cid'];
-    })
-    this._activeRoute.queryParams.subscribe((queryParams: Params) => {
-      let type = queryParams['type'];
+    // this._activeRoute.params.subscribe((params: Params) => {
+    //   this.cid = params['cid'];
+    // })
+    // this._activeRoute.queryParams.subscribe((queryParams: Params) => {
+    //   let type = queryParams['type'];
 
-      if (type == 'add') {
-        this.state = FormState.add;
-      } else if (type == 'edit') {
-        this.state = FormState.edit;
-      }
-    })
+    //   if (type == 'add') {
+    //     this.state = FormState.add;
+    //   } else if (type == 'edit') {
+    //     this.state = FormState.edit;
+    //   }
+    // })
   }
 
   async ngOnInit() {
@@ -121,14 +121,14 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   }
 
 
-  editDoctor(doctor: DoctorModel) {
+  editDoctor(doctor: Doctor) {
     this.showToast = true;
     this.subState = FormState.edit;
     this.curDoctor = doctor;
 
   }
 
-  removeDoctor(doctor: DoctorModel) {
+  removeDoctor(doctor: Doctor) {
 
     let index = this.doctorsInModel.findIndex(model => model.Id == doctor.Id);
     if (index != -1) {
@@ -143,7 +143,7 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
       }
     }
   }
-  closeDoctorOperate(data: { data: DoctorModel, type: FormState } | null) {
+  closeDoctorOperate(data: { data: Doctor, type: FormState } | null) {
     this.showToast = false;
     if (data) {
       if (data.type == FormState.add) {
@@ -164,7 +164,7 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
 
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        let model = new CompanyModel();
+        let model = new Company();
         model.Id = "";
         model.Name = this.myForm.value.name?.trim() ?? "";
         model.Username = this.myForm.value.accountName?.trim() ?? "";

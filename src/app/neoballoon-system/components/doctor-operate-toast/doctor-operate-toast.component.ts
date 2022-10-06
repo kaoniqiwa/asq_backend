@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FormState } from 'src/app/enum/form-state.enum';
-import { DoctorModel } from 'src/app/network/model/doctor.model';
+import { Doctor } from 'src/app/network/model/doctor.model';
 
 @Component({
   selector: 'app-doctor-operate-toast',
@@ -20,7 +20,7 @@ export class DoctorOperateToastComponent implements OnInit {
   state: FormState = FormState.add;
 
   @Input()
-  doctor: DoctorModel | null = null;
+  doctor: Doctor | null = null;
 
   @Output()
   closeDoctorOperate = new EventEmitter<any>()
@@ -57,7 +57,7 @@ export class DoctorOperateToastComponent implements OnInit {
   submit() {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        let model = new DoctorModel();
+        let model = new Doctor();
         model.Id = '';
         model.Cid = this.cid;
         model.Name = this.myForm.value.name ?? "";

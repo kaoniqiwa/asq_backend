@@ -1,5 +1,5 @@
 
-export class InformModel {
+export class Inform {
   Id!: string;
   Content!: string;
   CreateTime!: string;

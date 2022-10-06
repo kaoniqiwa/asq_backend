@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { InformModel } from "../../model/inform.model";
+import { Inform } from "../../model/inform.model";
 import { InformUrl } from "../../url/inform.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
@@ -11,14 +11,14 @@ import { GetInformParams } from "./inform.params";
 export class InformRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<InformModel>;
+  private type: BaseTypeRequestService<Inform>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(InformModel);
+    this.type = this.basic.type(Inform);
   }
 
-  create(model: InformModel) {
+  create(model: Inform) {
     model.Flow = 'addInform';
     return this.type.post(InformUrl.create(), model);
   }

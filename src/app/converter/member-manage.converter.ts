@@ -1,8 +1,8 @@
 import { DatePipe } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { mode } from "crypto-js";
-import { CompanyModel } from "../network/model/company.model";
-import { MemberModel } from "../network/model/member.model";
+import { Company } from "../network/model/company.model";
+import { Member } from "../network/model/member.model";
 import { CompanyListModel } from "../view-model/company-manage.model";
 import { MemberManageModel } from "../view-model/member-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
@@ -16,14 +16,14 @@ export class MemberManageConverter extends CommonModelConverter<MemberManageMode
     super();
   }
   Convert(source: CommonModelSource) {
-    if (source instanceof MemberModel) {
+    if (source instanceof Member) {
       return this._fromMemberModel(source)
     }
     throw new Error('Error');
   }
 
 
-  private _fromMemberModel(item: MemberModel) {
+  private _fromMemberModel(item: Member) {
     let model = new MemberManageModel();
     model.id = item.Id;
     model.name = item.Name;

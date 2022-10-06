@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
-import { DoctorModel } from 'src/app/network/model/doctor.model';
+import { Doctor } from 'src/app/network/model/doctor.model';
 import { DoctorOperateBusiness } from './doctor-operate.business';
 
 @Component({
@@ -17,7 +17,7 @@ import { DoctorOperateBusiness } from './doctor-operate.business';
 })
 export class DoctorOperateComponent implements OnInit {
 
-  doctorModel: DoctorModel | null = null;
+  doctorModel: Doctor | null = null;
   FormState = FormState
 
   state: FormState = FormState.add;
@@ -71,7 +71,7 @@ export class DoctorOperateComponent implements OnInit {
   async submit() {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        let model = new DoctorModel();
+        let model = new Doctor();
         model.Id = '';
         model.Cid = this.cid;
         model.Name = this.myForm.value.name ?? "";

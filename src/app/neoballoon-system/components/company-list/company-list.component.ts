@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HwExport } from 'src/app/common/tools/hw-export';
-import { CompanyModel } from 'src/app/network/model/company.model';
+import { Company } from 'src/app/network/model/company.model';
 import { Page, PagedList } from 'src/app/network/model/page-list.model';
 import { CompanyListModel, CompanyListSearchInfo } from 'src/app/view-model/company-manage.model';
 import { CompanyListBusiness } from './company-list.business';

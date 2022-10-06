@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { BabyModel } from "src/app/network/model/baby.model";
-import { CompanyModel } from "src/app/network/model/company.model";
-import { DoctorModel } from "src/app/network/model/doctor.model";
+import { Baby } from "src/app/network/model/baby.model";
+import { Company } from "src/app/network/model/company.model";
+import { Doctor } from "src/app/network/model/doctor.model";
 import { BabyRequestService } from "src/app/network/request/baby/baby.service";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { CompanyRequestService } from "src/app/network/request/company/company.service";
@@ -15,7 +15,7 @@ export class BabyOperateBusiness {
   constructor(private _babyRequest: BabyRequestService) {
 
   }
-  create(model: BabyModel) {
+  create(model: Baby) {
     return this._babyRequest.create(model)
   }
   // get(id: string) {

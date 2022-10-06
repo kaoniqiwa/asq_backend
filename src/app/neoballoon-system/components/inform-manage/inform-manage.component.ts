@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { InformModel } from 'src/app/network/model/inform.model';
+import { Inform } from 'src/app/network/model/inform.model';
 import { InformManageModel } from 'src/app/view-model/inform-manage.model';
 import { InformManageBusiness } from './inform-manage.business';
 
@@ -19,7 +19,7 @@ export class InformManage implements OnInit {
   messageToShow = "";
   messageToSubmit = "";
 
-  model: InformModel | null = null;
+  model: Inform | null = null;
 
 
 
@@ -51,7 +51,7 @@ export class InformManage implements OnInit {
       this._toastrService.warning('请填写字段');
       return;
     }
-    let model = new InformModel();
+    let model = new Inform();
     model.Content = this.messageToSubmit;
     let res = await this._business.create(model);
     console.log(res)

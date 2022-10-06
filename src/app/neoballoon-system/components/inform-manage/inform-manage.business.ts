@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { InformManageConverter } from "src/app/converter/inform-manage.converter";
-import { InformModel } from "src/app/network/model/inform.model";
+import { Inform } from "src/app/network/model/inform.model";
 import { GetInformParams } from "src/app/network/request/inform/inform.params";
 import { InformRequestService } from "src/app/network/request/inform/inform.service";
 
@@ -20,7 +20,7 @@ export class InformManageBusiness {
   private _getInform(params: GetInformParams) {
     return this._informRequest.getLatestInform(params)
   }
-  create(model: InformModel) {
+  create(model: Inform) {
     return this._informRequest.create(model)
   }
   delete(id: string) {

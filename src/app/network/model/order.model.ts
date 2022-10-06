@@ -1,6 +1,6 @@
 import { OrderType } from "src/app/enum/order-type.enum";
 
-export class OrderModel {
+export class Order {
   Id!: string;
   Name!: string;
   Phone!: string;

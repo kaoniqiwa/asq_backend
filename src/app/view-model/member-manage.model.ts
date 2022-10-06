@@ -1,4 +1,4 @@
-import { BabyModel } from "../network/model/baby.model";
+import { Baby } from "../network/model/baby.model";
 
 export class MemberManageModel {
   id!: string;
@@ -8,7 +8,7 @@ export class MemberManageModel {
   address!: string;
   surveyLeft!: number;
   create_time!: string;
-  babys!: BabyModel[];
+  babys!: Baby[];
 
 }
 export class MemberManageSearchInfo {

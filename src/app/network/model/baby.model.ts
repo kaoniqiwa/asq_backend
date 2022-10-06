@@ -1,7 +1,7 @@
 import { Gender } from "src/app/enum/gender.enum";
 import { Relate } from "src/app/enum/relate.enum";
 
-export class BabyModel {
+export class Baby {
   id!: string;
   mid!: string;
   m_name!: string;

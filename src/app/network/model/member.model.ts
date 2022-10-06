@@ -1,6 +1,6 @@
-import { BabyModel } from "./baby.model";
+import { Baby } from "./baby.model";
 
-export class MemberModel {
+export class Member {
   Id!: string;
   Did!: string;
   Name!: string;

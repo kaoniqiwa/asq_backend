@@ -5,7 +5,7 @@ import { lastValueFrom } from "rxjs";
 import { HwExport } from "src/app/common/tools/hw-export";
 import { Time } from "src/app/common/tools/time";
 import { CompanyManageConverter } from "src/app/converter/company-manage.converter";
-import { CompanyModel } from "src/app/network/model/company.model";
+import { Company } from "src/app/network/model/company.model";
 import { Page, PagedList } from "src/app/network/model/page-list.model";
 import { GetCompanyParams } from "src/app/network/request/company/company.params";
 import { CompanyRequestService } from "src/app/network/request/company/company.service";
@@ -53,7 +53,7 @@ export class CompanyListBusiness {
     return this._companyRequest.export(params);
   }
 
-  exportXLSX(title: string, header: string[], models: CompanyModel[]) {
+  exportXLSX(title: string, header: string[], models: Company[]) {
     // let doctorNum: number = 0;
     // let xlsxModels = models.map((model, index) => {
     //   let xlsxModel = new CompanyListXLSX();

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { OrderModel } from "../../model/order.model";
+import { Order } from "../../model/order.model";
 import { OrderUrl } from "../../url/orders.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
@@ -11,18 +11,18 @@ import { GetOrderParams } from "./order.params";
 export class OrderRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<OrderModel>;
+  private type: BaseTypeRequestService<Order>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(OrderModel);
+    this.type = this.basic.type(Order);
   }
 
   list(params: GetOrderParams = new GetOrderParams()) {
     params.Flow = 'listOrder';
     return this.type.paged(OrderUrl.list(), params)
   }
-  create(model: OrderModel) {
+  create(model: Order) {
     model.Flow = 'addOrder'
     return this.type.post(OrderUrl.create(), model);
   }
@@ -34,7 +34,7 @@ export class OrderRequestService {
     return this.type.post(OrderUrl.delete(), params)
 
   }
-  update(model: OrderModel) {
+  update(model: Order) {
     model.Flow = 'editOrder'
     return this.type.post(OrderUrl.update(), model)
   }

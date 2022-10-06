@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidIP, ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
-import { MemberModel } from 'src/app/network/model/member.model';
+import { Member } from 'src/app/network/model/member.model';
 import { MemberOperateBusiness } from './member-operate.business';
 
 @Component({
@@ -20,7 +20,7 @@ export class MemberOperateComponent implements OnInit {
   state: FormState = FormState.add;
   mid: string = '';
   // 根据id查询到的model
-  memberModel: MemberModel | null = null;
+  memberModel: Member | null = null;
 
   // 表单数据
   myForm = this._fb.group({
@@ -86,7 +86,7 @@ export class MemberOperateComponent implements OnInit {
   async submit() {
     if (this._checkForm()) {
       if (this.state == FormState.add) {
-        let model = new MemberModel();
+        let model = new Member();
         model.Id = '';
         model.Did = "70f1c13a-b1c7-4160-ab70-03cd1593399e";
 

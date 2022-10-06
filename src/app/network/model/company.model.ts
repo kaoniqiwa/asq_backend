@@ -1,5 +1,5 @@
 
-export class CompanyModel {
+export class Company {
   Id!: string;
   Name!: string;
   Username!: string;

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CompanyListModel } from "src/app/view-model/company-manage.model";
-import { BabyModel } from "../../model/baby.model";
-import { CompanyModel } from "../../model/company.model";
+import { Baby } from "../../model/baby.model";
+import { Company } from "../../model/company.model";
 import { BabyUrl } from "../../url/baby.url";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
@@ -14,14 +14,14 @@ import { GetBabyParams } from "./baby.params";
 export class BabyRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<BabyModel>;
+  private type: BaseTypeRequestService<Baby>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(BabyModel);
+    this.type = this.basic.type(Baby);
   }
 
-  create(model: BabyModel) {
+  create(model: Baby) {
     return this.type.post(BabyUrl.create(), model);
   }
   list(params: GetBabyParams = new GetBabyParams()) {
@@ -37,7 +37,7 @@ export class BabyRequestService {
     return this.type.get(BabyUrl.get(id));
   }
 
-  update(model: BabyModel) {
+  update(model: Baby) {
     return this.type.post(BabyUrl.update(), model)
 
   }

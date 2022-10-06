@@ -1,6 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { CompanyModel } from "../network/model/company.model";
+import { Company } from "../network/model/company.model";
 import { CompanyListModel } from "../view-model/company-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
 
@@ -13,14 +13,14 @@ export class CompanyManageConverter extends CommonModelConverter<CompanyListMode
     super();
   }
   Convert(source: CommonModelSource) {
-    if (source instanceof CompanyModel) {
+    if (source instanceof Company) {
       return this._fromCompanyModel(source)
     }
     throw new Error('Error');
   }
 
 
-  private _fromCompanyModel(item: CompanyModel) {
+  private _fromCompanyModel(item: Company) {
     let model = new CompanyListModel();
     model.id = item.Id;
     model.name = item.Name;

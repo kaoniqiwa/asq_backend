@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CompanyListModel } from "src/app/view-model/company-manage.model";
-import { MemberModel } from "../../model/member.model";
+import { Member } from "../../model/member.model";
 import { MemberUrl } from "../../url/member.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
@@ -12,18 +12,18 @@ import { GetMemberParams } from "./member.params";
 export class MemberRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<MemberModel>;
+  private type: BaseTypeRequestService<Member>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(MemberModel);
+    this.type = this.basic.type(Member);
   }
 
   list(params: GetMemberParams = new GetMemberParams()) {
     params.Flow = 'listMember';
     return this.type.paged(MemberUrl.list(), params)
   }
-  create(model: MemberModel) {
+  create(model: Member) {
     model.Flow = 'addMember';
     return this.type.post(MemberUrl.create(), model);
   }
@@ -35,7 +35,7 @@ export class MemberRequestService {
     return this.type.post(MemberUrl.delete(), params)
 
   }
-  update(model: MemberModel) {
+  update(model: Member) {
     model.Flow = 'editMember';
     return this.type.post(MemberUrl.update(), model)
   }

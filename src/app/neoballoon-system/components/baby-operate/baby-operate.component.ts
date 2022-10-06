@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
-import { BabyModel } from 'src/app/network/model/baby.model';
+import { Baby } from 'src/app/network/model/baby.model';
 import { BabyOperateBusiness } from './baby-operate.business';
 
 @Component({
@@ -19,7 +19,7 @@ export class BabyOperateComponent implements OnInit {
 
 
 
-  doctorModel: BabyModel | null = null;
+  doctorModel: Baby | null = null;
   FormState = FormState
 
   state: FormState = FormState.add;

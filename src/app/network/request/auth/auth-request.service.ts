@@ -24,7 +24,6 @@ export class AuthorizationService implements CanActivate {
   private _config: AxiosRequestConfig = { headers: {} };
 
   constructor(
-    private _globalStorageService: GlobalStorageService,
     private _sessionStorageService: SessionStorageService,
     private _localStorage: LocalStorageService,
     private _cookieService: CookieService,

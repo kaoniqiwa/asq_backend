@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CompanyListModel } from "src/app/view-model/company-manage.model";
-import { CompanyModel } from "../../model/company.model";
+import { Company } from "../../model/company.model";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
 import { HowellAuthHttpService } from "../howell-auth-http.service";
@@ -12,18 +12,18 @@ import { GetCompanyParams } from "./company.params";
 export class CompanyRequestService {
 
   private basic: BaseRequestService;
-  private type: BaseTypeRequestService<CompanyModel>;
+  private type: BaseTypeRequestService<Company>;
 
   constructor(_http: HowellAuthHttpService) {
     this.basic = new BaseRequestService(_http);
-    this.type = this.basic.type(CompanyModel);
+    this.type = this.basic.type(Company);
   }
 
   list(params: GetCompanyParams = new GetCompanyParams()) {
     params.Flow = 'listCompany';
     return this.type.paged(CompanyUrl.list(), params)
   }
-  create(model: CompanyModel) {
+  create(model: Company) {
     model.Flow = 'addCompany'
     return this.type.post(CompanyUrl.create(), model);
   }
@@ -35,7 +35,7 @@ export class CompanyRequestService {
     return this.type.post(CompanyUrl.delete(), params)
 
   }
-  update(model: CompanyModel) {
+  update(model: Company) {
     model.Flow = 'editCompany'
     return this.type.post(CompanyUrl.update(), model)
   }

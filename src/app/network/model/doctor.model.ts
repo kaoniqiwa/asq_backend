@@ -1,4 +1,4 @@
-export class DoctorModel {
+export class Doctor {
   Id!: string;
   Cid!: string;
   Name!: string;

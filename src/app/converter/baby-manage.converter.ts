@@ -1,7 +1,7 @@
 import { formatDate } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { BabyModel } from "../network/model/baby.model";
-import { DoctorModel } from "../network/model/doctor.model";
+import { Baby } from "../network/model/baby.model";
+import { Doctor } from "../network/model/doctor.model";
 import { BabyManageModel } from "../view-model/baby-manage.model";
 import { CompanyOperateModel } from "../view-model/company-operate.model";
 import { DoctorManageModel } from "../view-model/doctor-manage.model";
@@ -13,13 +13,13 @@ import { CommonModelConverter, CommonModelSource } from "./common-model.converte
 export class BabyManageConverter extends CommonModelConverter<BabyManageModel>{
 
   Convert(source: CommonModelSource) {
-    if (source instanceof BabyModel) {
+    if (source instanceof Baby) {
       return this._fromBabyModel(source)
     }
     throw new Error('Error');
   }
 
-  private _fromBabyModel(item: BabyModel) {
+  private _fromBabyModel(item: Baby) {
     let model = new BabyManageModel();
     model.id = item.id;
     model.mid = item.mid;

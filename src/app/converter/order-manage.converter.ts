@@ -1,7 +1,7 @@
 import { DatePipe, formatDate } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { CompanyModel } from "../network/model/company.model";
-import { OrderModel } from "../network/model/order.model";
+import { Company } from "../network/model/company.model";
+import { Order } from "../network/model/order.model";
 import { CompanyListModel } from "../view-model/company-manage.model";
 import { OrderManageModel } from "../view-model/order-manage.model";
 import { CommonModelConverter, CommonModelSource } from "./common-model.converter";
@@ -15,14 +15,14 @@ export class OrderManageConverter extends CommonModelConverter<OrderManageModel>
     super();
   }
   Convert(source: CommonModelSource) {
-    if (source instanceof OrderModel) {
+    if (source instanceof Order) {
       return this._fromOrdersModel(source)
     }
     throw new Error('Error');
   }
 
 
-  private _fromOrdersModel(item: OrderModel) {
+  private _fromOrdersModel(item: Order) {
     let model = new OrderManageModel();
     model.id = item.Id;
     model.name = item.Name;
