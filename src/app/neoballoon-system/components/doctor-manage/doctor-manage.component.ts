@@ -46,14 +46,14 @@ export class DoctorManageComponent implements OnInit {
     this._init();
   }
   addDoctor() {
-    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate", this.searchInfo.cid, ""], {
+    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage/doctor-operate", this.searchInfo.cid, ""], {
       queryParams: {
         type: 'add'
       }
     })
   }
   editDoctor(model: DoctorManageModel) {
-    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-operate", this.searchInfo.cid, model.id], {
+    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage/doctor-operate", this.searchInfo.cid, model.id], {
       queryParams: {
         type: 'edit'
       }

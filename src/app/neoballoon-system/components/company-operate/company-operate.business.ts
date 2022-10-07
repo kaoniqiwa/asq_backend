@@ -39,8 +39,8 @@ export class CompanyOperateBusiness {
   deleteDoctor(cid: string, doctors: Doctor[]) {
     let arr = doctors.map((doctor) => {
       let params = new GetDoctorParams();
-      params.Cid = cid;
-      params.Id = doctor.Id;
+      params.Cids = [cid];
+      params.Ids = [doctor.Id];
       params.Flow = 'deleteDoctor';
       return this._doctorRequest.delete(params);
     }
@@ -54,6 +54,10 @@ export class CompanyOperateBusiness {
     }
     )
     return Promise.all(arr)
-
+  }
+  listDoctor(cids: string[]) {
+    let params = new GetDoctorParams();
+    params.Cids = cids;
+    return this._doctorRequest.list(params);
   }
 }

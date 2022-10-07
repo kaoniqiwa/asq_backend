@@ -105,7 +105,7 @@ export class DoctorOperateComponent implements OnInit {
 
   }
   reset() {
-    this._router.navigate(["/neoballoon/neoballoon-manage/doctor-manage", this.cid])
+    this._router.navigate(["/neoballoon/neoballoon-manage/company-manage/doctor-manage", this.cid])
   }
   private _checkForm() {
     if (this.myForm.invalid) {

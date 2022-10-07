@@ -32,7 +32,7 @@ export class MemberListComponent implements OnInit {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 9;
+  pageSize = 2;
 
   constructor(private _business: MemberListBusiness, private _router: Router, private _toastrService: ToastrService) { }
 
@@ -49,19 +49,20 @@ export class MemberListComponent implements OnInit {
   pageEvent(pageInfo: PageEvent) {
     if (this.pageIndex == pageInfo.pageIndex + 1) return;
     this.pageIndex = pageInfo.pageIndex + 1;
-    console.log(pageInfo)
+    this._init();
   }
   addMember() {
-    this._router.navigate(['/neoballoon/neoballoon-manage/member-manage/member-operate', ""], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/member-manage/member-operate'], {
       queryParams: {
         type: 'add'
       }
     })
   }
   editMember(model: MemberManageModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/member-operate', model.id], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/member-manage/member-operate'], {
       queryParams: {
-        type: 'edit'
+        type: 'edit',
+        mid: model.id
       }
     })
   }

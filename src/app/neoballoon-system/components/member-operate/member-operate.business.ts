@@ -30,33 +30,8 @@ export class MemberOperateBusiness {
   update(model: Member) {
     return this._memberRequest.update(model);
   }
-  // addDoctor(cid: string, doctors: DoctorModel[]) {
-  //   let arr = doctors.map((doctor) => {
-  //     doctor.cid = cid;
-  //     doctor.flow = 'addDoctor';
-  //     return this._doctorRequest.create(doctor);
-  //   }
-  //   )
-  //   return Promise.all(arr)
-  // }
-  // deleteDoctor(cid: string, doctors: DoctorModel[]) {
-  //   let arr = doctors.map((doctor) => {
-  //     let params = new GetDoctorParams();
-  //     params.cid = cid;
-  //     params.id = doctor.id;
-  //     params.flow = 'deleteDoctor';
-  //     return this._doctorRequest.delete(params);
-  //   }
-  //   )
-  //   return Promise.all(arr)
-  // }
-  // editDoctor(doctors: DoctorModel[]) {
-  //   let arr = doctors.map((doctor) => {
-  //     doctor.flow = "editDoctor";
-  //     return this._doctorRequest.update(doctor);
-  //   }
-  //   )
-  //   return Promise.all(arr)
+  listDoctor() {
+    return this._doctorRequest.list()
+  }
 
-  // }
 }

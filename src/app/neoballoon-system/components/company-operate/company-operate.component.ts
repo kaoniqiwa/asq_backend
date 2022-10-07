@@ -75,25 +75,25 @@ export class CompanyOperateComponent implements OnInit, AfterViewInit {
   constructor(private _business: CompanyOperateBusiness, private _fb: FormBuilder,
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
 
-    // this._activeRoute.params.subscribe((params: Params) => {
-    //   this.cid = params['cid'];
-    // })
-    // this._activeRoute.queryParams.subscribe((queryParams: Params) => {
-    //   let type = queryParams['type'];
-
-    //   if (type == 'add') {
-    //     this.state = FormState.add;
-    //   } else if (type == 'edit') {
-    //     this.state = FormState.edit;
-    //   }
-    // })
+    // console.log(this._activeRoute)
+    this._activeRoute.queryParams.subscribe((queryParams: Params) => {
+      let type = queryParams['type'];
+      this.cid = queryParams['cid'];
+      if (type == 'add') {
+        this.state = FormState.add;
+      } else if (type == 'edit') {
+        this.state = FormState.edit;
+      }
+    })
   }
 
   async ngOnInit() {
     if (this.state == FormState.edit) {
       this.companyModel = await this._business.get(this.cid);
       if (this.companyModel) {
-        // this.doctorsInModel = [...this.companyModel.Doctors];
+        let res = await this._business.listDoctor([this.companyModel.Id]);
+        this.doctorsInModel = res.Data
+
         this.myForm.patchValue(
           {
             name: this.companyModel.Name,

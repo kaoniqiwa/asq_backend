@@ -13,10 +13,10 @@ export class BabyManageBusiness {
 
   async init(searchInfo: BabyManageSearchInfo) {
     let params = new GetBabyParams();
-    params.mid = searchInfo.mid;
-    params.name = searchInfo.name;
+    params.Mids = [searchInfo.mid];
+    params.Name = searchInfo.name;
 
-    let data = await this._list(params);
+    let { Data: data } = await this._list(params);
     let res = this._converter.iterateToModel(data)
 
     return res;

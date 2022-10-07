@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ import { CompanyListBusiness } from './company-list.business';
     CompanyListBusiness
   ]
 })
-export class CompanyListComponent implements OnInit {
+export class CompanyListComponent implements OnInit, OnDestroy {
 
   dateFormat: string = 'yyyy-MM-dd';
 
@@ -30,7 +30,7 @@ export class CompanyListComponent implements OnInit {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 9;
+  pageSize = 2;
 
   searchInfo: CompanyListSearchInfo = {
     name: "",
@@ -88,35 +88,40 @@ export class CompanyListComponent implements OnInit {
 
   }
   addCompany() {
-    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate', ""], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate'], {
       queryParams: {
-        type: 'add'
+        type: 'add',
+        cid: ""
       }
     })
   }
   editCompany(model: CompanyListModel) {
-    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate', model.id], {
+    this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/company-operate'], {
       queryParams: {
-        type: 'edit'
+        type: 'edit',
+        cid: model.id
       }
     })
   }
   async deleteCompany(model: CompanyListModel) {
-    // let res = await this._business.deleteCompany(model.id);
-    // if (res) {
-    //   this._toastrService.success('删除成功');
+    let res = await this._business.deleteCompany([model.id]);
+    if (res) {
+      this._toastrService.success('删除成功');
 
 
-    //   if (this.page?.recordCount == 1) {
-    //     this.pageIndex = Math.max(this.pageIndex - 1, 1);
-    //   }
-    //   this._init();
-    // }
+      if (this.page?.RecordCount == 1) {
+        this.pageIndex = Math.max(this.pageIndex - 1, 1);
+      }
+      this._init();
+    }
   }
   doctorManage(model: CompanyListModel) {
     this._router.navigate(['/neoballoon/neoballoon-manage/company-manage/doctor-manage', model.id])
   }
 
+  ngOnDestroy(): void {
+    // console.log()
+  }
   private _getTitle() {
     if (this.beginTime && this.endTime) {
       let beginTime = formatDate(this.beginTime, 'yyyy年MM月dd日', 'zh-CN');
@@ -126,6 +131,7 @@ export class CompanyListComponent implements OnInit {
     return '';
 
   }
+
 
 
 

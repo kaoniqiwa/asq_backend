@@ -3,34 +3,28 @@
   "data": [
     {
       "title": "首页",
-      "id": "account-statistic",
       "path": "/neoballoon/neoballoon-manage/account-statistic"
     },
     {
       "title": "机构管理",
-      "id": "company-manage",
       "path": "/neoballoon/neoballoon-manage/company-manage"
     },
     {
       "title": "会员管理",
-      "id": "member-manage",
       "state": "shrink",
       "children": [
         {
-          "path": "/neoballoon/neoballoon-manage/member-manage/member-list",
-          "title": "会员列表",
-          "id": "member-list"
+          "path": "/neoballoon/neoballoon-manage/member-manage",
+          "title": "会员列表"
         },
         {
-          "path": "/neoballoon/neoballoon-manage/member-manage/order-manage",
-          "title": "订单查询",
-          "id": "order-manage"
+          "path": "/neoballoon/neoballoon-manage/order-manage",
+          "title": "订单查询"
         }
       ]
     },
     {
       "title": "前台页面编辑",
-      "id": "inform-manage",
       "path": "/neoballoon/neoballoon-manage/inform-manage"
     }
   ]

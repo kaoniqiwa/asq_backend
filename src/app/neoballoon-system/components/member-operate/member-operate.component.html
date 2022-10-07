@@ -14,6 +14,17 @@
           <input class="form-control" type="text" formControlName="phone" />
         </div>
       </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">医生<span>*</span></label>
+        <div class="col-sm-9">
+          <select class="form-control" formControlName="doctor">
+            <option value="" disabled>请选择医生</option>
+            <option *ngFor="let doctor of doctors" [value]="doctor.Id">
+              {{ doctor.Name }}
+            </option>
+          </select>
+        </div>
+      </div>
 
       <div class="form-group">
         <label class="col-sm-2 control-label">联系地址</label>

@@ -100,7 +100,7 @@
         <tbody>
           <ng-container *ngFor="let model of dataSource; let i = index">
             <tr>
-              <td>{{ (i + 1).toString() }}</td>
+              <td>{{ (i + 1).toString().padStart(3, "0") }}</td>
               <td>{{ model.name }}</td>
               <td>{{ model.username }}</td>
               <td>{{ model.asq_info }}</td>
@@ -141,3 +141,5 @@
     </div>
   </div>
 </div>
+
+<!-- <router-outlet></router-outlet> -->

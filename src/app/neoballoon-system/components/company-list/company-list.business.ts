@@ -40,9 +40,9 @@ export class CompanyListBusiness {
   private _listCompany(params: GetCompanyParams = new GetCompanyParams()) {
     return this._companyRequest.list(params)
   }
-  deleteCompany(id: string) {
+  deleteCompany(ids: string[]) {
     let params = new GetCompanyParams();
-    params.Id = id;
+    params.Ids = ids;
     return this._companyRequest.delete(params)
   }
   getExport(beginTime: Date, endTime: Date) {

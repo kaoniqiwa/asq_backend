@@ -39,7 +39,7 @@ export class OrderManageBusiness {
   }
   deleteOrder(id: string) {
     let params = new GetOrderParams();
-    params.Id = id;
+    params.Ids = [id];
     return this._orderRequest.delete(params)
   }
   async getExport(beginTime: Date, endTime: Date) {

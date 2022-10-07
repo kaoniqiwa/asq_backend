@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { CompanyListModel } from "src/app/view-model/company-manage.model";
 import { Member } from "../../model/member.model";
 import { MemberUrl } from "../../url/member.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";

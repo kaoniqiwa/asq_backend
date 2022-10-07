@@ -48,10 +48,10 @@ const routes: Routes = [
           },
           {
             path: "company-list",
-            component: CompanyListComponent
+            component: CompanyListComponent,
           },
           {
-            path: "company-operate/:cid",
+            path: "company-operate",
             component: CompanyOperateComponent
           },
           {
@@ -67,25 +67,44 @@ const routes: Routes = [
       },
       {
         path: "member-manage",
-        component: MemberManageComponent,
         children: [
           {
             path: "member-list",
-            component: MemberListComponent
+            component: MemberListComponent,
           },
           {
-            path: "member-operate/:mid",
+            path: "member-operate",
             component: MemberOperateComponent
           },
-
           {
-            path: "order-manage",
-            component: OrderManageComponent
-          },
-
+            path: "",
+            redirectTo: "member-list",
+            pathMatch: "full"
+          }
         ]
       },
 
+      // {
+      //   path: "member-manage",
+      //   component: MemberManageComponent,
+      //   children: [
+      //     {
+      //       path: "member-list",
+      //       component: MemberListComponent,
+      //       children: [
+      //        
+      //       ]
+      //     },
+
+
+
+      //   ]
+      // },
+
+      {
+        path: "order-manage",
+        component: OrderManageComponent
+      },
       {
         path: "baby-manage/:mid",
         component: BabyManageComponent

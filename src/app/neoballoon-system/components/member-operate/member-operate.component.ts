@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidIP, ValidPhone } from 'src/app/common/tools/tool';
 import { FormState } from 'src/app/enum/form-state.enum';
+import { Doctor } from 'src/app/network/model/doctor.model';
 import { Member } from 'src/app/network/model/member.model';
 import { MemberOperateBusiness } from './member-operate.business';
 
@@ -16,6 +17,7 @@ import { MemberOperateBusiness } from './member-operate.business';
   ]
 })
 export class MemberOperateComponent implements OnInit {
+  doctors: Doctor[] = [];
   FormState = FormState
   state: FormState = FormState.add;
   mid: string = '';
@@ -26,6 +28,7 @@ export class MemberOperateComponent implements OnInit {
   myForm = this._fb.group({
     name: ['', Validators.required],
     phone: ['', [Validators.required, Validators.pattern(ValidPhone)]],
+    doctor: ['', Validators.required],
     address: ['', Validators.required],
     email: ['', [Validators.email]],
     postCode: '',
@@ -43,13 +46,10 @@ export class MemberOperateComponent implements OnInit {
     private _activeRoute: ActivatedRoute, private _router: Router, private _toastrService: ToastrService) {
 
 
-    this._activeRoute.params.subscribe((params: Params) => {
-      this.mid = params['mid'];
-    })
 
     this._activeRoute.queryParams.subscribe((queryParams: Params) => {
       let type = queryParams['type'];
-
+      this.mid = queryParams['mid'];
       if (type == 'add') {
         this.state = FormState.add;
       } else if (type == 'edit') {
@@ -61,9 +61,10 @@ export class MemberOperateComponent implements OnInit {
 
   async ngOnInit() {
 
+    let { Data: doctors } = await this._business.listDoctor();
+    this.doctors = doctors;
     if (this.state == FormState.edit) {
       this.memberModel = await this._business.get(this.mid);
-      console.log(this.memberModel)
       if (this.memberModel) {
         this.myForm.disable();
         this.myForm.get('surveyLeft')?.enable();
@@ -74,6 +75,7 @@ export class MemberOperateComponent implements OnInit {
             address: this.memberModel.Address,
             email: this.memberModel.Email,
             postCode: this.memberModel.PostCode,
+            doctor: this.memberModel.Did
           }
         )
       }
@@ -88,7 +90,7 @@ export class MemberOperateComponent implements OnInit {
       if (this.state == FormState.add) {
         let model = new Member();
         model.Id = '';
-        model.Did = "70f1c13a-b1c7-4160-ab70-03cd1593399e";
+        model.Did = this.myForm.value.doctor ?? "";
 
         model.Name = this.myForm.value.name ?? "";
         model.Phone = this.myForm.value.phone ?? '';
@@ -146,6 +148,10 @@ export class MemberOperateComponent implements OnInit {
       }
       if (this.myForm.get('email')?.invalid) {
         this._toastrService.warning('请填写正确的邮箱');
+        return;
+      }
+      if (this.myForm.get('doctor')?.invalid) {
+        this._toastrService.warning('请选择医生');
         return;
       }
     }

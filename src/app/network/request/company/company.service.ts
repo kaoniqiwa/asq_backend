@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { CompanyListModel } from "src/app/view-model/company-manage.model";
 import { Company } from "../../model/company.model";
 import { CompanyUrl } from "../../url/company.url";
 import { BaseRequestService, BaseTypeRequestService } from "../base-request.service";
@@ -44,32 +43,6 @@ export class CompanyRequestService {
     return this.type.postArray(CompanyUrl.export(), params)
   }
 
-  // deleteDocotr(params: GetCompanyParams) {
-  //   return this.type.delete(companyUrl, params)
-  // }
-
-  // list(params: GetCamerasParams = new GetCamerasParams()) {
-  //   return this.type.paged(AICamerasUrl.list(), params);
-  // }
-
-
-
-  // update(item: AICamera) {
-  //   return this.type.put(AICamerasUrl.item(item.Id), item)
-  // }
-
-  // listAIModels(id: string) {
-  //   return this.basic.get(AICamerasUrl.AIModels(id), CameraAIModel)
-  // }
-  // addAIModel(cameraId: string, modelId: string) {
-  //   return this.basic.post(AICamerasUrl.singleAIModel(cameraId, modelId), CameraAIModel)
-  // }
-  // getAIModel(cameraId: string, modelId: string) {
-  //   return this.basic.get(AICamerasUrl.singleAIModel(cameraId, modelId), CameraAIModel)
-  // }
-  // deleteAIModel(cameraId: string, modelId: string) {
-  //   return this.basic.delete(AICamerasUrl.singleAIModel(cameraId, modelId), CameraAIModel)
-  // }
 
 
 

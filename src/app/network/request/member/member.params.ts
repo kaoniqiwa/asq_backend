@@ -1,7 +1,8 @@
-export class GetMemberParams {
-  PageIndex?: number;
-  PageSize?: number;
-  Id?: string;
+import { PagedParams } from "../IParams.interface";
+
+export class GetMemberParams extends PagedParams {
+  Ids?: string[];
+  Dids?: string[];
   Name?: string;
   BeginTime?: Date;
   EndTime?: Date;

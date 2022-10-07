@@ -44,7 +44,7 @@ export class MemberListBusiness {
   }
   deletMember(id: string) {
     let params = new GetMemberParams();
-    params.Id = id;
+    params.Ids = [id];
     return this._memberRequest.delete(params)
   }
   // getExport(beginTime: Date, endTime: Date) {
