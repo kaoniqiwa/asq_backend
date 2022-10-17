@@ -13,6 +13,7 @@ import { plainToClass } from "class-transformer";
 import { UserUrl } from "../../url/user.url";
 import { User } from "../../model/user.model";
 import { LocalStorageService } from "src/app/common/service/local-storage.service";
+import { BaseASQUrl } from "../../url/base.url";
 
 @Injectable({
   providedIn: 'root',
@@ -72,7 +73,7 @@ export class AuthorizationService implements CanActivate {
     // return axios.get('/api/login.php')
     this._username = username;
     this._password = password;
-    this._config.url = '/api/back_end.login.php';
+    this._config.url = `${BaseASQUrl}/back_end.login.php`;
 
     this._config.headers = {
       'X-Webbrowser-Authentication': 'Forbidden',
