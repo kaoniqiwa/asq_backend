@@ -34,7 +34,7 @@ export class DoctorOperateToastComponent implements OnInit {
   }
 
 
-  ValidPhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,2,3,5-9])|19[0-9])\d{8}$/
+  ValidPhone = /^(((1[3-9][0-9]{1}))+\d{8})$/
   myForm = this._fb.group({
     name: ['', Validators.required],
     level: "",

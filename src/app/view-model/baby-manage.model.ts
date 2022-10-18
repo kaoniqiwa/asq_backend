@@ -11,6 +11,9 @@ export class BabyManageModel {
   birthday!: string;
   survey_time!: string;
   premature!: string;
+  prematrueweek?: string;
+  prematrueday?: string;
+  rectifyage?: any;
   create_time!: string;
   update_time!: string;
 
