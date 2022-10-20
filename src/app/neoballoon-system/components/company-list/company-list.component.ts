@@ -30,7 +30,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 2;
+  pageSize = 10;
 
   searchInfo: CompanyListSearchInfo = {
     name: "",

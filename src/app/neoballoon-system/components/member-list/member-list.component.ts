@@ -32,7 +32,7 @@ export class MemberListComponent implements OnInit {
   page: Page | null = null;
   pagerCount: number = 4;
   pageIndex = 1;
-  pageSize = 2;
+  pageSize = 10;
 
   constructor(private _business: MemberListBusiness, private _router: Router, private _toastrService: ToastrService) { }
 
